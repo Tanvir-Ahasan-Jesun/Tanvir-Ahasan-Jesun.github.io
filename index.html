@@ -11,24 +11,17 @@
     /* ---------- THEME ---------- */
     :root{
       --bg:#f2f4f7; --ink:#111827; --muted:#6b7280; --card:#ffffff;
-      /* gradient palette */
-      --brand-1:#2563eb;   /* primary blue */
-      --brand-2:#3b82f6;   /* brighter blue */
-      --brand-3:#1e40af;   /* deep indigo */
-      --brand-ink:#ffffff;
-      --accent:#0ea5e9;
+      --brand-1:#2563eb; --brand-2:#3b82f6; --brand-3:#1e40af; /* gradient blues */
+      --brand-ink:#ffffff; --accent:#0ea5e9;
       --shadow:0 12px 35px rgba(0,0,0,.08);
       --ring:rgba(37,99,235,.28);
       --radius:16px; --max:1100px;
-      /* soft glow behind logo so bell curve stays visible */
-      --header-glow: radial-gradient(110px 80px at 116px 38px, rgba(255,255,255,.3), transparent 60%);
     }
     @media (prefers-color-scheme: dark){
       :root{
         --bg:#0b0f1a; --ink:#e6eaf2; --muted:#a3adbf; --card:#0f1526;
         --brand-1:#60a5fa; --brand-2:#93c5fd; --brand-3:#3b82f6;
         --brand-ink:#0b0f1a; --shadow:0 8px 24px rgba(0,0,0,.6);
-        --header-glow: radial-gradient(110px 80px at 116px 38px, rgba(255,255,255,.22), transparent 60%);
       }
     }
 
@@ -41,22 +34,31 @@
     :focus-visible{outline:none; box-shadow:0 0 0 6px var(--ring)}
     html{scroll-behavior:smooth}
 
-    /* ---------- HEADER (gradient + glow) ---------- */
+    /* Offset anchors so sticky header doesn't cover sections */
+    section{scroll-margin-top:92px;}
+
+    /* ---------- HEADER (gradient) ---------- */
     header{
       position:sticky; top:0; z-index:50; color:var(--brand-ink);
       background: linear-gradient(135deg, var(--brand-2), var(--brand-1) 55%, var(--brand-3));
       border-bottom:1px solid rgba(255,255,255,.12);
+      padding-top: calc(8px + env(safe-area-inset-top)); /* notches/in-app chrome */
       isolation:isolate;
     }
-    header::before{
-      content:""; position:absolute; inset:0; background:var(--header-glow);
-      pointer-events:none; z-index:-1;
-    }
     .nav{display:flex; align-items:center; justify-content:space-between; gap:12px}
-    .brand{display:flex; align-items:center; gap:12px; font-weight:800; font-size:18px}
-    .brand img{height:56px; width:auto} /* larger logo */
+    .brand{position:relative; display:flex; align-items:center; gap:12px; font-weight:800; font-size:18px}
+    .brand .mark{position:relative; display:inline-block; z-index:1;}
+    .brand img{height:58px; width:auto; filter:
+      drop-shadow(0 0 8px rgba(255,255,255,.55)) drop-shadow(0 0 1px rgba(255,255,255,.85));}
+    @media (max-width:780px){ .brand img{height:64px;} }
 
-    /* desktop links: gradient pills (no flat white) */
+    /* Darker local halo only behind the logo (not the name) */
+    .brand .mark::before{
+      content:""; position:absolute; inset:-10px -14px -10px -14px; border-radius:16px; z-index:-1;
+      background: radial-gradient(100px 80px at 46% 52%, rgba(0,0,0,.32), transparent 62%);
+    }
+
+    /* desktop nav pills (gradient, not flat) */
     .navlinks{display:flex; gap:10px}
     .navlinks a.btn{
       padding:10px 16px; border-radius:12px; border:0;
@@ -165,7 +167,7 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <img src="logo.png" alt="Tanvir Analytics Logo" />
+        <span class="mark"><img src="logo.png" alt="Tanvir Analytics Logo" /></span>
         Tanvir Analytics
       </div>
 
@@ -356,10 +358,32 @@
       mnav.classList.remove('show'); burger.setAttribute('aria-expanded','false');
     }));
 
+    // Detect Twitter/IG/FB in-app browsers and show "Open in Browser" banner
+    (function(){
+      const ua = navigator.userAgent || "";
+      const isInApp = /Twitter|FBAN|FBAV|Instagram|Line\/|Snapchat|WhatsApp/i.test(ua);
+      if (!isInApp) return;
+      const bar = document.createElement('div');
+      Object.assign(bar.style, {
+        position:'fixed', left:0, right:0, bottom:0, zIndex:1000,
+        padding:'12px 16px', background:'linear-gradient(135deg,#1e40af,#2563eb)',
+        color:'#fff', display:'flex', justifyContent:'space-between',
+        alignItems:'center', gap:'12px'
+      });
+      bar.innerHTML = `
+        <span>For best experience, open this page in your browser.</span>
+        <a href="${location.href}"
+           style="background:#fff;color:#1e3a8a;padding:10px 14px;border-radius:10px;text-decoration:none;">
+           Open in Browser
+        </a>`;
+      document.body.appendChild(bar);
+      document.body.style.paddingBottom = '64px';
+    })();
+
     // Respect reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.style.scrollBehavior = 'auto';
     }
   </script>
 </body>
-</html>
+</html>w
