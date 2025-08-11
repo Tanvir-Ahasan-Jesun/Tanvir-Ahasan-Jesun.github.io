@@ -2,99 +2,235 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Tanvir Analytics — Portfolio Coming Soon</title>
+  <title>Tanvir Analytics — Interactive Dashboards & Data Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Tanvir Ahasan Jesun — Data Analytics & Dashboards." />
-  <link rel="icon" href="assets/logo.png">
+  <meta name="description" content="Power BI, Excel, and SQL dashboards by Tanvir Analytics." />
+  <link rel="icon" href="logo.png" />
   <style>
-    :root {
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --bg: #f5f7fb;
-      --text: #222;
-      --card-bg: #fff;
+    :root{
+      --bg:#f5f7fb; --card:#ffffff; --ink:#222; --muted:#555;
+      --brand:#2563eb; --brand-hover:#1d4ed8; --brand-ink:#fff;
+      --ring:rgba(37,99,235,.25); --shadow:0 12px 35px rgba(0,0,0,.08);
     }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b0f1a; --card:#0f1526; --ink:#e6eaf2; --muted:#a3adbf; --brand:#60a5fa; --brand-hover:#4b9df5; --brand-ink:#0b0f1a; --shadow:0 8px 24px rgba(0,0,0,.6); }
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{background:var(--bg); color:var(--ink); font-family:"Segoe UI", system-ui, Arial, sans-serif}
+    a{color:inherit; text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:24px}
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      height: 100vh;
-      display: grid;
-      place-items: center;
-      font-family: "Segoe UI", system-ui, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-    }
+    /* Header */
+    header{position:sticky; top:0; z-index:40; backdrop-filter:saturate(180%) blur(8px);
+      background:color-mix(in srgb, var(--bg) 80%, transparent); border-bottom:1px solid rgba(148,163,184,.25)}
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .brand img{height:34px; width:auto}
+    .nav a.btn{padding:10px 16px; border:1px solid rgba(148,163,184,.35); border-radius:12px; background:var(--card)}
+    .nav .cta{background:var(--brand); color:var(--brand-ink); border-color:transparent}
+    .nav .cta:hover{background:var(--brand-hover)}
 
-    .card {
-      text-align: center;
-      background: var(--card-bg);
-      padding: 36px 40px;
-      border-radius: 20px;
-      box-shadow: 0 12px 35px rgba(0,0,0,.08);
-      max-width: 500px;
-      width: min(92vw, 500px);
-      animation: fadeIn 0.6s ease;
-    }
+    /* Hero */
+    .hero{padding:56px 0 28px; text-align:left}
+    .hero h1{font-size: clamp(28px, 5vw, 44px); line-height:1.1; margin-bottom:10px}
+    .hero p{font-size: clamp(16px, 2.2vw, 18px); color:var(--muted); margin-bottom:20px}
+    .actions{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 18px; border-radius:14px;
+      border:1px solid rgba(148,163,184,.35); background:var(--card); box-shadow:var(--shadow); transition:transform .15s ease}
+    .btn.primary{background:var(--brand); color:var(--brand-ink); border-color:transparent}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary:hover{background:var(--brand-hover)}
 
-    img {
-      width: 220px;
-      max-width: 80%;
-      height: auto;
-      margin-bottom: 20px;
-    }
+    /* Sections */
+    section{padding:28px 0}
+    h2{font-size: clamp(22px, 3.5vw, 28px); margin:0 0 16px}
 
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
+    /* Grid + Cards */
+    .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:16px}
+    .card{grid-column: span 12; background:var(--card); border:1px solid rgba(148,163,184,.25);
+      border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
+    @media (min-width: 720px){ .card{grid-column: span 6} }
+    .card__body{padding:16px}
+    .card h3{margin:0 0 6px; font-size:18px}
+    .card p{margin:0 0 12px; color:var(--muted); font-size:14px}
+    .thumb{display:block; background:linear-gradient( to bottom, rgba(2,8,23,.06), rgba(2,8,23,.02) ); border-bottom:1px solid rgba(148,163,184,.2)}
+    .thumb iframe{display:block; width:100%; height:420px; border:0}
+    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 0}
+    .tag{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(148,163,184,.15); border:1px solid rgba(148,163,184,.25)}
 
-    p {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 28px;
-    }
+    /* Filters */
+    .filters{display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 0}
+    .chip{padding:8px 12px; border-radius:12px; border:1px solid rgba(148,163,184,.35); background:var(--card); cursor:pointer}
+    .chip[aria-pressed="true"]{background:var(--brand); color:var(--brand-ink); border-color:transparent}
 
-    .btns {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+    /* Mini project cards */
+    .mini{display:flex; flex-direction:column; gap:10px; padding:14px}
 
-    .button {
-      display: inline-block;
-      padding: 12px 22px;
-      background: var(--primary);
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      border-radius: 8px;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(37,99,235,0.25);
-    }
+    /* Contact */
+    .contact{display:grid; grid-template-columns:1fr; gap:16px}
+    @media (min-width: 860px){ .contact{grid-template-columns:1.2fr .8fr} }
+    form{background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
+    label{display:block; font-size:13px; margin:8px 2px}
+    input, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.35); background:transparent; color:var(--ink)}
+    input:focus, textarea:focus{outline:none; box-shadow:0 0 0 6px var(--ring); border-color:transparent}
+    textarea{min-height:140px; resize:vertical}
+    .panel{background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
 
-    .button:hover {
-      background: var(--primary-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(37,99,235,0.35);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* Footer */
+    footer{padding:24px; color:var(--muted); text-align:center}
   </style>
 </head>
 <body>
-  <div class="card">
-    <img src="logo.png" alt="Tanvir Analytics Logo">
-    <h1>Tanvir Analytics</h1>
-    <p>Portfolio coming soon. Dashboards & case studies are being prepared.</p>
-    <div class="btns">
-      <a class="button" href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank" rel="noopener">GitHub</a>
-      <a class="button" href="mailto:hello@tanviranalytics.com">Contact</a>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="logo.png" alt="Tanvir Analytics Logo" />
+        Tanvir Analytics
+      </div>
+      <nav class="links" aria-label="Primary">
+        <a class="btn" href="#dashboards">Projects</a>
+        <a class="btn" href="#contact">Contact</a>
+        <a class="btn cta" href="mailto:Tanvir.ahasan.jesun@gmail.com">Hire Me</a>
+      </nav>
     </div>
-  </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <h1>Turning Data into Decisions</h1>
+      <p>Interactive dashboards with <strong>Power BI</strong>, <strong>Excel</strong>, and <strong>SQL</strong>.</p>
+      <div class="actions">
+        <a class="btn primary" href="#dashboards">View Projects</a>
+        <a class="btn" href="#contact">Contact Me</a>
+      </div>
+    </section>
+
+    <!-- Featured Dashboards -->
+    <section id="dashboards" aria-label="Featured Interactive Dashboards">
+      <h2>Featured Interactive Dashboards</h2>
+
+      <div class="grid" id="deck">
+        <!-- Power BI card (replace src with your embed URL) -->
+        <article class="card" data-tags="powerbi dashboard">
+          <div class="thumb">
+            <!-- Power BI: replace REPORT_URL with your Publish/Embed URL -->
+            <iframe title="Sales Performance (Power BI)"
+              src="https://app.powerbi.com/view?r=REPLACE_WITH_YOUR_REPORT_URL"
+              loading="lazy" allowfullscreen></iframe>
+          </div>
+          <div class="card__body">
+            <h3>Sales Performance — Power BI</h3>
+            <p>Regional trends, product KPIs, and drill-through details.</p>
+            <div class="tagrow">
+              <span class="tag">Power BI</span>
+              <span class="tag">DAX</span>
+              <span class="tag">Data Modeling</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Excel Online card (replace src with your embed URL) -->
+        <article class="card" data-tags="excel dashboard">
+          <div class="thumb">
+            <!-- Excel Online: embed from OneDrive/SharePoint -->
+            <iframe title="Financial Tracker (Excel Online)"
+              src="https://onedrive.live.com/embed?RESID=REPLACE_WITH_YOUR_ONEDRIVE_ID&wdAllowInteractivity=True"
+              loading="lazy"></iframe>
+          </div>
+          <div class="card__body">
+            <h3>Financial Tracker — Excel</h3>
+            <p>Budget vs. actuals with slicers for time and category.</p>
+            <div class="tagrow">
+              <span class="tag">Excel</span>
+              <span class="tag">Pivot & Slicers</span>
+              <span class="tag">Power Query</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Simple filters -->
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="chip" aria-pressed="true" data-filter="all">All</button>
+        <button class="chip" aria-pressed="false" data-filter="powerbi">Power BI</button>
+        <button class="chip" aria-pressed="false" data-filter="excel">Excel</button>
+        <button class="chip" aria-pressed="false" data-filter="sql">SQL</button>
+      </div>
+    </section>
+
+    <!-- Project Highlights (non-embedded) -->
+    <section id="projects" aria-label="Project Highlights">
+      <h2>Project Highlights</h2>
+      <div class="grid">
+        <article class="card mini" data-tags="sql python">
+          <h3>Customer Churn Analysis</h3>
+          <p>Predictive features engineered from SQL queries and modeled in Python.</p>
+          <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
+            <a class="btn" href="#" download>Download Report</a>
+          </div>
+        </article>
+        <article class="card mini" data-tags="sql excel">
+          <h3>Inventory Health Report</h3>
+          <p>ABC analysis and safety-stock calculator automated with Power Query.</p>
+          <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-label="Contact">
+      <h2>Let’s Work Together</h2>
+      <div class="contact">
+        <!-- Use Formspree or similar for a backend-free form -->
+        <form action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+          <label for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required />
+
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" required />
+
+          <label for="msg">Message</label>
+          <textarea id="msg" name="message" placeholder="Tell me about your project…" required></textarea>
+
+          <div style="margin-top:12px">
+            <button class="btn primary" type="submit">Send Message</button>
+          </div>
+        </form>
+
+        <div class="panel">
+          <h3>Direct Contact</h3>
+          <p>Email: <a href="mailto:Tanvir.ahasan.jesun@gmail.com">Tanvir.ahasan.jesun@gmail.com</a></p>
+          <p>GitHub: <a href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank" rel="noopener">github.com/Tanvir-Ahasan-Jesun</a></p>
+          <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Add your profile</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Simple filter logic
+    const chips=[...document.querySelectorAll('.chip')];
+    const cards=[...document.querySelectorAll('[data-tags]')];
+    chips.forEach(ch=>ch.addEventListener('click',()=>{
+      chips.forEach(c=>c.setAttribute('aria-pressed','false'));
+      ch.setAttribute('aria-pressed','true');
+      const f=ch.dataset.filter;
+      cards.forEach(card=>{
+        const tags=card.dataset.tags.split(' ');
+        const show = f==='all' || tags.includes(f);
+        card.style.display = show ? '' : 'none';
+      });
+    }));
+  </script>
 </body>
 </html>
