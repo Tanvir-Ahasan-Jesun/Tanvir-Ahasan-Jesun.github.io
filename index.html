@@ -2,71 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Tanvir Analytics — Interactive Dashboards & Data Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Power BI, Excel, and SQL dashboards by Tanvir Analytics." />
+  <meta name="description" content="Tanvir Analytics — Interactive dashboards and data projects (Power BI, Excel, SQL)." />
+  <meta name="theme-color" content="#2563eb" />
+  <title>Tanvir Analytics — Interactive Dashboards & Data Projects</title>
   <link rel="icon" href="logo.png" />
   <style>
+    /* ---------- THEME ---------- */
     :root{
-      --bg:#f5f7fb; --card:#ffffff; --ink:#222; --muted:#555;
-      --brand:#2563eb; --brand-hover:#1d4ed8; --brand-ink:#fff;
-      --ring:rgba(37,99,235,.25); --shadow:0 12px 35px rgba(0,0,0,.08);
+      --bg:#f2f4f7;        /* page background */
+      --ink:#111827;       /* text */
+      --muted:#6b7280;     /* secondary text */
+      --card:#ffffff;      /* surfaces */
+      --brand:#2563eb;     /* primary */
+      --brand-ink:#ffffff; /* text on brand */
+      --brand-2:#4f46e5;   /* gradient secondary */
+      --accent:#0ea5e9;    /* accents */
+      --shadow:0 12px 35px rgba(0,0,0,.08);
+      --ring:rgba(37,99,235,.28);
+      --radius:16px;
+      --max:1100px;
     }
     @media (prefers-color-scheme: dark){
-      :root{ --bg:#0b0f1a; --card:#0f1526; --ink:#e6eaf2; --muted:#a3adbf; --brand:#60a5fa; --brand-hover:#4b9df5; --brand-ink:#0b0f1a; --shadow:0 8px 24px rgba(0,0,0,.6); }
+      :root{
+        --bg:#0b0f1a; --ink:#e6eaf2; --muted:#a3adbf; --card:#0f1526;
+        --brand:#60a5fa; --brand-2:#7c8cfb; --brand-ink:#0b0f1a;
+        --shadow:0 8px 24px rgba(0,0,0,.6);
+      }
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{background:var(--bg); color:var(--ink); font-family:"Segoe UI", system-ui, Arial, sans-serif}
-    a{color:inherit; text-decoration:none}
-    .container{max-width:1100px; margin:0 auto; padding:24px}
 
-    /* Header */
-    header{position:sticky; top:0; z-index:40; backdrop-filter:saturate(180%) blur(8px);
-      background:color-mix(in srgb, var(--bg) 80%, transparent); border-bottom:1px solid rgba(148,163,184,.25)}
+    *{box-sizing:border-box}
+    html,body{margin:0; color:var(--ink); background:var(--bg);
+      font-family:"Segoe UI", Inter, system-ui, -apple-system, Roboto, Arial, sans-serif;}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; height:auto}
+    .container{max-width:var(--max); margin:0 auto; padding:24px}
+    :focus-visible{outline:none; box-shadow:0 0 0 6px var(--ring)}
+    html{scroll-behavior:smooth}
+
+    /* ---------- SKIP LINK ---------- */
+    .skip{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
+    .skip:focus{left:12px; top:12px; width:auto; height:auto; background:#fff; padding:8px 12px; border-radius:10px; box-shadow:var(--shadow); z-index:1000}
+
+    /* ---------- HEADER ---------- */
+    header{position:sticky; top:0; z-index:50; color:var(--brand-ink);
+      background:var(--brand); border-bottom:1px solid rgba(255,255,255,.12)}
     .nav{display:flex; align-items:center; justify-content:space-between; gap:12px}
     .brand{display:flex; align-items:center; gap:10px; font-weight:700}
     .brand img{height:34px; width:auto}
-    .nav a.btn{padding:10px 16px; border:1px solid rgba(148,163,184,.35); border-radius:12px; background:var(--card)}
-    .nav .cta{background:var(--brand); color:var(--brand-ink); border-color:transparent}
-    .nav .cta:hover{background:var(--brand-hover)}
+    .nav a.btn{padding:10px 16px; border-radius:12px; background:#ffffff; color:var(--brand); border:0}
+    .nav a.btn:hover{filter:brightness(.96)}
+    .nav a.cta{background:#111827; color:#fff}
+    .nav a.cta:hover{filter:brightness(1.1)}
 
-    /* Hero */
-    .hero{padding:56px 0 28px; text-align:left}
-    .hero h1{font-size: clamp(28px, 5vw, 44px); line-height:1.1; margin-bottom:10px}
-    .hero p{font-size: clamp(16px, 2.2vw, 18px); color:var(--muted); margin-bottom:20px}
+    /* ---------- HERO ---------- */
+    .hero{padding:56px 0 32px; border-radius:12px;
+      background:linear-gradient(135deg, #f0f5ff 0%, #f5f7fb 60%, #eef2ff 100%)}
+    .hero h1{font-size: clamp(28px, 5vw, 44px); line-height:1.1; margin:0 0 10px}
+    .hero p{font-size: clamp(16px, 2.2vw, 18px); color:var(--muted); margin:0 0 18px}
     .actions{display:flex; gap:12px; flex-wrap:wrap}
     .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 18px; border-radius:14px;
       border:1px solid rgba(148,163,184,.35); background:var(--card); box-shadow:var(--shadow); transition:transform .15s ease}
     .btn.primary{background:var(--brand); color:var(--brand-ink); border-color:transparent}
     .btn:hover{transform:translateY(-1px)}
-    .btn.primary:hover{background:var(--brand-hover)}
 
-    /* Sections */
+    /* ---------- STATS BAND ---------- */
+    .stats{display:grid; grid-template-columns:repeat(12,1fr); gap:16px; margin:24px 0 8px;
+      padding:18px; border-radius:12px; color:white;
+      background:linear-gradient(90deg, var(--brand), var(--brand-2))}
+    .stat{grid-column:span 12; text-align:center}
+    .stat h3{margin:0; font-size:clamp(28px,4vw,36px)}
+    .stat p{margin:4px 0 0}
+    @media(min-width:720px){ .stat{grid-column:span 4} }
+
+    /* ---------- SECTION TITLES ---------- */
     section{padding:28px 0}
-    h2{font-size: clamp(22px, 3.5vw, 28px); margin:0 0 16px}
+    h2{font-size: clamp(22px, 3.5vw, 28px); margin:0 0 14px}
 
-    /* Grid + Cards */
+    /* ---------- GRID & CARDS ---------- */
     .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:16px}
-    .card{grid-column: span 12; background:var(--card); border:1px solid rgba(148,163,184,.25);
-      border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
+    .card{grid-column: span 12; background:var(--card);
+      border:1px solid rgba(148,163,184,.25); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
     @media (min-width: 720px){ .card{grid-column: span 6} }
+    .card:nth-child(even){background: #f9fbff}
     .card__body{padding:16px}
-    .card h3{margin:0 0 6px; font-size:18px}
+    .card h3{margin:0 0 8px; font-size:18px}
     .card p{margin:0 0 12px; color:var(--muted); font-size:14px}
-    .thumb{display:block; background:linear-gradient( to bottom, rgba(2,8,23,.06), rgba(2,8,23,.02) ); border-bottom:1px solid rgba(148,163,184,.2)}
+    .thumb{display:block; position:relative; background:linear-gradient( to bottom, rgba(2,8,23,.06), rgba(2,8,23,.02) ); border-bottom:1px solid rgba(148,163,184,.2)}
     .thumb iframe{display:block; width:100%; height:420px; border:0}
-    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 0}
+    .placeholder{display:flex; align-items:center; justify-content:center; height:420px; color:#6b7280; font-size:14px; background:#f3f6ff}
+
+    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 12px}
     .tag{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(148,163,184,.15); border:1px solid rgba(148,163,184,.25)}
 
-    /* Filters */
     .filters{display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 0}
     .chip{padding:8px 12px; border-radius:12px; border:1px solid rgba(148,163,184,.35); background:var(--card); cursor:pointer}
     .chip[aria-pressed="true"]{background:var(--brand); color:var(--brand-ink); border-color:transparent}
 
-    /* Mini project cards */
+    /* ---------- MINI PROJECTS ---------- */
     .mini{display:flex; flex-direction:column; gap:10px; padding:14px}
 
-    /* Contact */
+    /* ---------- CERTIFICATIONS ---------- */
+    .cert-grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
+    .cert{grid-column:span 12; background:var(--card); border:1px solid rgba(148,163,184,.25);
+      border-radius:12px; padding:16px; text-align:center; box-shadow:var(--shadow)}
+    .cert img{max-width:220px; margin-bottom:10px}
+    .cert p{margin:0 0 4px}
+    .cert small{color:var(--muted)}
+    @media(min-width:720px){ .cert{grid-column:span 6} }
+
+    /* ---------- CONTACT ---------- */
     .contact{display:grid; grid-template-columns:1fr; gap:16px}
     @media (min-width: 860px){ .contact{grid-template-columns:1.2fr .8fr} }
     form{background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
@@ -76,11 +121,18 @@
     textarea{min-height:140px; resize:vertical}
     .panel{background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
 
-    /* Footer */
-    footer{padding:24px; color:var(--muted); text-align:center}
+    /* ---------- CTA BANNER ---------- */
+    .cta-band{margin:24px 0; padding:20px; border-radius:12px; color:#fff;
+      background:linear-gradient(135deg, var(--brand-2), var(--brand))}
+    .cta-band .inline{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between}
+
+    /* ---------- FOOTER ---------- */
+    footer{padding:24px; color:#a3adbf; text-align:center; background:#0f172a}
   </style>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+
   <!-- Header -->
   <header>
     <div class="container nav">
@@ -90,20 +142,36 @@
       </div>
       <nav class="links" aria-label="Primary">
         <a class="btn" href="#dashboards">Projects</a>
-        <a class="btn" href="#contact">Contact</a>
-        <a class="btn cta" href="mailto:Tanvir.ahasan.jesun@gmail.com">Hire Me</a>
+        <a class="btn" href="#certs">Certifications</a>
+        <a class="btn cta" href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main id="main" class="container">
     <!-- Hero -->
-    <section class="hero" id="home">
+    <section class="hero" id="home" aria-label="Intro">
       <h1>Turning Data into Decisions</h1>
-      <p>Interactive dashboards with <strong>Power BI</strong>, <strong>Excel</strong>, and <strong>SQL</strong>.</p>
+      <p>Interactive dashboards and analysis with <strong>Power BI</strong>, <strong>Excel</strong>, and <strong>SQL</strong>.</p>
       <div class="actions">
         <a class="btn primary" href="#dashboards">View Projects</a>
         <a class="btn" href="#contact">Contact Me</a>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats" aria-label="Highlights">
+      <div class="stat">
+        <h3 id="projectsCount">15+</h3>
+        <p>Projects Completed</p>
+      </div>
+      <div class="stat">
+        <h3>5+</h3>
+        <p>Industries Analyzed</p>
+      </div>
+      <div class="stat">
+        <h3>3</h3>
+        <p>Certificates Earned</p>
       </div>
     </section>
 
@@ -112,46 +180,44 @@
       <h2>Featured Interactive Dashboards</h2>
 
       <div class="grid" id="deck">
-        <!-- Power BI card (replace src with your embed URL) -->
+        <!-- Power BI card -->
         <article class="card" data-tags="powerbi dashboard">
           <div class="thumb">
-            <!-- Power BI: replace REPORT_URL with your Publish/Embed URL -->
             <iframe title="Sales Performance (Power BI)"
               src="https://app.powerbi.com/view?r=REPLACE_WITH_YOUR_REPORT_URL"
-              loading="lazy" allowfullscreen></iframe>
+              loading="lazy" allowfullscreen data-placeholder="Sales Performance — Power BI"></iframe>
+            <div class="placeholder" hidden>Sales Performance — Power BI<br/>Embed coming soon</div>
           </div>
           <div class="card__body">
             <h3>Sales Performance — Power BI</h3>
-            <p>Regional trends, product KPIs, and drill-through details.</p>
+            <p><strong>Report excerpt:</strong> Analyzes 12 months of retail sales to reveal revenue trends, top products, and underperforming regions. Helps managers target promotions and optimize inventory.</p>
             <div class="tagrow">
-              <span class="tag">Power BI</span>
-              <span class="tag">DAX</span>
-              <span class="tag">Data Modeling</span>
+              <span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Modeling</span>
             </div>
+            <a class="btn" href="REPLACE_WITH_SALES_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
           </div>
         </article>
 
-        <!-- Excel Online card (replace src with your embed URL) -->
+        <!-- Excel Online card -->
         <article class="card" data-tags="excel dashboard">
           <div class="thumb">
-            <!-- Excel Online: embed from OneDrive/SharePoint -->
             <iframe title="Financial Tracker (Excel Online)"
               src="https://onedrive.live.com/embed?RESID=REPLACE_WITH_YOUR_ONEDRIVE_ID&wdAllowInteractivity=True"
-              loading="lazy"></iframe>
+              loading="lazy" data-placeholder="Financial Tracker — Excel"></iframe>
+            <div class="placeholder" hidden>Financial Tracker — Excel<br/>Embed coming soon</div>
           </div>
           <div class="card__body">
             <h3>Financial Tracker — Excel</h3>
-            <p>Budget vs. actuals with slicers for time and category.</p>
+            <p><strong>Report excerpt:</strong> Budget vs actuals by month and category with slicers. Surfaces overspending early and highlights savings opportunities.</p>
             <div class="tagrow">
-              <span class="tag">Excel</span>
-              <span class="tag">Pivot & Slicers</span>
-              <span class="tag">Power Query</span>
+              <span class="tag">Excel</span><span class="tag">Pivot & Slicers</span><span class="tag">Power Query</span>
             </div>
+            <a class="btn" href="REPLACE_WITH_FINANCIAL_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
           </div>
         </article>
       </div>
 
-      <!-- Simple filters -->
+      <!-- Filters -->
       <div class="filters" role="group" aria-label="Filter projects">
         <button class="chip" aria-pressed="true" data-filter="all">All</button>
         <button class="chip" aria-pressed="false" data-filter="powerbi">Power BI</button>
@@ -166,7 +232,8 @@
       <div class="grid">
         <article class="card mini" data-tags="sql python">
           <h3>Customer Churn Analysis</h3>
-          <p>Predictive features engineered from SQL queries and modeled in Python.</p>
+          <p>Engineered predictive features in SQL and modeled churn propensity in Python to identify at-risk segments and retention levers.</p>
+          <div class="tagrow"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">EDA</span></div>
           <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
             <a class="btn" href="#" download>Download Report</a>
@@ -174,11 +241,37 @@
         </article>
         <article class="card mini" data-tags="sql excel">
           <h3>Inventory Health Report</h3>
-          <p>ABC analysis and safety-stock calculator automated with Power Query.</p>
+          <p>ABC analysis and safety-stock calculator automated with Power Query; reduced stockouts and excess inventory signals.</p>
+          <div class="tagrow"><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">Power Query</span></div>
           <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap">
             <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
           </div>
         </article>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-band" aria-label="Work Together">
+      <div class="inline">
+        <strong>Need actionable insights from your data?</strong>
+        <a class="btn" href="#contact">Let's Talk</a>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certs" aria-label="Certifications">
+      <h2>Certifications</h2>
+      <div class="cert-grid">
+        <div class="cert">
+          <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" />
+          <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
+          <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
+        </div>
+        <div class="cert">
+          <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" />
+          <p><strong>IBM Data Analyst Professional Certificate</strong></p>
+          <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
+        </div>
       </div>
     </section>
 
@@ -231,6 +324,21 @@
         card.style.display = show ? '' : 'none';
       });
     }));
+
+    // If iframe src still has REPLACE_..., show the placeholder instead
+    document.querySelectorAll('.thumb').forEach(thumb=>{
+      const frame = thumb.querySelector('iframe');
+      const ph = thumb.querySelector('.placeholder');
+      if(frame && frame.src.includes('REPLACE_') && ph){
+        frame.style.display = 'none';
+        ph.hidden = false;
+      }
+    });
+
+    // Respect reduced motion (optional minor QoL)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.style.scrollBehavior = 'auto';
+    }
   </script>
 </body>
 </html>
