@@ -9,7 +9,7 @@
   --shadow:0 12px 35px rgba(0,0,0,.08);
   --ring:rgba(37,99,235,.28);
   --radius:16px; --max:1100px;
-  --bannerH:36px;
+  --bannerH:0px;
 }
 @media (prefers-color-scheme: dark){
   :root{
