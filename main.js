@@ -6,7 +6,7 @@ const $$ = (q, root = document) => [...root.querySelectorAll(q)];
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ---------- BANNER / HEADER / MENU POSITIONING ----------
+// ---------- BANNER / HEADER SYNC ----------
 (function syncBannerAndHeader(){
   const banner = document.querySelector('.progress-banner');
   const h = Math.ceil((banner?.getBoundingClientRect().height) || 36);
