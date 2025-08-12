@@ -56,21 +56,3 @@ $$('.thumb').forEach(thumb => {
     ph.hidden = false;
   }
 });
-
-// IN-APP BROWSER HINT (optional)
-(function(){
-  const ua = navigator.userAgent || "";
-  const isInApp = /Twitter|FBAN|FBAV|Instagram|Line\/|Snapchat|WhatsApp/i.test(ua);
-  if (!isInApp) return;
-  const bar = document.createElement('div');
-  Object.assign(bar.style, {
-    position:'fixed', left:0, right:0, bottom:0, zIndex:1000,
-    padding:'12px 16px', background:'linear-gradient(135deg,#1e40af,#2563eb)',
-    color:'#fff', display:'flex', justifyContent:'space-between', alignItems:'center', gap:'12px'
-  });
-  bar.innerHTML = `
-    <span>For best experience, open this page in your browser.</span>
-    <a href="${location.href}" style="background:#fff;color:#1e3a8a;padding:10px 14px;border-radius:10px;text-decoration:none;">Open in Browser</a>`;
-  document.body.appendChild(bar);
-  document.body.style.paddingBottom = '64px';
-})();
