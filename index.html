@@ -69,24 +69,32 @@
   display: flex;
   gap: 10px;
 }
-
 .navlinks a.btn {
   padding: 10px 16px;
   border-radius: 12px;
   border: 0;
-  background: linear-gradient(180deg, #ffffff, #eef2ff);
-  color: #1e3a8a; /* Keep strong blue text */
+  background: linear-gradient(180deg, #f8fbff, #e6efff); /* soft blue gradient */
+  color: #1e3a8a;
   box-shadow: 0 6px 18px rgba(15, 23, 42, .12);
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 .navlinks a.btn:hover {
-  filter: brightness(.97);
+  background: linear-gradient(180deg, #e6efff, #d1e4ff); /* brighter blue on hover */
+  transform: translateY(-2px); /* slight lift */
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25); /* blue shadow */
 }
 
 .navlinks a.cta {
   background: linear-gradient(135deg, #111827, #1f2937);
   color: #fff;
+  transition: all 0.2s ease;
+}
+
+.navlinks a.cta:hover {
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35); /* subtle blue glow */
+  transform: translateY(-2px);
 }
 
 /* Remove color:inherit so .btn colors work */
@@ -95,6 +103,7 @@
 .navlinks a:visited {
   text-decoration: none;
 }
+
 
 
     .burger{display:none; background:linear-gradient(180deg,#ffffff,#eef2ff); border:0;
