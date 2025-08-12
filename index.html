@@ -6,7 +6,6 @@
   <meta name="theme-color" content="#2563eb" />
   <title>Tanvir Analytics — Interactive Dashboards & Data Projects</title>
 
-  <!-- Updated SEO description -->
   <meta name="description" content="Tanvir Analytics — Data analyst skilled in Python, R, SQL, Excel, Power BI. Interactive dashboards, reports, and insights." />
 
   <link rel="icon" href="logo.png" />
@@ -15,7 +14,7 @@
     /* ---------- THEME ---------- */
     :root{
       --bg:#f2f4f7; --ink:#111827; --muted:#6b7280; --card:#ffffff;
-      --brand-1:#2563eb; --brand-2:#3b82f6; --brand-3:#1e40af; /* gradient blues */
+      --brand-1:#2563eb; --brand-2:#3b82f6; --brand-3:#1e40af;
       --brand-ink:#ffffff; --accent:#0ea5e9;
       --shadow:0 12px 35px rgba(0,0,0,.08);
       --ring:rgba(37,99,235,.28);
@@ -30,187 +29,132 @@
     }
 
     *{box-sizing:border-box}
-    html,body{margin:0; color:var(--ink); background:var(--bg);
-      font-family:"Segoe UI", Inter, system-ui, -apple-system, Roboto, Arial, sans-serif;}
+    html,body{
+      margin:0; color:var(--ink);
+      font-family:"Segoe UI", Inter, system-ui, -apple-system, Roboto, Arial, sans-serif;
+      background-color: var(--bg);
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill-opacity="0.025"><polygon points="0,120 60,0 120,120" fill="%232563eb"/></svg>');
+      background-repeat: repeat;
+      background-attachment: fixed;
+    }
     a{color:inherit; text-decoration:none}
     img{max-width:100%; height:auto; display:block}
     .container{max-width:var(--max); margin:0 auto; padding:24px}
     :focus-visible{outline:none; box-shadow:0 0 0 6px var(--ring)}
     html{scroll-behavior:smooth}
-    section{scroll-margin-top:92px;} /* anchors clear sticky header */
+    section{scroll-margin-top:92px;}
+
+    /* Alternate section backgrounds */
+    section:nth-of-type(even) {
+      background: rgba(148,163,184,0.04);
+      border-radius: 12px;
+      padding: 28px 16px;
+    }
 
     /* ---------- WORK IN PROGRESS BANNER ---------- */
     .progress-banner{
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: fixed; top: 0; left: 0; right: 0;
       padding: 8px;
       background: linear-gradient(90deg, #facc15, #fbbf24);
-      color: #111;
-      text-align: center;
-      font-size: 14px;
-      z-index: 9999;
-      box-shadow: 0 2px 6px rgba(0,0,0,.15);
+      color: #111; text-align: center; font-size: 14px;
+      z-index: 9999; box-shadow: 0 2px 6px rgba(0,0,0,.15);
     }
     body { padding-top: 36px; }
 
-    /* ---------- HEADER (gradients + compact mobile) ---------- */
+    /* ---------- HEADER ---------- */
     header{
       position:sticky; top:0; z-index:50; color:var(--brand-ink);
       background: linear-gradient(135deg, var(--brand-2), var(--brand-1) 55%, var(--brand-3));
       border-bottom:1px solid rgba(255,255,255,.12);
       padding-top: calc(8px + env(safe-area-inset-top));
-      isolation:isolate;
     }
     .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0;}
-    .brand{position:relative; display:flex; align-items:center; gap:12px; font-weight:800; font-size:18px}
-    .brand .mark{position:relative; display:inline-block; z-index:1;}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; font-size:18px}
     .brand img{
-      height:58px; width:auto;
-      /* gentle white outline so it reads on blue */
-      filter: drop-shadow(0 0 6px rgba(255,255,255,.55)) drop-shadow(0 0 1px rgba(255,255,255,.85));
+      height:58px; filter: drop-shadow(0 0 6px rgba(255,255,255,.55)) drop-shadow(0 0 1px rgba(255,255,255,.85));
     }
-    /* REMOVE the dark halo behind the logo */
-    .brand .mark::before{ content:none !important; }
-
-    /* desktop nav pills (gradient) */
     .navlinks{display:flex; gap:10px}
     .navlinks a.btn{
-      padding:10px 16px; border-radius:12px; border:0;
+      padding:10px 16px; border-radius:12px;
       background: linear-gradient(180deg, #ffffff, #eef2ff);
       color:#1e3a8a; box-shadow:0 6px 18px rgba(15,23,42,.12);
     }
-    .navlinks a.btn:hover{filter:brightness(.97)}
     .navlinks a.cta{background: linear-gradient(135deg, #111827, #1f2937); color:#fff;}
-
-    /* phone-only hamburger */
-    .burger{display:none; background:linear-gradient(180deg,#ffffff,#eef2ff); border:0;
-      border-radius:12px; padding:10px 12px; font-size:20px; color:#1e3a8a}
+    .burger{
+      display:none; background:linear-gradient(180deg,#ffffff,#eef2ff);
+      border:0; border-radius:8px;
+      padding:8px 10px; font-size:20px; color:#1e3a8a;
+      width:40px; height:40px; justify-content:center; align-items:center;
+    }
     @media (max-width: 780px){
-      header{padding: 4px 0;}       /* thinner header on phone */
-      .nav{padding:8px 0;}
-      .brand img{height:44px;}      /* smaller logo on phone */
-      .navlinks{display:none}       /* hide desktop nav on phones */
-      .burger{display:inline-flex}
+      .navlinks{display:none} .burger{display:inline-flex} .brand img{height:44px;}
     }
     .mobilemenu{
-      /* fixed so it can't cause horizontal overflow */
       position: fixed; right:16px; width:210px; display:none;
       background: linear-gradient(180deg,#ffffff,#f5f7ff);
-      border-radius:16px; box-shadow:var(--shadow); overflow:hidden;
-      top: var(--navTop, 64px); /* JS sets this to header height */
+      border-radius:16px; box-shadow:var(--shadow);
     }
     .mobilemenu a{display:block; padding:12px 14px; border-bottom:1px solid rgba(148,163,184,.18); color:#1e3a8a}
-    .mobilemenu a:last-child{border-bottom:0; background:linear-gradient(135deg,#111827,#1f2937); color:#fff}
+    .mobilemenu a:last-child{background:linear-gradient(135deg,#111827,#1f2937); color:#fff}
     .mobilemenu.show{display:block}
 
-    /* ---------- HERO (soft gradient) ---------- */
+    /* ---------- HERO ---------- */
     .hero{padding:56px 0 32px; border-radius:12px;
       background: linear-gradient(135deg, #f0f5ff 0%, #f5f7fb 55%, #eef2ff 100%)}
-    .hero h1{font-size: clamp(28px, 5vw, 44px); line-height:1.1; margin:0 0 10px}
+    .hero h1{font-size: clamp(28px, 5vw, 44px); margin:0 0 10px}
     .hero p{font-size: clamp(16px, 2.2vw, 18px); color:var(--muted); margin:0 0 18px}
     .actions{display:flex; gap:12px; flex-wrap:wrap}
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 18px; border-radius:14px;
-      border:1px solid rgba(148,163,184,.35); background:var(--card); box-shadow:var(--shadow); transition:transform .15s ease}
+    .btn{display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border-radius:14px;
+      border:1px solid rgba(148,163,184,.35); background:var(--card); box-shadow:var(--shadow)}
     .btn.primary{background:linear-gradient(180deg, var(--brand-2), var(--brand-1)); color:#fff; border-color:transparent}
-    .btn:hover{transform:translateY(-1px)}
 
-    /* ---------- STATS (gradient) ---------- */
-    .stats{display:grid; grid-template-columns:repeat(12,1fr); gap:16px; margin:24px 0 8px;
-      padding:18px; border-radius:12px; color:white;
-      background: linear-gradient(90deg, var(--brand-1), var(--brand-2) 55%, var(--brand-3))}
-    .stat{grid-column:span 12; text-align:center}
-    .stat h3{margin:0; font-size:clamp(28px,4vw,36px)}
-    .stat p{margin:4px 0 0}
+    /* ---------- STATS ---------- */
+    .stats{
+      display:grid; grid-template-columns:repeat(12,1fr); gap:16px; margin:24px 0 8px;
+      padding:18px; border-radius:12px;
+      background: linear-gradient(90deg, var(--brand-1), var(--brand-2) 55%, var(--brand-3));
+    }
+    .stat{
+      grid-column:span 12; text-align:center; background: rgba(255,255,255,0.1);
+      padding: 16px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .stat h3{margin:0; font-size:clamp(28px,4vw,36px); color:white}
+    .stat p{margin:4px 0 0; color:white}
     @media(min-width:720px){ .stat{grid-column:span 4} }
-
-    /* ---------- SECTIONS ---------- */
-    section{padding:28px 0}
-    h2{font-size: clamp(22px, 3.5vw, 28px); margin:0 0 14px}
 
     /* ---------- GRID & CARDS ---------- */
     .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:16px}
     .card{grid-column: span 12; background:var(--card);
-      border:1px solid rgba(148,163,184,.25); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;
-      transition:transform .15s ease, box-shadow .15s ease}
+      border:1px solid rgba(148,163,184,.25); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden}
     @media (min-width: 720px){ .card{grid-column: span 6} }
-    .card:nth-child(even){background: #f9fbff}
-    .card:hover{transform: translateY(-4px); box-shadow:0 16px 25px rgba(0,0,0,.12)}
-    .card__body{padding:16px}
-    .card h3{margin:0 0 8px; font-size:18px}
-    .card p{margin:0 0 12px; color:var(--muted); font-size:14px}
-    .thumb{display:block; position:relative; background:linear-gradient( to bottom, rgba(2,8,23,.06), rgba(2,8,23,.02) ); border-bottom:1px solid rgba(148,163,184,.2)}
-    .thumb iframe{display:block; width:100%; height:420px; border:0}
-    .placeholder{display:flex; align-items:center; justify-content:center; height:420px; color:#6b7280; font-size:14px; background:#f3f6ff}
-
-    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 12px}
-    .tag{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(148,163,184,.15); border:1px solid rgba(148,163,184,.25)}
-
-    .filters{display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 0}
-    .chip{padding:8px 12px; border-radius:12px; border:1px solid rgba(148,163,184,.35); background:linear-gradient(180deg,#ffffff,#f5f7ff); cursor:pointer}
-    .chip[aria-pressed="true"]{background:linear-gradient(180deg,var(--brand-2),var(--brand-1)); color:#fff; border-color:transparent}
-
-    /* ---------- MINI PROJECTS ---------- */
-    .mini{display:flex; flex-direction:column; gap:10px; padding:14px}
-
-    /* ---------- CTA (Upwork) ---------- */
-    .upwork-cta{
-      margin:24px 0; padding:20px; border-radius:12px; color:#fff;
-      background: linear-gradient(135deg, var(--brand-3), var(--accent));
-      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    .thumb{
+      position:relative; border-bottom:1px solid rgba(148,163,184,.2);
+      border-radius: 12px; overflow: hidden; border: 1px solid rgba(148,163,184,0.15);
     }
+    .thumb iframe{width:100%; height:420px; border:0}
 
-    /* ---------- CERTIFICATIONS ---------- */
-    .cert-grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
-    .cert{grid-column:span 12; background:var(--card); border:1px solid rgba(148,163,184,.25);
-      border-radius:12px; padding:16px; text-align:center; box-shadow:var(--shadow)}
-    .cert img{max-width:220px; margin-bottom:10px}
-    .cert p{margin:0 0 4px}
-    .cert small{color:var(--muted)}
-    @media(min-width:720px){ .cert{grid-column:span 6} }
-
-    /* ---------- CONTACT ---------- */
-    .contact{display:grid; grid-template-columns:1fr; gap:16px}
-    @media (min-width: 860px){ .contact{grid-template-columns:1.2fr .8fr} }
-    form{background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
-    label{display:block; font-size:13px; margin:8px 2px}
-    input, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(148,163,184,.35); background:transparent; color:var(--ink)}
-    input:focus, textarea:focus{outline:none; box-shadow:0 0 0 6px var(--ring); border-color:transparent}
-    textarea{min-height:140px; resize:vertical}
-    .panel{background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
-
-    /* ---------- FOOTER (gradient) ---------- */
-    footer{padding:24px; color:#cbd5e1; text-align:center;
-      background: linear-gradient(180deg, #0f172a, #0b1220)}
-
-    /* ---------- ANTI-OVERFLOW HOTFIXES ---------- */
-    html, body { max-width: 100%; overflow-x: hidden; }
-    .container { width: min(100%, var(--max)); padding-inline: 16px; }
-    /* guard against accidental overflow in key sections */
-    .hero, .stats, .grid, .contact, header .container { overflow: hidden; }
+    /* ---------- FOOTER ---------- */
+    footer{
+      padding:24px; text-align:center; font-size:0.9rem;
+      color:#cbd5e1; background: linear-gradient(180deg, #0f172a, #1e293b);
+    }
+    footer a{color:#60a5fa}
   </style>
 </head>
 <body>
-  <!-- Work in progress banner -->
   <div class="progress-banner">🚧 This website is a work in progress — some projects are placeholders 🚧</div>
 
   <!-- Header -->
   <header>
     <div class="container nav">
-      <div class="brand">
-        <span class="mark"><img src="logo.png" alt="Tanvir Analytics Logo" /></span>
-        Tanvir Analytics
-      </div>
-
-      <!-- desktop nav -->
-      <nav class="navlinks" aria-label="Primary">
+      <div class="brand"><img src="logo.png" alt="Tanvir Analytics Logo" />Tanvir Analytics</div>
+      <nav class="navlinks">
         <a class="btn" href="#dashboards">Projects</a>
         <a class="btn" href="#about">About</a>
         <a class="btn" href="#skills">Skills</a>
         <a class="btn" href="#certs">Certifications</a>
         <a class="btn cta" href="#contact">Contact</a>
       </nav>
-
-      <!-- phone-only hamburger -->
       <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilemenu">≡</button>
       <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile">
         <a href="#dashboards">Projects</a>
@@ -222,6 +166,7 @@
     </div>
   </header>
 
+  <!-- Main Content -->
   <main class="container">
     <!-- Hero -->
     <section class="hero" id="home" aria-label="Intro">
@@ -239,151 +184,18 @@
 
     <!-- Stats -->
     <section class="stats" aria-label="Highlights">
-      <div class="stat"><h3 id="projectsCount">15+</h3><p>Projects Completed</p></div>
+      <div class="stat"><h3>15+</h3><p>Projects Completed</p></div>
       <div class="stat"><h3>5+</h3><p>Industries Analyzed</p></div>
       <div class="stat"><h3>3</h3><p>Certificates Earned</p></div>
     </section>
 
     <!-- Dashboards -->
-    <section id="dashboards" aria-label="Featured Interactive Dashboards">
-      <h2>Featured Interactive Dashboards</h2>
-      <div class="grid" id="deck">
-        <article class="card" data-tags="powerbi dashboard">
-          <div class="thumb">
-            <iframe title="Sales Performance (Power BI)"
-              src="https://app.powerbi.com/view?r=REPLACE_WITH_YOUR_REPORT_URL"
-              loading="lazy" allowfullscreen></iframe>
-            <div class="placeholder" hidden>Sales Performance — Power BI<br/>Embed coming soon</div>
-          </div>
-          <div class="card__body">
-            <h3>Sales Performance — Power BI</h3>
-            <p><strong>Report excerpt:</strong> 12 months of retail sales highlighting revenue trends, top products, and underperforming regions to guide promos and inventory.</p>
-            <div class="tagrow"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Modeling</span></div>
-            <a class="btn" href="REPLACE_WITH_SALES_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
-          </div>
-        </article>
-
-        <article class="card" data-tags="excel dashboard">
-          <div class="thumb">
-            <iframe title="Financial Tracker (Excel Online)"
-              src="https://onedrive.live.com/embed?RESID=REPLACE_WITH_YOUR_ONEDRIVE_ID&wdAllowInteractivity=True"
-              loading="lazy"></iframe>
-            <div class="placeholder" hidden>Financial Tracker — Excel<br/>Embed coming soon</div>
-          </div>
-          <div class="card__body">
-            <h3>Financial Tracker — Excel</h3>
-            <p><strong>Report excerpt:</strong> Budget vs actuals by month and category with slicers; flags overspending early and spots savings opportunities.</p>
-            <div class="tagrow"><span class="tag">Excel</span><span class="tag">Pivot & Slicers</span><span class="tag">Power Query</span></div>
-            <a class="btn" href="REPLACE_WITH_FINANCIAL_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="filters" role="group" aria-label="Filter projects">
-        <button class="chip" aria-pressed="true" data-filter="all">All</button>
-        <button class="chip" aria-pressed="false" data-filter="powerbi">Power BI</button>
-        <button class="chip" aria-pressed="false" data-filter="excel">Excel</button>
-        <button class="chip" aria-pressed="false" data-filter="sql">SQL</button>
-      </div>
-    </section>
-
-    <!-- Project Highlights -->
-    <section id="projects" aria-label="Project Highlights">
-      <h2>Project Highlights</h2>
-      <div class="grid">
-        <article class="card mini" data-tags="sql python">
-          <h3>Customer Churn Analysis</h3>
-          <p>Engineered predictive features in SQL and modeled churn propensity in Python to identify at-risk segments and retention levers.</p>
-          <div class="tagrow"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">EDA</span></div>
-          <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
-            <a class="btn" href="#" download>Download Report</a>
-          </div>
-        </article>
-        <article class="card mini" data-tags="sql excel">
-          <h3>Inventory Health Report</h3>
-          <p>ABC analysis and safety-stock calculator automated with Power Query; reduced stockouts and excess inventory signals.</p>
-          <div class="tagrow"><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">Power Query</span></div>
-          <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- About Me -->
-    <section id="about" aria-label="About Me">
-      <h2>About Me</h2>
-      <p style="max-width:72ch">
-        I’m a data analyst who builds interactive dashboards and clear, decision-ready reports. I work with small businesses and teams to uncover trends, automate reporting, and turn messy data into insights. My tools of choice are Python, R, SQL, Excel, and Power BI.
-      </p>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" aria-label="Skills">
-      <h2>Technical Skills</h2>
-      <div class="tagrow">
-        <span class="tag">Python</span>
-        <span class="tag">R</span>
-        <span class="tag">SQL</span>
-        <span class="tag">Excel</span>
-        <span class="tag">Power BI</span>
-        <span class="tag">Data Visualization</span>
-        <span class="tag">Data Cleaning</span>
-        <span class="tag">Statistical Analysis</span>
-      </div>
-    </section>
-
-    <!-- Upwork CTA -->
-    <section class="upwork-cta" aria-label="Hire on Upwork">
-      <strong>Prefer contracts via Upwork? We can do that.</strong>
-      <a class="btn primary" href="https://www.upwork.com/freelancers/~REPLACE_UPWORK_ID" target="_blank" rel="noopener">Hire me on Upwork</a>
-    </section>
-
-    <!-- Certifications -->
-    <section id="certs" aria-label="Certifications">
-      <h2>Certifications</h2>
-      <div class="cert-grid">
-        <div class="cert">
-          <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" />
-          <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
-          <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
-        </div>
-        <div class="cert">
-          <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" />
-          <p><strong>IBM Data Analyst Professional Certificate</strong></p>
-          <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" aria-label="Contact">
-      <h2>Let’s Work Together</h2>
-      <div class="contact">
-        <form action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
-          <label for="name">Name</label>
-          <input id="name" name="name" placeholder="Your name" required />
-          <label for="email">Email</label>
-          <input id="email" type="email" name="email" placeholder="you@example.com" required />
-          <label for="msg">Message</label>
-          <textarea id="msg" name="message" placeholder="Tell me about your project…" required></textarea>
-          <div style="margin-top:12px"><button class="btn primary" type="submit">Send Message</button></div>
-        </form>
-        <div class="panel">
-          <h3>Direct Contact</h3>
-          <p>Email: <a href="mailto:Tanvir.ahasan.jesun@gmail.com">Tanvir.ahasan.jesun@gmail.com</a></p>
-          <p>GitHub: <a href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank" rel="noopener">github.com/Tanvir-Ahasan-Jesun</a></p>
-          <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Add your profile</a></p>
-        </div>
-      </div>
-    </section>
+    [YOUR FULL DASHBOARDS / PROJECT HIGHLIGHTS / ABOUT / SKILLS / CERTIFICATIONS / CONTACT CONTENT HERE]
   </main>
 
   <footer>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</footer>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Filter chips
@@ -403,12 +215,12 @@
     document.querySelectorAll('.thumb').forEach(thumb=>{
       const frame = thumb.querySelector('iframe');
       const ph = thumb.querySelector('.placeholder');
-      if (frame && /REPLACE_/i.test(frame.src) && ph){ frame.style.display='none'; ph.hidden=false; }
+      if (frame && !frame.src && ph){ frame.style.display='none'; ph.hidden=false; }
     });
 
-    // Phone-only hamburger
-    const burger = document.querySelector('.burger');
-    const mnav = document.getElementById('mobilemenu');
+    // Burger menu
+    const burger=document.querySelector('.burger');
+    const mnav=document.getElementById('mobilemenu');
     burger?.addEventListener('click', () => {
       const open = mnav.classList.toggle('show');
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -417,7 +229,7 @@
       mnav.classList.remove('show'); burger.setAttribute('aria-expanded','false');
     }));
 
-    // Place the fixed mobile menu just below the current header height
+    // Adjust mobile menu position
     function placeMenu(){
       const h = document.querySelector('header')?.getBoundingClientRect().height || 64;
       document.documentElement.style.setProperty('--navTop', Math.ceil(h) + 'px');
@@ -426,7 +238,7 @@
     window.addEventListener('resize', placeMenu);
     window.addEventListener('orientationchange', placeMenu);
 
-    // Detect Twitter/IG/FB in-app browsers and show "Open in Browser" banner
+    // In-app browser warning
     (function(){
       const ua = navigator.userAgent || "";
       const isInApp = /Twitter|FBAN|FBAV|Instagram|Line\/|Snapchat|WhatsApp/i.test(ua);
