@@ -5,18 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#2563eb" />
   <title>Certifications — Tanvir Analytics</title>
-  <meta name="description" content="All certifications and verification links for Tanvir Analytics." />
+  <meta name="description" content="Full certification list with verification links — Tanvir Analytics." />
   <link rel="icon" href="logo.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- WIP Banner -->
   <div class="progress-banner">🚧 This website is a work in progress — some projects are placeholders 🚧</div>
 
+  <!-- Header -->
   <header>
     <div class="container nav">
-      <a href="index.html" class="brand" aria-label="Tanvir Analytics — Home">
+      <a href="index.html" class="brand">
         <img src="logo.png" alt="Tanvir Analytics Logo" />
         <span>Tanvir Analytics</span>
       </a>
-      <nav class="navlinks" aria-label="Primary">
-        <a class="btn" href="index.html#dashboards
+      <nav class="navlinks">
+        <a class="btn" href="index.html#dashboards">Projects</a>
+        <a class="btn" href="about.html">About</a>
+        <a class="btn" href="index.html#skills">Skills</a>
+        <a class="btn cta" href="certifications.html" aria-current="page">Certifications</a>
+        <a class="btn" href="index.html#contact">Contact</a>
+      </nav>
+      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilemenu">≡</button>
+      <nav id="mobilemenu" class="mobilemenu">
+        <a href="index.html#dashboards">Projects</a>
+        <a href="about.html">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="certifications.html" aria-current="page">Certifications</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="decor" aria-label="Certifications">
+      <h1>Certifications</h1>
+      <p>Full list with verification links and issuing organizations.</p>
+
+      <div class="grid">
+        <!-- Microsoft Power BI Data Analyst -->
+        <article class="card">
+          <div class="card__body">
+            <img src="powerbi-logo.png" alt="Microsoft Power BI" style="max-width:60px;" />
+            <h3>Microsoft Power BI Data Analyst (PL-300)</h3>
+            <p>Issued by Microsoft</p>
+            <a href="https://learn.microsoft.com/api/credentials/share/en-us/your-credential-id" target="_blank" rel="noopener">Verify</a>
+          </div>
+        </article>
+
+        <!-- IBM Data Analyst -->
+        <article class="card">
+          <div class="card__body">
+            <img src="ibm-logo.png" alt="IBM Logo" style="max-width:60px;" />
+            <h3>IBM Data Analyst Professional Certificate</h3>
+            <p>Issued by IBM</p>
+            <a href="https://www.credly.com/badges/your-badge-id" target="_blank" rel="noopener">Verify</a>
+          </div>
+        </article>
+
+        <!-- Placeholder certificate -->
+        <article class="card">
+          <div class="card__body">
+            <img src="placeholder-cert.png" alt="Certificate Placeholder" style="max-width:60px;" />
+            <h3>Coming Soon</h3>
+            <p>More certifications will be added soon.</p>
+            <span class="tag">In Progress</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="upwork-cta" style="margin:24px 0; padding:20px; border-radius:12px; color:#fff; background: linear-gradient(135deg, var(--brand-3), var(--accent)); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <strong>Want to verify my credentials or discuss a project?</strong>
+      <a class="btn primary" href="index.html#contact">Get in Touch</a>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</footer>
+  <script src="main.js"></script>
+</body>
+</html>
