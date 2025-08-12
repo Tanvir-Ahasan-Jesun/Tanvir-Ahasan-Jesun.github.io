@@ -18,7 +18,7 @@
         <span class="mark"><img src="logo.png" alt="Tanvir Analytics Logo" /></span>
         <span class="brand-text">Tanvir Analytics</span>
       </a>
-      <nav class="navlinks" aria-label="Primary">
+      <nav class="navlinks">
         <a class="btn" href="index.html">Home</a>
         <a class="btn" href="#dashboards">Projects</a>
         <a class="btn" href="about.html">About</a>
@@ -27,7 +27,7 @@
         <a class="btn" href="#contact">Contact</a>
       </nav>
       <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilemenu">≡</button>
-      <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile">
+      <nav id="mobilemenu" class="mobilemenu">
         <a href="index.html">Home</a>
         <a href="#dashboards">Projects</a>
         <a href="about.html">About</a>
@@ -38,7 +38,52 @@
     </div>
   </header>
 
-  <!-- Your hero, dashboards, skills, and contact sections here -->
+  <main class="container">
+    <section class="hero">
+      <h1>Turning Data Into Insights</h1>
+      <p>Dashboards, reports, and analytics to support smarter decisions.</p>
+    </section>
+
+    <section id="dashboards">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card" data-tags="placeholder">
+          <div class="thumb">
+            <div class="placeholder">Dashboard Placeholder</div>
+            <iframe src="REPLACE_PROJECT_URL"></iframe>
+          </div>
+          <div class="card__body">
+            <h3>Sample Dashboard</h3>
+            <p>Description of the dashboard project will go here.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <p>List of technical and analytical skills will be placed here.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact">
+        <form>
+          <label>Name</label>
+          <input type="text" placeholder="Your Name" />
+          <label>Email</label>
+          <input type="email" placeholder="Your Email" />
+          <label>Message</label>
+          <textarea placeholder="Your Message"></textarea>
+          <button type="submit">Send</button>
+        </form>
+        <div class="panel">
+          <p><a href="https://github.com/yourusername">GitHub</a></p>
+          <p><a href="https://linkedin.com/in/yourusername">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</footer>
   <script src="main.js"></script>
