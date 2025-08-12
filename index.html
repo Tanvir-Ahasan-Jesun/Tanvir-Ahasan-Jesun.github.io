@@ -10,24 +10,30 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Work in progress banner -->
   <div class="progress-banner">🚧 This website is a work in progress — some projects are placeholders 🚧</div>
 
+  <!-- Header -->
   <header>
     <div class="container nav">
-      <a href="index.html" class="brand">
+      <a href="index.html" class="brand" aria-label="Tanvir Analytics — Home">
         <span class="mark"><img src="logo.png" alt="Tanvir Analytics Logo" /></span>
         <span class="brand-text">Tanvir Analytics</span>
       </a>
-      <nav class="navlinks">
+
+      <!-- desktop nav -->
+      <nav class="navlinks" aria-label="Primary">
         <a class="btn" href="index.html">Home</a>
         <a class="btn" href="#dashboards">Projects</a>
         <a class="btn" href="about.html">About</a>
         <a class="btn" href="#skills">Skills</a>
         <a class="btn" href="certifications.html">Certifications</a>
-        <a class="btn" href="#contact">Contact</a>
+        <a class="btn cta" href="#contact">Contact</a>
       </nav>
+
+      <!-- phone-only hamburger -->
       <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilemenu">≡</button>
-      <nav id="mobilemenu" class="mobilemenu">
+      <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile">
         <a href="index.html">Home</a>
         <a href="#dashboards">Projects</a>
         <a href="about.html">About</a>
@@ -39,48 +45,168 @@
   </header>
 
   <main class="container">
-    <section class="hero">
-      <h1>Turning Data Into Insights</h1>
-      <p>Dashboards, reports, and analytics to support smarter decisions.</p>
-    </section>
-
-    <section id="dashboards">
-      <h2>Projects</h2>
-      <div class="grid">
-        <div class="card" data-tags="placeholder">
-          <div class="thumb">
-            <div class="placeholder">Dashboard Placeholder</div>
-            <iframe src="REPLACE_PROJECT_URL"></iframe>
-          </div>
-          <div class="card__body">
-            <h3>Sample Dashboard</h3>
-            <p>Description of the dashboard project will go here.</p>
-          </div>
-        </div>
+    <!-- Hero -->
+    <section class="hero decor" id="home" aria-label="Intro">
+      <h1>Turning Data into Decisions</h1>
+      <p>Interactive dashboards and analysis with <strong>Power BI</strong>, <strong>Excel</strong>, and <strong>SQL</strong>.</p>
+      <p style="font-size:15px; color:var(--muted)">
+        Skilled in <strong>Python</strong>, <strong>R</strong>, <strong>SQL</strong>, <strong>Excel</strong>, and <strong>Power BI</strong>.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+        <a class="btn" href="#dashboards">View Projects</a>
+        <a class="btn" href="#contact">Contact Me</a>
       </div>
     </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <p>List of technical and analytical skills will be placed here.</p>
+    <!-- Stats -->
+    <section class="stats decor flip" aria-label="Highlights">
+      <div class="stat"><h3 id="projectsCount">15+</h3><p>Projects Completed</p></div>
+      <div class="stat"><h3>5+</h3><p>Industries Analyzed</p></div>
+      <div class="stat"><h3>3</h3><p>Certificates Earned</p></div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="contact">
-        <form>
-          <label>Name</label>
-          <input type="text" placeholder="Your Name" />
-          <label>Email</label>
-          <input type="email" placeholder="Your Email" />
-          <label>Message</label>
-          <textarea placeholder="Your Message"></textarea>
-          <button type="submit">Send</button>
-        </form>
-        <div class="panel">
-          <p><a href="https://github.com/yourusername">GitHub</a></p>
-          <p><a href="https://linkedin.com/in/yourusername">LinkedIn</a></p>
+    <!-- Dashboards -->
+    <section id="dashboards" class="decor" aria-label="Featured Interactive Dashboards">
+      <h2>Featured Interactive Dashboards</h2>
+      <div class="grid" id="deck">
+        <article class="card" data-tags="powerbi dashboard">
+          <div class="thumb">
+            <iframe title="Sales Performance (Power BI)"
+              src="https://app.powerbi.com/view?r=REPLACE_WITH_YOUR_REPORT_URL"
+              loading="lazy" allowfullscreen></iframe>
+            <div class="placeholder" hidden>Sales Performance — Power BI<br/>Embed coming soon</div>
+          </div>
+          <div class="card__body">
+            <h3>Sales Performance — Power BI</h3>
+            <p><strong>Report excerpt:</strong> 12 months of retail sales highlighting revenue trends, top products, and underperforming regions to guide promos and inventory.</p>
+            <div class="tagrow"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Modeling</span></div>
+            <p class="ph-note">🔶 Placeholder: replace with report URL & PDF.</p>
+            <a class="btn" href="REPLACE_WITH_SALES_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
+          </div>
+        </article>
+
+        <article class="card" data-tags="excel dashboard">
+          <div class="thumb">
+            <iframe title="Financial Tracker (Excel Online)"
+              src="https://onedrive.live.com/embed?RESID=REPLACE_WITH_YOUR_ONEDRIVE_ID&wdAllowInteractivity=True"
+              loading="lazy"></iframe>
+            <div class="placeholder" hidden>Financial Tracker — Excel<br/>Embed coming soon</div>
+          </div>
+          <div class="card__body">
+            <h3>Financial Tracker — Excel</h3>
+            <p><strong>Report excerpt:</strong> Budget vs actuals by month and category with slicers; flags overspending early and spots savings opportunities.</p>
+            <div class="tagrow"><span class="tag">Excel</span><span class="tag">Pivot & Slicers</span><span class="tag">Power Query</span></div>
+            <p class="ph-note">🔶 Placeholder: replace with OneDrive embed & PDF.</p>
+            <a class="btn" href="REPLACE_WITH_FINANCIAL_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="chip" aria-pressed="true" data-filter="all">All</button>
+        <button class="chip" aria-pressed="false" data-filter="powerbi">Power BI</button>
+        <button class="chip" aria-pressed="false" data-filter="excel">Excel</button>
+        <button class="chip" aria-pressed="false" data-filter="sql">SQL</button>
+      </div>
+    </section>
+
+    <!-- Project Highlights -->
+    <section id="projects" class="decor flip" aria-label="Project Highlights">
+      <h2>Project Highlights</h2>
+      <div class="grid">
+        <article class="card mini" data-tags="sql python">
+          <h3>Customer Churn Analysis</h3>
+          <p>Engineered predictive features in SQL and modeled churn propensity in Python to identify at-risk segments and retention levers.</p>
+          <div class="tagrow"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">EDA</span></div>
+          <p class="ph-note">🔶 Placeholder: link case study & report when ready.</p>
+          <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
+            <a class="btn" href="#" download>Download Report</a>
+          </div>
+        </article>
+        <article class="card mini" data-tags="sql excel">
+          <h3>Inventory Health Report</h3>
+          <p>ABC analysis and safety-stock calculator automated with Power Query; reduced stockouts and excess inventory signals.</p>
+          <div class="tagrow"><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">Power Query</span></div>
+          <p class="ph-note">🔶 Placeholder: link workbook & write-up.</p>
+          <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- About (preview) -->
+    <section id="about" class="decor" aria-label="About Me">
+      <h2>About Me</h2>
+      <p style="max-width:72ch">
+        I’m a data analyst who builds interactive dashboards and clear, decision-ready reports. I work with small businesses and teams to uncover trends, automate reporting, and turn messy data into insights. My tools of choice are Python, R, SQL, Excel, and Power BI.
+      </p>
+      <p><a class="btn" href="about.html">Read more →</a></p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="decor flip" aria-label="Skills">
+      <h2>Technical Skills</h2>
+      <div class="tagrow">
+        <span class="tag">Python</span>
+        <span class="tag">R</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Data Visualization</span>
+        <span class="tag">Data Cleaning</span>
+        <span class="tag">Statistical Analysis</span>
+      </div>
+    </section>
+
+    <!-- Upwork CTA -->
+    <section class="upwork-cta decor" aria-label="Hire on Upwork">
+      <strong>Prefer contracts via Upwork? We can do that.</strong>
+      <a class="btn primary" href="https://www.upwork.com/freelancers/~REPLACE_UPWORK_ID" target="_blank" rel="noopener">Hire me on Upwork</a>
+    </section>
+
+    <!-- Certifications (preview) -->
+    <section class="decor flip" aria-label="Certifications">
+      <h2>Certifications</h2>
+      <div class="cert-grid">
+        <div class="cert">
+          <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" />
+          <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
+          <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
         </div>
+        <div class="cert">
+          <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" />
+          <p><strong>IBM Data Analyst Professional Certificate</strong></p>
+          <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
+        </div>
+      </div>
+      <p style="margin-top:10px"><a class="btn" href="certifications.html">View all certifications →</a></p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="decor" aria-label="Contact">
+      <h2>Let’s Work Together</h2>
+      <div class="contact" style="grid-template-columns:1fr">
+        <form action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+          <label for="name">Name</label>
+          <input id="name" name="name" placeholder="Your name" required />
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" placeholder="you@example.com" required />
+          <label for="msg">Message</label>
+          <textarea id="msg" name="message" placeholder="Tell me about your project…" required></textarea>
+
+          <!-- optional: anti-spam honeypot -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+          <div style="margin-top:12px">
+            <button class="btn primary" type="submit">Send Message</button>
+          </div>
+          <p style="margin:10px 2px;color:var(--muted);font-size:13px">
+            I’ll only use your email to reply to this inquiry.
+          </p>
+        </form>
       </div>
     </section>
   </main>
