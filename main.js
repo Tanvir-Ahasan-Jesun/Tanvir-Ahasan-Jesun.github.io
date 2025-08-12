@@ -1,47 +1,64 @@
-// Year
-document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+// ---------- UTIL ----------
+const $ = (q, root = document) => root.querySelector(q);
+const $$ = (q, root = document) => [...root.querySelectorAll(q)];
 
-// Filter chips
-const chips = [...document.querySelectorAll('.chip')];
-const cards = [...document.querySelectorAll('[data-tags]')];
-chips.forEach(ch => ch.addEventListener('click', () => {
-  chips.forEach(c => c.setAttribute('aria-pressed','false'));
-  ch.setAttribute('aria-pressed','true');
-  const f = ch.dataset.filter;
-  cards.forEach(card => {
-    const tags = card.dataset.tags.split(' ');
-    card.style.display = (f==='all' || tags.includes(f)) ? '' : 'none';
-  });
-}));
+// ---------- YEAR ----------
+const yearEl = $('#year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Show placeholders if embeds not set
-document.querySelectorAll('.thumb').forEach(thumb=>{
-  const frame = thumb.querySelector('iframe');
-  const ph = thumb.querySelector('.placeholder');
-  if (frame && /REPLACE_/i.test(frame.src) && ph){ frame.style.display='none'; ph.hidden=false; }
-});
+// ---------- MOBILE MENU ----------
+const burger = $('.burger');
+const mnav = $('#mobilemenu');
+if (burger && mnav) {
+  const toggleMenu = () => {
+    const open = mnav.classList.toggle('show');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  burger.addEventListener('click', toggleMenu);
+  $$('#mobilemenu a').forEach(a =>
+    a.addEventListener('click', () => {
+      mnav.classList.remove('show');
+      burger.setAttribute('aria-expanded', 'false');
+    })
+  );
+}
 
-// Burger menu
-const burger = document.querySelector('.burger');
-const mnav = document.getElementById('mobilemenu');
-burger && burger.addEventListener('click', () => {
-  const open = mnav.classList.toggle('show');
-  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-});
-mnav && mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  mnav.classList.remove('show'); burger && burger.setAttribute('aria-expanded','false');
-}));
-
-// Place the fixed mobile menu just below the current header height
+// ---------- PLACE MOBILE MENU UNDER HEADER ----------
 function placeMenu(){
-  const h = document.querySelector('header')?.getBoundingClientRect().height || 64;
+  const h = $('header')?.getBoundingClientRect().height || 64;
   document.documentElement.style.setProperty('--navTop', Math.ceil(h) + 'px');
 }
 window.addEventListener('load', placeMenu);
 window.addEventListener('resize', placeMenu);
 window.addEventListener('orientationchange', placeMenu);
 
-// Detect in-app browsers and show "Open in Browser" banner
+// ---------- FILTER CHIPS (ONLY ON PAGES THAT HAVE THEM) ----------
+const dashboards = $('#dashboards');
+if (dashboards) {
+  const chips = $$('.chip', dashboards.parentElement || document);
+  const cards = $$('[data-tags]', dashboards);
+  chips.forEach(ch => ch.addEventListener('click', () => {
+    chips.forEach(c => c.setAttribute('aria-pressed','false'));
+    ch.setAttribute('aria-pressed','true');
+    const f = ch.dataset.filter;
+    cards.forEach(card => {
+      const tags = (card.dataset.tags || '').split(' ');
+      card.style.display = (f === 'all' || tags.includes(f)) ? '' : 'none';
+    });
+  }));
+}
+
+// ---------- IFRAME PLACEHOLDERS (ONLY WHERE .thumb EXISTS) ----------
+$$('.thumb').forEach(thumb => {
+  const frame = $('iframe', thumb);
+  const ph = $('.placeholder', thumb);
+  if (frame && /REPLACE_/i.test(frame.src) && ph){
+    frame.style.display = 'none';
+    ph.hidden = false;
+  }
+});
+
+// ---------- IN-APP BROWSER BANNER (SAFE ON ALL PAGES) ----------
 (function(){
   const ua = navigator.userAgent || "";
   const isInApp = /Twitter|FBAN|FBAV|Instagram|Line\/|Snapchat|WhatsApp/i.test(ua);
@@ -63,7 +80,7 @@ window.addEventListener('orientationchange', placeMenu);
   document.body.style.paddingBottom = '64px';
 })();
 
-// Respect reduced motion
+// ---------- REDUCED MOTION ----------
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.documentElement.style.scrollBehavior = 'auto';
 }
