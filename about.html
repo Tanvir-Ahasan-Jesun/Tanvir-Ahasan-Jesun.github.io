@@ -5,19 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#2563eb" />
   <title>About — Tanvir Analytics</title>
-  <meta name="description" content="About Tanvir Analytics — background, approach, and tools." />
+  <meta name="description" content="About Tanvir Analytics — background, approach, toolstack, and experience." />
   <link rel="icon" href="logo.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- WIP banner -->
   <div class="progress-banner">🚧 This website is a work in progress — some projects are placeholders 🚧</div>
 
+  <!-- Header -->
   <header>
     <div class="container nav">
       <a href="index.html" class="brand" aria-label="Tanvir Analytics — Home">
         <img src="logo.png" alt="Tanvir Analytics Logo" />
         <span>Tanvir Analytics</span>
       </a>
+
       <nav class="navlinks" aria-label="Primary">
         <a class="btn" href="index.html#dashboards">Projects</a>
         <a class="btn" href="about.html" aria-current="page">About</a>
@@ -25,6 +28,7 @@
         <a class="btn" href="certifications.html">Certifications</a>
         <a class="btn cta" href="index.html#contact">Contact</a>
       </nav>
+
       <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilemenu">≡</button>
       <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile">
         <a href="index.html#dashboards">Projects</a>
@@ -37,18 +41,149 @@
   </header>
 
   <main class="container">
+    <!-- Intro -->
     <section class="hero decor" aria-label="About">
       <h1>About Me</h1>
       <p style="max-width:72ch">
-        I’m a data analyst focused on building interactive dashboards and clear, decision-ready reports.
-        I help small businesses and teams uncover trends, automate reporting, and turn messy data into insights.
+        I’m Tan — a data analyst who turns messy datasets into clear, decision-ready dashboards and reports.
+        I help small businesses and teams automate reporting, uncover opportunities, and communicate insights with confidence.
       </p>
-      <div class="tagrow">
-        <span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL</span>
-        <span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">Dashboard Design</span><span class="tag">Data Cleaning</span>
+      <div class="tagrow" aria-label="Core tools">
+        <span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">SQL</span>
+        <span class="tag">Python</span><span class="tag">R</span>
+        <span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">Data Modeling</span>
+      </div>
+      <div class="actions">
+        <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+        <a class="btn" href="index.html#dashboards">See Projects</a>
       </div>
     </section>
 
+    <!-- How I work -->
     <section class="decor flip" aria-label="How I Work">
       <h2>How I Work</h2>
-      <
+      <div class="grid">
+        <article class="card mini"><div class="card__body">
+          <h3>1) Understand the Goal</h3>
+          <p>Clarify the business decision and success metrics. Align on the audience, cadence, and “must-know” KPIs.</p>
+        </div></article>
+
+        <article class="card mini"><div class="card__body">
+          <h3>2) Clean & Model</h3>
+          <p>Build reliable pipelines with Power Query/SQL, create a star schema, and define calculations with DAX/measures.</p>
+        </div></article>
+
+        <article class="card mini"><div class="card__body">
+          <h3>3) Build & Iterate</h3>
+          <p>Prototype quickly, validate with stakeholders, and iterate — prioritizing clarity, speed, and trust in numbers.</p>
+        </div></article>
+
+        <article class="card mini"><div class="card__body">
+          <h3>4) Ship & Support</h3>
+          <p>Package documentation, handover guides, and refresh schedules. Offer ongoing tweaks and enhancements.</p>
+        </div></article>
+      </div>
+    </section>
+
+    <!-- Toolstack -->
+    <section aria-label="Toolstack">
+      <h2>Toolstack</h2>
+      <div class="grid">
+        <article class="card mini"><div class="card__body">
+          <h3>Business Intelligence</h3>
+          <p>Power BI (DAX, measures, visuals), Excel (Pivot, Power Query), custom visuals and theming.</p>
+          <div class="tagrow"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">DAX</span></div>
+        </div></article>
+
+        <article class="card mini"><div class="card__body">
+          <h3>Data Engineering</h3>
+          <p>Power Query and SQL for ingestion and transformation. Data modeling for self-serve analytics.</p>
+          <div class="tagrow"><span class="tag">Power Query</span><span class="tag">SQL</span><span class="tag">Modeling</span></div>
+        </div></article>
+
+        <article class="card mini"><div class="card__body">
+          <h3>Analysis & Scripting</h3>
+          <p>Python/R for EDA, feature engineering, and small automation tasks that speed up workflows.</p>
+          <div class="tagrow"><span class="tag">Python</span><span class="tag">R</span><span class="tag">EDA</span></div>
+        </div></article>
+
+        <article class="card mini"><div class="card__body">
+          <h3>Delivery & Ops</h3>
+          <p>Versioned files, refresh schedules, and clear documentation so dashboards stay reliable and useful.</p>
+          <div class="tagrow"><span class="tag">Docs</span><span class="tag">Versioning</span><span class="tag">Refresh</span></div>
+        </div></article>
+      </div>
+    </section>
+
+    <!-- Experience timeline -->
+    <section class="decor" aria-label="Experience">
+      <h2>Experience</h2>
+      <div class="grid">
+        <article class="card"><div class="card__body">
+          <h3>Freelance Data Analyst</h3>
+          <p><strong>2022 — Present</strong> • Built Power BI and Excel dashboards for retail and operations teams; automated weekly reporting; designed KPI views that improved team visibility and planning.</p>
+          <div class="tagrow"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">SQL</span></div>
+        </div></article>
+
+        <article class="card"><div class="card__body">
+          <h3>Academic & Personal Projects</h3>
+          <p>Hands-on projects in churn analysis, inventory health, and financial tracking. Focus on clean modeling, readable visuals, and clear storytelling.</p>
+          <div class="tagrow"><span class="tag">Python</span><span class="tag">R</span><span class="tag">Data Viz</span></div>
+        </div></article>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section aria-label="Working Principles">
+      <h2>Working Principles</h2>
+      <div class="grid">
+        <article class="card mini"><div class="card__body">
+          <h3>Clarity over Flash</h3>
+          <p>Simple, useful visuals > noisy dashboards. If a number matters, it should be obvious.</p>
+        </div></article>
+        <article class="card mini"><div class="card__body">
+          <h3>Trust the Data</h3>
+          <p>Document assumptions, sources, and refresh logic. Make it easy to verify how numbers are built.</p>
+        </div></article>
+        <article class="card mini"><div class="card__body">
+          <h3>Small Iterations</h3>
+          <p>Ship quickly, gather feedback, refine. Stakeholders see value faster and dashboards stay relevant.</p>
+        </div></article>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <section class="decor flip" aria-label="FAQs">
+      <h2>FAQs</h2>
+      <div class="grid">
+        <article class="card mini"><div class="card__body">
+          <h3>What data do you need to start?</h3>
+          <p>A sample of your source files (or DB access), a short glossary of key fields, and your top 3 KPIs or questions.</p>
+        </div></article>
+
+        <article class="card mini"><div class="card__body">
+          <h3>How long does a dashboard take?</h3>
+          <p>Simple executive views: ~1–2 weeks. Multi-page Power BI with modeling: 3–6 weeks depending on data quality.</p>
+        </div></article>
+
+        <article class="card mini"><div class="card__body">
+          <h3>Can you work from my existing Excel files?</h3>
+          <p>Yes. I can clean them with Power Query, standardize columns, and turn them into a reliable model.</p>
+        </div></article>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="upwork-cta" aria-label="Get in touch" style="margin:24px 0; padding:20px; border-radius:12px; color:#fff; background: linear-gradient(135deg, var(--brand-3), var(--accent)); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <strong>Have a dataset you’d like to make useful?</strong>
+      <div class="actions" style="margin:0">
+        <a class="btn" href="index.html#dashboards">See Project Examples</a>
+        <a class="btn primary" href="index.html#contact">Start a Conversation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</footer>
+  <script src="main.js"></script>
+</body>
+</html>
