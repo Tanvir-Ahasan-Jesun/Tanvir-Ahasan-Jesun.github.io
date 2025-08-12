@@ -14,8 +14,8 @@
 
   <header>
     <div class="container nav">
-      <a href="index.html" class="brand">
-        <span class="mark"><img src="logo.png" alt="Tanvir Analytics Logo" /></span>
+      <a href="index.html" class="brand" aria-label="Tanvir Analytics — Home">
+        <span class="mark"><img src="logo.png" alt="Tanvir Analytics Logo" loading="lazy" /></span>
         <span class="brand-text">Tanvir Analytics</span>
       </a>
       <nav class="navlinks" aria-label="Primary">
@@ -23,7 +23,7 @@
         <a class="btn" href="index.html#dashboards">Projects</a>
         <a class="btn" href="about.html">About</a>
         <a class="btn" href="index.html#skills">Skills</a>
-        <a class="btn cta" href="certifications.html">Certifications</a>
+        <a class="btn cta" href="certifications.html" aria-current="page">Certifications</a>
         <a class="btn" href="index.html#contact">Contact</a>
       </nav>
       <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilemenu">≡</button>
@@ -32,7 +32,7 @@
         <a href="index.html#dashboards">Projects</a>
         <a href="about.html">About</a>
         <a href="index.html#skills">Skills</a>
-        <a href="certifications.html">Certifications</a>
+        <a href="certifications.html" aria-current="page">Certifications</a>
         <a href="index.html#contact">Contact</a>
       </nav>
     </div>
@@ -46,21 +46,38 @@
 
     <section class="decor flip" aria-label="Cert Grid">
       <div class="cert-grid">
-        <div class="cert">
-          <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" />
-          <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
-          <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
-        </div>
-        <div class="cert">
-          <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" />
-          <p><strong>IBM Data Analyst Professional Certificate</strong></p>
-          <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
-        </div>
+        <figure class="cert card mini">
+          <div class="cert__imgwrap">
+            <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" loading="lazy" width="640" height="452" />
+          </div>
+          <figcaption class="cert__body">
+            <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
+            <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
+          </figcaption>
+        </figure>
+
+        <figure class="cert card mini">
+          <div class="cert__imgwrap">
+            <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" loading="lazy" width="640" height="452" />
+          </div>
+          <figcaption class="cert__body">
+            <p><strong>IBM Data Analyst Professional Certificate</strong></p>
+            <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
+          </figcaption>
+        </figure>
       </div>
     </section>
   </main>
 
-  <footer>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</footer>
+  <footer>
+    <div class="container foot">
+      <small>© <span id="year"></span> Tanvir Analytics</small>
+      <a class="small" href="about.html">About</a>
+      <a class="small" href="certifications.html" aria-current="page">Certifications</a>
+      <a class="small" href="index.html#contact">Contact</a>
+    </div>
+  </footer>
+
   <script src="main.js"></script>
 </body>
 </html>
