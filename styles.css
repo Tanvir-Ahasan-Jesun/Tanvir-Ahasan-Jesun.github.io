@@ -1,3 +1,8 @@
+/* ===========================
+   Tanvir Analytics — Global Styles
+   Unified header + shared components
+   =========================== */
+
 :root{
   --bg:#f2f4f7; --ink:#111827; --muted:#6b7280; --card:#ffffff;
   --brand-1:#2563eb; --brand-2:#3b82f6; --brand-3:#1e40af;
@@ -5,7 +10,7 @@
   --shadow:0 12px 35px rgba(0,0,0,.08);
   --ring:rgba(37,99,235,.28);
   --radius:16px; --max:1100px;
-  --bannerH:36px;
+  --bannerH:36px; /* progress banner height */
 }
 @media (prefers-color-scheme: dark){
   :root{
@@ -15,7 +20,7 @@
   }
 }
 
-/* Base */
+/* Base reset & layout */
 *{box-sizing:border-box}
 html,body{margin:0; color:var(--ink); background:var(--bg);
   font-family:"Segoe UI", Inter, system-ui, -apple-system, Roboto, Arial, sans-serif}
@@ -25,39 +30,50 @@ img{max-width:100%; height:auto; display:block}
 html{scroll-behavior:smooth}
 section{scroll-margin-top: calc(var(--bannerH) + 56px); padding:28px 0}
 
-/* Banner */
+/* ---------- Progress banner (always on top) ---------- */
 .progress-banner{
   position:fixed; top:0; left:0; right:0; z-index:9999;
   padding:8px; background:linear-gradient(90deg,#facc15,#fbbf24);
-  color:#111; text-align:center; font-size:14px; box-shadow:0 2px 6px rgba(0,0,0,.15)
+  color:#111; text-align:center; font-size:14px;
+  box-shadow:0 2px 6px rgba(0,0,0,.15);
 }
 body{padding-top:var(--bannerH)}
 
-/* Header */
+/* ---------- Header (UNIFIED BLUE GRADIENT) ---------- */
+/* Remove ANY other header rules from old files. This one wins. */
 header{
   position:sticky; top:var(--bannerH); z-index:200; color:var(--brand-ink);
-  background:linear-gradient(135deg,var(--brand-2),var(--brand-1) 55%,var(--brand-3));
+  background: linear-gradient(135deg, var(--brand-2), var(--brand-1) 55%, var(--brand-3));
   border-bottom:1px solid rgba(255,255,255,.12);
   padding-top: calc(8px + env(safe-area-inset-top));
+  isolation:isolate;
 }
 .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0}
 .brand{display:flex; align-items:center; gap:12px; font-weight:800; font-size:20px; color:inherit; text-decoration:none}
 .brand img{height:58px; filter: drop-shadow(0 0 6px rgba(255,255,255,.55)) drop-shadow(0 0 1px rgba(255,255,255,.85))}
 @media (max-width:780px){.brand img{height:44px}}
-/* Nav buttons — scoped */
+
+/* Nav buttons — scoped so they don't affect hero buttons */
 .navlinks{display:flex; gap:10px}
 .navlinks a.btn{
   padding:10px 16px; border-radius:12px; border:0;
-  background:linear-gradient(180deg,#f8fbff,#e6efff);
+  background: linear-gradient(180deg, #f8fbff, #e6efff);
   color:#1e3a8a; box-shadow:0 6px 18px rgba(15,23,42,.12);
   text-decoration:none; transition:all .2s ease;
 }
-.navlinks a.btn:hover{background:linear-gradient(180deg,#e6efff,#d1e4ff); transform:translateY(-2px); box-shadow:0 8px 20px rgba(37,99,235,.25)}
-.navlinks a.cta{background:linear-gradient(135deg,#111827,#1f2937); color:#fff}
-.navlinks a.cta:hover{transform:translateY(-2px); box-shadow:0 8px 20px rgba(37,99,235,.35)}
+.navlinks a.btn:hover{
+  background: linear-gradient(180deg, #e6efff, #d1e4ff);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, .25);
+}
+.navlinks a.cta{
+  background:linear-gradient(135deg,#111827,#1f2937); color:#fff; transition:all .2s ease;
+}
+.navlinks a.cta:hover{ transform: translateY(-2px); box-shadow:0 8px 20px rgba(37,99,235,.35) }
 .navlinks a, .navlinks a:link, .navlinks a:visited{ text-decoration:none }
 
-.burger{display:none; background:linear-gradient(180deg,#ffffff,#eef2ff); border:0; border-radius:12px; padding:10px 12px; font-size:20px; color:#1e3a8a}
+.burger{display:none; background:linear-gradient(180deg,#ffffff,#eef2ff); border:0;
+  border-radius:12px; padding:10px 12px; font-size:20px; color:#1e3a8a}
 @media (max-width:780px){ .navlinks{display:none} .burger{display:inline-flex} }
 .mobilemenu{
   position:fixed; right:16px; width:210px; display:none; z-index:300;
@@ -68,7 +84,7 @@ header{
 .mobilemenu a{display:block; padding:12px 14px; border-bottom:1px solid rgba(148,163,184,.18); color:#1e3a8a; text-decoration:none}
 .mobilemenu.show{display:block}
 
-/* Hero */
+/* ---------- Hero ---------- */
 .hero{padding:56px 0 32px; border-radius:12px; background:linear-gradient(135deg,#f0f5ff 0%,#f5f7fb 55%,#eef2ff 100%)}
 .hero h1{font-size:clamp(28px,5vw,44px); line-height:1.1; margin:0 0 10px}
 .hero p{font-size:clamp(16px,2.2vw,18px); color:var(--muted); margin:0 0 18px}
@@ -90,7 +106,7 @@ header{
 }
 .actions .btn.primary:hover{ transform:translateY(-2px); box-shadow:0 18px 38px rgba(37,99,235,.42) }
 
-/* Stats — matches Upwork CTA */
+/* ---------- Stats (match Upwork CTA gradient) ---------- */
 .stats{
   display:grid; grid-template-columns:repeat(12,1fr);
   gap:16px; margin:24px 0 8px; padding:20px;
@@ -102,7 +118,7 @@ header{
 .stat h3{margin:0; font-size:clamp(28px,4vw,36px)}
 .stat p{margin:4px 0 0}
 
-/* Grids & cards */
+/* ---------- Grids & Cards ---------- */
 .grid{display:grid; grid-template-columns:repeat(12,1fr); gap:16px}
 .card{grid-column:span 12; background:var(--card); border:1px solid rgba(148,163,184,.25);
   border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; transition:transform .15s ease, box-shadow .15s ease}
@@ -116,14 +132,14 @@ header{
 .thumb iframe{display:block; width:100%; height:420px; border:0}
 .placeholder{display:flex; align-items:center; justify-content:center; height:420px; color:#6b7280; font-size:14px; background:#f3f6ff}
 
-/* Tags, filters */
+/* ---------- Tags & Filters ---------- */
 .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 12px}
 .tag{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(148,163,184,.15); border:1px solid rgba(148,163,184,.25)}
 .filters{display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 0}
 .chip{padding:8px 12px; border-radius:12px; border:1px solid rgba(148,163,184,.35); background:linear-gradient(180deg,#ffffff,#f5f7ff); cursor:pointer}
 .chip[aria-pressed="true"]{background:linear-gradient(180deg,var(--brand-2),var(--brand-1)); color:#fff; border-color:transparent}
 
-/* Certifications */
+/* ---------- Certifications ---------- */
 .cert-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px}
 .cert{background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; box-shadow:var(--shadow); overflow:hidden}
 .cert__imgwrap{aspect-ratio:4/3; background:#eff3ff; display:flex; align-items:center; justify-content:center}
@@ -131,7 +147,7 @@ header{
 .cert__body{padding:14px 16px}
 .cert__body small a{text-decoration:none}
 
-/* Contact */
+/* ---------- Contact ---------- */
 .contact{display:grid; gap:16px}
 @media (min-width:860px){ .contact{grid-template-columns:1.2fr .8fr} }
 form{background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
@@ -142,10 +158,10 @@ input:focus,textarea:focus{outline:none; box-shadow:0 0 0 6px var(--ring); borde
 textarea{min-height:140px; resize:vertical}
 .panel{background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; padding:16px; box-shadow:var(--shadow)}
 
-/* Footer */
+/* ---------- Footer ---------- */
 footer{padding:24px; color:#cbd5e1; text-align:center; background:linear-gradient(180deg,#0f172a,#0b1220)}
 
-/* Overflow guard */
+/* ---------- Safety: prevent accidental horizontal scroll ---------- */
 html,body{max-width:100%; overflow-x:hidden}
 .container{width:min(100%,var(--max)); padding-inline:16px}
 .hero,.stats,.grid,.contact,header .container{overflow:hidden}
