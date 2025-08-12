@@ -6,16 +6,7 @@ const $$ = (q, root = document) => [...root.querySelectorAll(q)];
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// BANNER HEIGHT SYNC
-(function(){
-  const b = $('.progress-banner');
-  const setH = () => {
-    const h = Math.ceil((b?.getBoundingClientRect().height) || 36);
-    document.documentElement.style.setProperty('--bannerH', h + 'px');
-  };
-  setH();
-  window.addEventListener('resize', setH);
-})();
+
 
 // MOBILE MENU
 const burger = $('.burger');
