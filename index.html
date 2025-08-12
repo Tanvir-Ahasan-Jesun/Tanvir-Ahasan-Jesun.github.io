@@ -65,18 +65,37 @@
     .brand img{height:58px; filter: drop-shadow(0 0 6px rgba(255,255,255,.55)) drop-shadow(0 0 1px rgba(255,255,255,.85));}
     @media (max-width: 780px){ .brand img{height:44px;} }
 
-    .navlinks{display:flex; gap:10px}
-    .navlinks a.btn{
-      padding:10px 16px; border-radius:12px; border:0;
-      background: linear-gradient(180deg, #ffffff, #eef2ff);
-      color:#1e3a8a; box-shadow:0 6px 18px rgba(15,23,42,.12);
-      text-decoration:none;
-    }
-    .navlinks a.btn:hover{filter:brightness(.97)}
-    .navlinks a.cta{background: linear-gradient(135deg, #111827, #1f2937); color:#fff;}
-    .navlinks a,
-    .navlinks a:link,
-    .navlinks a:visited{ text-decoration:none; color:inherit; }
+    .navlinks {
+  display: flex;
+  gap: 10px;
+}
+
+.navlinks a.btn {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 0;
+  background: linear-gradient(180deg, #ffffff, #eef2ff);
+  color: #1e3a8a; /* Keep strong blue text */
+  box-shadow: 0 6px 18px rgba(15, 23, 42, .12);
+  text-decoration: none;
+}
+
+.navlinks a.btn:hover {
+  filter: brightness(.97);
+}
+
+.navlinks a.cta {
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: #fff;
+}
+
+/* Remove color:inherit so .btn colors work */
+.navlinks a,
+.navlinks a:link,
+.navlinks a:visited {
+  text-decoration: none;
+}
+
 
     .burger{display:none; background:linear-gradient(180deg,#ffffff,#eef2ff); border:0;
       border-radius:12px; padding:10px 12px; font-size:20px; color:#1e3a8a}
