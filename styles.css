@@ -96,25 +96,18 @@ body{padding-top:var(--headerH)}
 }
 .mobilemenu.show{display:block}
 
-/* Hero — edge to edge */
-.hero {
-  position: relative;
-  background: url('hero-bg.png') no-repeat center center;
-  background-size: cover;
-  color: #fff;
-  padding: 56px 0 56px;
-  margin: 0;
+.hero{
+  position:relative;
+  background: linear-gradient(180deg,#1e3a8a 0%, #0f172a 100%);
+  color:#fff;
 }
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.3);
-  z-index: 0;
-}
-.hero * {
-  position: relative;
-  z-index: 1;
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background-image:
+    radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 24px 24px;   /* tiny grid/“data” feel */
+  opacity:.15; pointer-events:none;
 }
 
 /* Actions */
