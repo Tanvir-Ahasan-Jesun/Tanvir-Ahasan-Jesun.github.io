@@ -6,6 +6,18 @@ const $$ = (q, root = document) => [...root.querySelectorAll(q)];
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// ---------- BANNER / HEADER / MENU POSITIONING ----------
+(function syncBannerAndHeader(){
+  const banner = document.querySelector('.progress-banner');
+  const h = Math.ceil((banner?.getBoundingClientRect().height) || 36);
+  document.documentElement.style.setProperty('--bannerH', h + 'px');
+})();
+window.addEventListener('resize', () => {
+  const banner = document.querySelector('.progress-banner');
+  const h = Math.ceil((banner?.getBoundingClientRect().height) || 36);
+  document.documentElement.style.setProperty('--bannerH', h + 'px');
+});
+
 // ---------- MOBILE MENU ----------
 const burger = $('.burger');
 const mnav = $('#mobilemenu');
@@ -23,16 +35,7 @@ if (burger && mnav) {
   );
 }
 
-// ---------- PLACE MOBILE MENU UNDER HEADER ----------
-function placeMenu(){
-  const h = $('header')?.getBoundingClientRect().height || 64;
-  document.documentElement.style.setProperty('--navTop', Math.ceil(h) + 'px');
-}
-window.addEventListener('load', placeMenu);
-window.addEventListener('resize', placeMenu);
-window.addEventListener('orientationchange', placeMenu);
-
-// ---------- FILTER CHIPS ----------
+// ---------- FILTER CHIPS (only if #dashboards exists) ----------
 const dashboards = $('#dashboards');
 if (dashboards) {
   const chips = $$('.chip', dashboards.parentElement || document);
