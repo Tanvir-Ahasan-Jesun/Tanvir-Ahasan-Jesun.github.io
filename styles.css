@@ -2,10 +2,11 @@
    Tanvir Analytics — Global Styles
    =========================== */
 
-:root { --bannerH: 0px !important; }
-body { padding-top: 0 !important; }
-header { top: 0 !important; }
-.progress-banner { display: none !important; }
+:root { --bannerH: 0px; }
+.progress-banner { display: none; }
+header { top: 0; }
+body { padding-top: 0; }
+
 
 @media (prefers-color-scheme: dark){
   :root{
