@@ -148,16 +148,7 @@
       color:#fff; border-color: transparent;
     }
 
-    /* ---------- STATS (glassy card) ---------- */
-    .stats{
-      display:grid; grid-template-columns: repeat(12,1fr);
-      gap:16px; margin:24px 0 8px; padding:18px 20px;
-      border-radius:16px;
-      background: rgba(255,255,255,.55);
-      border: 1px solid rgba(148,163,184,.35);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-    }
+   
     @media (prefers-color-scheme: dark){
       .stats{ background: linear-gradient(135deg, rgba(17,24,39,.55), rgba(2,6,23,.55)); border-color: rgba(148,163,184,.18); }
     }
@@ -262,12 +253,37 @@
       </div>
     </section>
 
-    <!-- Stats -->
-    <section class="stats" aria-label="Highlights">
-      <div class="stat"><h3 id="projectsCount">15+</h3><p>Projects Completed</p></div>
-      <div class="stat"><h3>5+</h3><p>Industries Analyzed</p></div>
-      <div class="stat"><h3>3</h3><p>Certificates Earned</p></div>
-    </section>
+    .stats {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  margin: 24px 0 8px;
+  padding: 18px;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-3), var(--accent)); /* match Upwork CTA */
+}
+
+.stat {
+  grid-column: span 12;
+  text-align: center;
+}
+
+.stat h3 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 36px);
+}
+
+.stat p {
+  margin: 4px 0 0;
+}
+
+@media (min-width: 720px) {
+  .stat {
+    grid-column: span 4;
+  }
+}
+
 
     <!-- Dashboards -->
     <section id="dashboards" aria-label="Featured Interactive Dashboards">
