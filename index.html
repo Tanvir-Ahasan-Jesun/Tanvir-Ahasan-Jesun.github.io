@@ -4,41 +4,218 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#2563eb" />
-  <title>Tanvir Analytics — Data Analysis & Dashboards</title>
-  <meta name="description" content="Portfolio of Tanvir Analytics — dashboards, reports, and data analysis." />
+  <title>Tanvir Analytics — Interactive Dashboards & Data Projects</title>
+  <meta name="description" content="Tanvir Analytics — Data analyst skilled in Python, R, SQL, Excel, Power BI. Interactive dashboards, reports, and insights." />
   <link rel="icon" href="logo.png" />
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ---------- THEME ---------- */
+    :root{
+      --bg:#f2f4f7; --ink:#111827; --muted:#6b7280; --card:#ffffff;
+      --brand-1:#2563eb; --brand-2:#3b82f6; --brand-3:#1e40af;
+      --brand-ink:#ffffff; --accent:#0ea5e9;
+      --shadow:0 12px 35px rgba(0,0,0,.08);
+      --ring:rgba(37,99,235,.28);
+      --radius:16px; --max:1100px;
+      --bannerH:36px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0f1a; --ink:#e6eaf2; --muted:#a3adbf; --card:#0f1526;
+        --brand-1:#60a5fa; --brand-2:#93c5fd; --brand-3:#3b82f6;
+        --brand-ink:#0b0f1a; --shadow:0 8px 24px rgba(0,0,0,.6);
+      }
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      margin:0; color:var(--ink); background:var(--bg);
+      font-family:"Segoe UI", Inter, system-ui, -apple-system, Roboto, Arial, sans-serif;
+    }
+    img{max-width:100%; height:auto; display:block}
+    .container{max-width:var(--max); margin:0 auto; padding:24px}
+    :focus-visible{outline:none; box-shadow:0 0 0 6px var(--ring)}
+    html{scroll-behavior:smooth}
+    section{scroll-margin-top: calc(var(--bannerH) + 56px);} /* anchors clear sticky header */
+
+    /* ---------- WORK IN PROGRESS BANNER ---------- */
+    .progress-banner{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 8px;
+      background: linear-gradient(90deg, #facc15, #fbbf24);
+      color: #111;
+      text-align: center;
+      font-size: 14px;
+      z-index: 9999;
+      box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    }
+    body { padding-top: var(--bannerH); }
+
+    /* ---------- HEADER ---------- */
+    header{
+      position:sticky; top:var(--bannerH); z-index:200; color:var(--brand-ink);
+      background: linear-gradient(135deg, var(--brand-2), var(--brand-1) 55%, var(--brand-3));
+      border-bottom:1px solid rgba(255,255,255,.12);
+      padding-top: calc(8px + env(safe-area-inset-top));
+      isolation:isolate;
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0;}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; font-size:20px}
+    .brand img{height:58px; filter: drop-shadow(0 0 6px rgba(255,255,255,.55)) drop-shadow(0 0 1px rgba(255,255,255,.85));}
+    @media (max-width: 780px){ .brand img{height:44px;} }
+
+    .navlinks{display:flex; gap:10px}
+    .navlinks a.btn{
+      padding:10px 16px; border-radius:12px; border:0;
+      background: linear-gradient(180deg, #ffffff, #eef2ff);
+      color:#1e3a8a; box-shadow:0 6px 18px rgba(15,23,42,.12);
+      text-decoration:none;
+    }
+    .navlinks a.btn:hover{filter:brightness(.97)}
+    .navlinks a.cta{background: linear-gradient(135deg, #111827, #1f2937); color:#fff;}
+    .navlinks a,
+    .navlinks a:link,
+    .navlinks a:visited{ text-decoration:none; color:inherit; }
+
+    .burger{display:none; background:linear-gradient(180deg,#ffffff,#eef2ff); border:0;
+      border-radius:12px; padding:10px 12px; font-size:20px; color:#1e3a8a}
+    @media (max-width: 780px){
+      header{padding: 4px 0;}
+      .nav{padding:8px 0;}
+      .navlinks{display:none}
+      .burger{display:inline-flex}
+    }
+    .mobilemenu{
+      position: fixed; right:16px; width:210px; display:none; z-index:300;
+      background: linear-gradient(180deg,#ffffff,#f5f7ff);
+      border-radius:16px; box-shadow:var(--shadow); overflow:hidden;
+      top: calc(var(--bannerH) + 64px);
+    }
+    .mobilemenu a{display:block; padding:12px 14px; border-bottom:1px solid rgba(148,163,184,.18); color:#1e3a8a; text-decoration:none}
+    .mobilemenu a:last-child{border-bottom:0; background:linear-gradient(135deg,#111827,#1f2937); color:#fff}
+    .mobilemenu.show{display:block}
+
+    /* ---------- HERO ---------- */
+    .hero{padding:56px 0 32px; border-radius:12px;
+      background: linear-gradient(135deg, #f0f5ff 0%, #f5f7fb 55%, #eef2ff 100%)}
+    .hero h1{font-size: clamp(28px, 5vw, 44px); line-height:1.1; margin:0 0 10px}
+    .hero p{font-size: clamp(16px, 2.2vw, 18px); color:var(--muted); margin:0 0 18px}
+
+    /* Reusable buttons (also fix ugly underlines/purple) */
+    .actions{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+    .btn, .btn:link, .btn:visited{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:12px 18px; border-radius:14px;
+      border:1px solid rgba(148,163,184,.35);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      color:#0f172a;
+      text-decoration:none;
+      transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    }
+    .btn:hover{ transform:translateY(-1px); filter:brightness(.98) }
+    .btn.primary, .btn.primary:link, .btn.primary:visited{
+      background: linear-gradient(180deg, var(--brand-2), var(--brand-1));
+      color:#fff; border-color: transparent;
+    }
+
+    /* ---------- STATS (glassy card) ---------- */
+    .stats{
+      display:grid; grid-template-columns: repeat(12,1fr);
+      gap:16px; margin:24px 0 8px; padding:18px 20px;
+      border-radius:16px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(148,163,184,.35);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    @media (prefers-color-scheme: dark){
+      .stats{ background: linear-gradient(135deg, rgba(17,24,39,.55), rgba(2,6,23,.55)); border-color: rgba(148,163,184,.18); }
+    }
+    .stat{ grid-column: span 12; text-align:center }
+    @media(min-width:720px){ .stat{ grid-column: span 4 } }
+    .stat h3{ margin:0; font-size:clamp(26px, 4vw, 34px); letter-spacing:.2px; }
+    .stat p{ margin:4px 0 0; color: var(--muted); font-size: 14px }
+
+    /* ---------- GRID & CARDS ---------- */
+    .grid{display:grid; grid-template-columns:repeat(12, 1fr); gap:16px}
+    .card{grid-column: span 12; background:var(--card);
+      border:1px solid rgba(148,163,184,.25); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;
+      transition:transform .15s ease, box-shadow .15s ease}
+    @media (min-width: 720px){ .card{grid-column: span 6} }
+    .card:nth-child(even){background: #f9fbff}
+    .card:hover{transform: translateY(-4px); box-shadow:0 16px 25px rgba(0,0,0,.12)}
+    .card__body{padding:16px}
+    .card h3{margin:0 0 8px; font-size:18px}
+    .card p{margin:0 0 12px; color:var(--muted); font-size:14px}
+
+    .thumb{display:block; position:relative; background:linear-gradient( to bottom, rgba(2,8,23,.06), rgba(2,8,23,.02) ); border-bottom:1px solid rgba(148,163,184,.2)}
+    .thumb iframe{display:block; width:100%; height:420px; border:0}
+    .placeholder{display:flex; align-items:center; justify-content:center; height:420px; color:#6b7280; font-size:14px; background:#f3f6ff}
+
+    .tagrow{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 12px}
+    .tag{font-size:12px; padding:6px 10px; border-radius:999px; background:rgba(148,163,184,.15); border:1px solid rgba(148,163,184,.25)}
+
+    .filters{display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 0}
+    .chip{padding:8px 12px; border-radius:12px; border:1px solid rgba(148,163,184,.35); background:linear-gradient(180deg,#ffffff,#f5f7ff); cursor:pointer}
+    .chip[aria-pressed="true"]{background:linear-gradient(180deg,var(--brand-2),var(--brand-1)); color:#fff; border-color:transparent}
+
+    /* ---------- CERTIFICATIONS (cards) ---------- */
+    .cert-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px; margin-top:8px; }
+    .cert{ background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; box-shadow:var(--shadow); overflow:hidden; }
+    .cert__imgwrap{ aspect-ratio: 4/3; background:#eff3ff; display:flex; align-items:center; justify-content:center; }
+    .cert__imgwrap img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .cert__body{ padding:14px 16px; }
+    .cert__body small a{ text-decoration:none; }
+
+    /* ---------- CONTACT ---------- */
+    .contact{ display:grid; gap:16px }
+    @media (min-width: 860px){ .contact{ grid-template-columns:1.2fr .8fr } }
+    form{ background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; padding:16px; box-shadow:var(--shadow) }
+    .field{ display:flex; flex-direction:column; gap:6px; margin:10px 0 }
+    label{ font-size:13px; }
+    input, textarea{
+      width:100%; padding:12px 14px; border-radius:12px;
+      border:1px solid rgba(148,163,184,.35); background:transparent; color:var(--ink)
+    }
+    input:focus, textarea:focus{ outline:none; box-shadow:0 0 0 6px var(--ring); border-color:transparent }
+    textarea{ min-height:140px; resize:vertical }
+    .panel{ background:var(--card); border:1px solid rgba(148,163,184,.25); border-radius:16px; padding:16px; box-shadow:var(--shadow) }
+
+    /* ---------- FOOTER ---------- */
+    footer{ padding:24px; color:#cbd5e1; text-align:center; background: linear-gradient(180deg, #0f172a, #0b1220) }
+
+    /* ---------- ANTI-OVERFLOW HOTFIXES ---------- */
+    html, body { max-width: 100%; overflow-x: hidden; }
+    .container { width: min(100%, var(--max)); padding-inline: 16px; }
+    .hero, .stats, .grid, .contact, header .container { overflow: hidden; }
+  </style>
 </head>
 <body>
-  <!-- Work in progress banner -->
   <div class="progress-banner">🚧 This website is a work in progress — some projects are placeholders 🚧</div>
 
-  <!-- Header -->
   <header>
     <div class="container nav">
-      <a href="index.html" class="brand" aria-label="Tanvir Analytics — Home">
+      <div class="brand">
         <span class="mark"><img src="logo.png" alt="Tanvir Analytics Logo" /></span>
-        <span class="brand-text">Tanvir Analytics</span>
-      </a>
+        Tanvir Analytics
+      </div>
 
-      <!-- desktop nav -->
       <nav class="navlinks" aria-label="Primary">
-        <a class="btn" href="index.html">Home</a>
         <a class="btn" href="#dashboards">Projects</a>
-        <a class="btn" href="about.html">About</a>
+        <a class="btn" href="#about">About</a>
         <a class="btn" href="#skills">Skills</a>
-        <a class="btn" href="certifications.html">Certifications</a>
+        <a class="btn" href="#certs">Certifications</a>
         <a class="btn cta" href="#contact">Contact</a>
       </nav>
 
-      <!-- phone-only hamburger -->
       <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilemenu">≡</button>
       <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile">
-        <a href="index.html">Home</a>
         <a href="#dashboards">Projects</a>
-        <a href="about.html">About</a>
+        <a href="#about">About</a>
         <a href="#skills">Skills</a>
-        <a href="certifications.html">Certifications</a>
+        <a href="#certs">Certifications</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -46,12 +223,10 @@
 
   <main class="container">
     <!-- Hero -->
-    <section class="hero decor" id="home" aria-label="Intro">
+    <section class="hero" id="home" aria-label="Intro">
       <h1>Turning Data into Decisions</h1>
       <p>Interactive dashboards and analysis with <strong>Power BI</strong>, <strong>Excel</strong>, and <strong>SQL</strong>.</p>
-      <p style="font-size:15px; color:var(--muted)">
-        Skilled in <strong>Python</strong>, <strong>R</strong>, <strong>SQL</strong>, <strong>Excel</strong>, and <strong>Power BI</strong>.
-      </p>
+      <p style="font-size:15px; color:var(--muted)">Skilled in <strong>Python</strong>, <strong>R</strong>, <strong>SQL</strong>, <strong>Excel</strong>, and <strong>Power BI</strong>.</p>
       <div class="actions">
         <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
         <a class="btn" href="#dashboards">View Projects</a>
@@ -60,14 +235,14 @@
     </section>
 
     <!-- Stats -->
-    <section class="stats decor flip" aria-label="Highlights">
+    <section class="stats" aria-label="Highlights">
       <div class="stat"><h3 id="projectsCount">15+</h3><p>Projects Completed</p></div>
       <div class="stat"><h3>5+</h3><p>Industries Analyzed</p></div>
       <div class="stat"><h3>3</h3><p>Certificates Earned</p></div>
     </section>
 
     <!-- Dashboards -->
-    <section id="dashboards" class="decor" aria-label="Featured Interactive Dashboards">
+    <section id="dashboards" aria-label="Featured Interactive Dashboards">
       <h2>Featured Interactive Dashboards</h2>
       <div class="grid" id="deck">
         <article class="card" data-tags="powerbi dashboard">
@@ -81,7 +256,6 @@
             <h3>Sales Performance — Power BI</h3>
             <p><strong>Report excerpt:</strong> 12 months of retail sales highlighting revenue trends, top products, and underperforming regions to guide promos and inventory.</p>
             <div class="tagrow"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Modeling</span></div>
-            <p class="ph-note">🔶 Placeholder: replace with report URL & PDF.</p>
             <a class="btn" href="REPLACE_WITH_SALES_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
           </div>
         </article>
@@ -97,7 +271,6 @@
             <h3>Financial Tracker — Excel</h3>
             <p><strong>Report excerpt:</strong> Budget vs actuals by month and category with slicers; flags overspending early and spots savings opportunities.</p>
             <div class="tagrow"><span class="tag">Excel</span><span class="tag">Pivot & Slicers</span><span class="tag">Power Query</span></div>
-            <p class="ph-note">🔶 Placeholder: replace with OneDrive embed & PDF.</p>
             <a class="btn" href="REPLACE_WITH_FINANCIAL_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
           </div>
         </article>
@@ -112,42 +285,43 @@
     </section>
 
     <!-- Project Highlights -->
-    <section id="projects" class="decor flip" aria-label="Project Highlights">
+    <section id="projects" aria-label="Project Highlights">
       <h2>Project Highlights</h2>
       <div class="grid">
         <article class="card mini" data-tags="sql python">
-          <h3>Customer Churn Analysis</h3>
-          <p>Engineered predictive features in SQL and modeled churn propensity in Python to identify at-risk segments and retention levers.</p>
-          <div class="tagrow"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">EDA</span></div>
-          <p class="ph-note">🔶 Placeholder: link case study & report when ready.</p>
-          <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
-            <a class="btn" href="#" download>Download Report</a>
+          <div class="card__body">
+            <h3>Customer Churn Analysis</h3>
+            <p>Engineered predictive features in SQL and modeled churn propensity in Python to identify at-risk segments and retention levers.</p>
+            <div class="tagrow"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">EDA</span></div>
+            <div class="actions">
+              <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
+              <a class="btn" href="#" download>Download Report</a>
+            </div>
           </div>
         </article>
         <article class="card mini" data-tags="sql excel">
-          <h3>Inventory Health Report</h3>
-          <p>ABC analysis and safety-stock calculator automated with Power Query; reduced stockouts and excess inventory signals.</p>
-          <div class="tagrow"><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">Power Query</span></div>
-          <p class="ph-note">🔶 Placeholder: link workbook & write-up.</p>
-          <div class="actions" style="display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
+          <div class="card__body">
+            <h3>Inventory Health Report</h3>
+            <p>ABC analysis and safety-stock calculator automated with Power Query; reduced stockouts and excess inventory signals.</p>
+            <div class="tagrow"><span class="tag">SQL</span><span class="tag">Excel</span><span class="tag">Power Query</span></div>
+            <div class="actions">
+              <a class="btn" href="#" target="_blank" rel="noopener">View Project</a>
+            </div>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- About (preview) -->
-    <section id="about" class="decor" aria-label="About Me">
+    <!-- About Me -->
+    <section id="about" aria-label="About Me">
       <h2>About Me</h2>
       <p style="max-width:72ch">
         I’m a data analyst who builds interactive dashboards and clear, decision-ready reports. I work with small businesses and teams to uncover trends, automate reporting, and turn messy data into insights. My tools of choice are Python, R, SQL, Excel, and Power BI.
       </p>
-      <p><a class="btn" href="about.html">Read more →</a></p>
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="decor flip" aria-label="Skills">
+    <section id="skills" aria-label="Skills">
       <h2>Technical Skills</h2>
       <div class="tagrow">
         <span class="tag">Python</span>
@@ -162,56 +336,118 @@
     </section>
 
     <!-- Upwork CTA -->
-    <section class="upwork-cta decor" aria-label="Hire on Upwork">
+    <section class="upwork-cta" aria-label="Hire on Upwork" style="margin:24px 0; padding:20px; border-radius:12px; color:#fff; background: linear-gradient(135deg, var(--brand-3), var(--accent)); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
       <strong>Prefer contracts via Upwork? We can do that.</strong>
       <a class="btn primary" href="https://www.upwork.com/freelancers/~REPLACE_UPWORK_ID" target="_blank" rel="noopener">Hire me on Upwork</a>
     </section>
 
     <!-- Certifications (preview) -->
-    <section class="decor flip" aria-label="Certifications">
+    <section id="certs" aria-label="Certifications">
       <h2>Certifications</h2>
       <div class="cert-grid">
-        <div class="cert">
-          <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" />
-          <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
-          <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
-        </div>
-        <div class="cert">
-          <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" />
-          <p><strong>IBM Data Analyst Professional Certificate</strong></p>
-          <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
-        </div>
+        <figure class="cert">
+          <div class="cert__imgwrap">
+            <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" loading="lazy" width="640" height="452">
+          </div>
+          <figcaption class="cert__body">
+            <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
+            <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
+          </figcaption>
+        </figure>
+
+        <figure class="cert">
+          <div class="cert__imgwrap">
+            <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" loading="lazy" width="640" height="452">
+          </div>
+          <figcaption class="cert__body">
+            <p><strong>IBM Data Analyst Professional Certificate</strong></p>
+            <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
+          </figcaption>
+        </figure>
       </div>
-      <p style="margin-top:10px"><a class="btn" href="certifications.html">View all certifications →</a></p>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="decor" aria-label="Contact">
+    <section id="contact" aria-label="Contact">
       <h2>Let’s Work Together</h2>
-      <div class="contact" style="grid-template-columns:1fr">
+      <div class="contact">
         <form action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
-          <label for="name">Name</label>
-          <input id="name" name="name" placeholder="Your name" required />
-          <label for="email">Email</label>
-          <input id="email" type="email" name="email" placeholder="you@example.com" required />
-          <label for="msg">Message</label>
-          <textarea id="msg" name="message" placeholder="Tell me about your project…" required></textarea>
-
-          <!-- optional: anti-spam honeypot -->
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-
-          <div style="margin-top:12px">
-            <button class="btn primary" type="submit">Send Message</button>
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required />
           </div>
-          <p style="margin:10px 2px;color:var(--muted);font-size:13px">
-            I’ll only use your email to reply to this inquiry.
-          </p>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="msg">Message</label>
+            <textarea id="msg" name="message" placeholder="Tell me about your project…" required></textarea>
+          </div>
+          <button class="btn primary" type="submit">Send Message</button>
+          <p style="margin-top:8px; color:var(--muted); font-size:14px">I’ll only use your email to reply to this inquiry.</p>
         </form>
+        <div class="panel">
+          <h3>Direct Contact</h3>
+          <p>Email: <a href="mailto:Tanvir.ahasan.jesun@gmail.com">Tanvir.ahasan.jesun@gmail.com</a></p>
+          <p>GitHub: <a href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank" rel="noopener">github.com/Tanvir-Ahasan-Jesun</a></p>
+          <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Add your profile</a></p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</footer>
-  <script src="main.js"></script>
+
+  <script>
+    // Sync banner height (in case the banner text wraps on small screens)
+    (function(){
+      const b = document.querySelector('.progress-banner');
+      const h = Math.ceil((b?.getBoundingClientRect().height) || 36);
+      document.documentElement.style.setProperty('--bannerH', h + 'px');
+      window.addEventListener('resize', () => {
+        const hh = Math.ceil((b?.getBoundingClientRect().height) || 36);
+        document.documentElement.style.setProperty('--bannerH', hh + 'px');
+      });
+    })();
+
+    // Year
+    const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+
+    // Burger menu
+    const burger = document.querySelector('.burger');
+    const mnav = document.getElementById('mobilemenu');
+    if (burger && mnav){
+      burger.addEventListener('click', () => {
+        const open = mnav.classList.toggle('show');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        mnav.classList.remove('show'); burger.setAttribute('aria-expanded', 'false');
+      }));
+    }
+
+    // Filter chips
+    const chips=[...document.querySelectorAll('.chip')];
+    const cards=[...document.querySelectorAll('[data-tags]')];
+    chips.forEach(ch=>ch.addEventListener('click',()=>{
+      chips.forEach(c=>c.setAttribute('aria-pressed','false'));
+      ch.setAttribute('aria-pressed','true');
+      const f=ch.dataset.filter;
+      cards.forEach(card=>{
+        const tags=(card.dataset.tags || '').split(' ');
+        card.style.display = (f==='all' || tags.includes(f)) ? '' : 'none';
+      });
+    }));
+
+    // Show placeholders if embeds not set
+    document.querySelectorAll('.thumb').forEach(thumb => {
+      const frame = thumb.querySelector('iframe');
+      const ph = thumb.querySelector('.placeholder');
+      if (frame && /REPLACE_/i.test(frame.src) && ph){
+        frame.style.display = 'none'; ph.hidden = false;
+      }
+    });
+  </script>
 </body>
 </html>
