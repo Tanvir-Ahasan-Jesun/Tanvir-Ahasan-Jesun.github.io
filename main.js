@@ -1,44 +1,40 @@
-// ---------- UTIL ----------
+// UTIL
 const $ = (q, root = document) => root.querySelector(q);
 const $$ = (q, root = document) => [...root.querySelectorAll(q)];
 
-// ---------- YEAR ----------
+// YEAR
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// ---------- BANNER / HEADER SYNC ----------
-(function syncBannerAndHeader(){
-  const banner = document.querySelector('.progress-banner');
-  const h = Math.ceil((banner?.getBoundingClientRect().height) || 36);
-  document.documentElement.style.setProperty('--bannerH', h + 'px');
+// BANNER HEIGHT SYNC
+(function(){
+  const b = $('.progress-banner');
+  const setH = () => {
+    const h = Math.ceil((b?.getBoundingClientRect().height) || 36);
+    document.documentElement.style.setProperty('--bannerH', h + 'px');
+  };
+  setH();
+  window.addEventListener('resize', setH);
 })();
-window.addEventListener('resize', () => {
-  const banner = document.querySelector('.progress-banner');
-  const h = Math.ceil((banner?.getBoundingClientRect().height) || 36);
-  document.documentElement.style.setProperty('--bannerH', h + 'px');
-});
 
-// ---------- MOBILE MENU ----------
+// MOBILE MENU
 const burger = $('.burger');
 const mnav = $('#mobilemenu');
-if (burger && mnav) {
-  const toggleMenu = () => {
+if (burger && mnav){
+  burger.addEventListener('click', () => {
     const open = mnav.classList.toggle('show');
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  };
-  burger.addEventListener('click', toggleMenu);
-  $$('#mobilemenu a').forEach(a =>
-    a.addEventListener('click', () => {
-      mnav.classList.remove('show');
-      burger.setAttribute('aria-expanded', 'false');
-    })
-  );
+  });
+  $$('#mobilemenu a').forEach(a => a.addEventListener('click', () => {
+    mnav.classList.remove('show');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
 }
 
-// ---------- FILTER CHIPS (only if #dashboards exists) ----------
+// FILTER CHIPS (index only)
 const dashboards = $('#dashboards');
 if (dashboards) {
-  const chips = $$('.chip', dashboards.parentElement || document);
+  const chips = $$('.chip');
   const cards = $$('[data-tags]', dashboards);
   chips.forEach(ch => ch.addEventListener('click', () => {
     chips.forEach(c => c.setAttribute('aria-pressed','false'));
@@ -51,7 +47,7 @@ if (dashboards) {
   }));
 }
 
-// ---------- IFRAME PLACEHOLDERS ----------
+// PLACEHOLDER FOR EMBEDS
 $$('.thumb').forEach(thumb => {
   const frame = $('iframe', thumb);
   const ph = $('.placeholder', thumb);
@@ -61,7 +57,7 @@ $$('.thumb').forEach(thumb => {
   }
 });
 
-// ---------- IN-APP BROWSER BANNER ----------
+// IN-APP BROWSER HINT (optional)
 (function(){
   const ua = navigator.userAgent || "";
   const isInApp = /Twitter|FBAN|FBAV|Instagram|Line\/|Snapchat|WhatsApp/i.test(ua);
@@ -74,10 +70,7 @@ $$('.thumb').forEach(thumb => {
   });
   bar.innerHTML = `
     <span>For best experience, open this page in your browser.</span>
-    <a href="${location.href}"
-       style="background:#fff;color:#1e3a8a;padding:10px 14px;border-radius:10px;text-decoration:none;">
-       Open in Browser
-    </a>`;
+    <a href="${location.href}" style="background:#fff;color:#1e3a8a;padding:10px 14px;border-radius:10px;text-decoration:none;">Open in Browser</a>`;
   document.body.appendChild(bar);
   document.body.style.paddingBottom = '64px';
 })();
