@@ -14,25 +14,23 @@
 
   <header>
     <div class="container nav">
-      <a href="index.html" class="brand">
-        <span class="mark"><img src="logo.png" alt="Tanvir Analytics Logo" /></span>
-        <span class="brand-text">Tanvir Analytics</span>
+      <a href="index.html" class="brand" aria-label="Tanvir Analytics — Home">
+        <img src="logo.png" alt="Tanvir Analytics Logo" />
+        <span>Tanvir Analytics</span>
       </a>
       <nav class="navlinks" aria-label="Primary">
-        <a class="btn" href="index.html">Home</a>
         <a class="btn" href="index.html#dashboards">Projects</a>
         <a class="btn" href="about.html">About</a>
         <a class="btn" href="index.html#skills">Skills</a>
-        <a class="btn cta" href="certifications.html">Certifications</a>
-        <a class="btn" href="index.html#contact">Contact</a>
+        <a class="btn" href="certifications.html" aria-current="page">Certifications</a>
+        <a class="btn cta" href="index.html#contact">Contact</a>
       </nav>
       <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilemenu">≡</button>
       <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile">
-        <a href="index.html">Home</a>
         <a href="index.html#dashboards">Projects</a>
         <a href="about.html">About</a>
         <a href="index.html#skills">Skills</a>
-        <a href="certifications.html">Certifications</a>
+        <a href="certifications.html" aria-current="page">Certifications</a>
         <a href="index.html#contact">Contact</a>
       </nav>
     </div>
@@ -44,26 +42,41 @@
       <p>Professional credentials and verification links.</p>
     </section>
 
-    <section class="cert-grid">
-      <div class="cert">
-        <div class="cert__imgwrap">
-          <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300)" />
-        </div>
-        <div class="cert__body">
-          <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
-          <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
-        </div>
+    <section aria-label="Certification Grid">
+      <div class="cert-grid">
+        <figure class="cert">
+          <div class="cert__imgwrap">
+            <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" loading="lazy" width="640" height="452" />
+          </div>
+          <figcaption class="cert__body">
+            <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
+            <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
+          </figcaption>
+        </figure>
+
+        <figure class="cert">
+          <div class="cert__imgwrap">
+            <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" loading="lazy" width="640" height="452" />
+          </div>
+          <figcaption class="cert__body">
+            <p><strong>IBM Data Analyst Professional Certificate</strong></p>
+            <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
+          </figcaption>
+        </figure>
+
+        <!-- Add more certifications below as needed -->
+        <!--
+        <figure class="cert">
+          <div class="cert__imgwrap">
+            <img src="your-cert-image.png" alt="Certificate Title" />
+          </div>
+          <figcaption class="cert__body">
+            <p><strong>Certificate Title</strong></p>
+            <small>Issued by Org • <a href="VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
+          </figcaption>
+        </figure>
+        -->
       </div>
-      <div class="cert">
-        <div class="cert__imgwrap">
-          <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" />
-        </div>
-        <div class="cert__body">
-          <p><strong>IBM Data Analyst Professional Certificate</strong></p>
-          <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
-        </div>
-      </div>
-      <!-- Add more certifications here -->
     </section>
   </main>
 
