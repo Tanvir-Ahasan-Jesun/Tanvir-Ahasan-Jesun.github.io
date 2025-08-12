@@ -179,29 +179,32 @@
       <p style="margin-top:10px"><a class="btn" href="certifications.html">View all certifications →</a></p>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="decor" aria-label="Contact">
-      <h2>Let’s Work Together</h2>
-      <div class="contact">
-        <form action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
-          <label for="name">Name</label>
-          <input id="name" name="name" placeholder="Your name" required />
-          <label for="email">Email</label>
-          <input id="email" type="email" name="email" placeholder="you@example.com" required />
-          <label for="msg">Message</label>
-          <textarea id="msg" name="message" placeholder="Tell me about your project…" required></textarea>
-          <div style="margin-top:12px"><button class="btn primary" type="submit">Send Message</button></div>
-        </form>
-        <div class="panel">
-          <h3>Direct Contact</h3>
-          <p>Email: <a href="mailto:Tanvir.ahasan.jesun@gmail.com">Tanvir.ahasan.jesun@gmail.com</a></p>
-          <p>GitHub: <a href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank" rel="noopener">github.com/Tanvir-Ahasan-Jesun</a></p>
-          <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Add your profile</a></p>
-        </div>
-      </div>
-    </section>
-  </main>
+  <!-- Contact -->
+<section id="contact" class="decor" aria-label="Contact">
+  <h2>Let’s Work Together</h2>
+  <div class="contact" style="grid-template-columns:1fr"> <!-- force single column on desktop -->
+    <form action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+      <label for="name">Name</label>
+      <input id="name" name="name" placeholder="Your name" required />
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" placeholder="you@example.com" required />
+      <label for="msg">Message</label>
+      <textarea id="msg" name="message" placeholder="Tell me about your project…" required></textarea>
 
+      <!-- optional: anti-spam honeypot -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <!-- optional: success redirect -->
+      <!-- <input type="hidden" name="_redirect" value="https://YOUR-DOMAIN/thanks.html"> -->
+
+      <div style="margin-top:12px">
+        <button class="btn primary" type="submit">Send Message</button>
+      </div>
+      <p style="margin:10px 2px;color:var(--muted);font-size:13px">
+        I’ll only use your email to reply to this inquiry.
+      </p>
+    </form>
+  </div>
+</section>
   <footer>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</footer>
 
   <script src="main.js"></script>
