@@ -1,49 +1,95 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#2563eb" />
-  <title>Certifications — Tanvir Analytics</title>
-  <meta name="description" content="All certifications and verification links for Tanvir Analytics." />
-  <link rel="icon" href="logo.png" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="progress-banner">🚧 This website is a work in progress — some projects are placeholders 🚧</div>
+// ---------- UTIL ----------
+const $ = (q, root = document) => root.querySelector(q);
+const $$ = (q, root = document) => [...root.querySelectorAll(q)];
 
-  <header>
-    <div class="container nav">
-      <a href="index.html" class="brand">
-        <span class="mark"><img src="logo.png" alt="Tanvir Analytics Logo" /></span>
-        <span>Tanvir Analytics</span>
-      </a>
-      <nav class="navlinks" aria-label="Primary">
-        <a class="btn" href="index.html#dashboards">Projects</a>
-        <a class="btn" href="about.html">About</a>
-        <a class="btn" href="index.html#skills">Skills</a>
-        <a class="btn cta" href="certifications.html">Certifications</a>
-        <a class="btn" href="index.html#contact">Contact</a>
-      </nav>
-      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilemenu">≡</button>
-      <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile">
-        <a href="index.html">Home</a>
-        <a href="index.html#dashboards">Projects</a>
-        <a href="about.html">About</a>
-        <a href="index.html#skills">Skills</a>
-        <a href="certifications.html">Certifications</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+// ---------- YEAR ----------
+const yearEl = $('#year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  <main class="container">
-    <!-- Your certifications content -->
-  </main>
+// ---------- MOBILE MENU ----------
+const burger = $('.burger');
+const mnav = $('#mobilemenu');
 
-  <footer>
-    <div class="container">© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</div>
-  </footer>
-  <script src="main.js"></script>
-</body>
-</html>
+if (burger && mnav) {
+  const toggleMenu = () => {
+    const open = mnav.classList.toggle('show');
+    burger.setAttribute('aria-expanded', open);
+  };
+  burger.addEventListener('click', toggleMenu);
+
+  // Close menu on any mobile link click
+  $$('#mobilemenu a').forEach(a =>
+    a.addEventListener('click', () => {
+      mnav.classList.remove('show');
+      burger.setAttribute('aria-expanded', 'false');
+    })
+  );
+}
+
+// ---------- PLACE MOBILE MENU UNDER HEADER ----------
+function placeMenu() {
+  const h = $('header')?.getBoundingClientRect().height || 64;
+  document.documentElement.style.setProperty('--navTop', Math.ceil(h) + 'px');
+}
+window.addEventListener('load', placeMenu);
+window.addEventListener('resize', placeMenu);
+window.addEventListener('orientationchange', placeMenu);
+
+// ---------- FILTER CHIPS ----------
+const dashboards = $('#dashboards');
+if (dashboards) {
+  const chips = $$('.chip', dashboards.parentElement);
+  const cards = $$('[data-tags]', dashboards);
+  chips.forEach(ch =>
+    ch.addEventListener('click', () => {
+      chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+      ch.setAttribute('aria-pressed', 'true');
+      const f = ch.dataset.filter;
+      cards.forEach(card => {
+        const tags = (card.dataset.tags || '').split(' ');
+        card.style.display = f === 'all' || tags.includes(f) ? '' : 'none';
+      });
+    })
+  );
+}
+
+// ---------- IFRAME PLACEHOLDERS ----------
+$$('.thumb').forEach(thumb => {
+  const frame = $('iframe', thumb);
+  const ph = $('.placeholder', thumb);
+  if (frame && /REPLACE_/i.test(frame.src) && ph) {
+    frame.style.display = 'none';
+    ph.hidden = false;
+  }
+});
+
+// ---------- IN-APP BROWSER BANNER ----------
+(function () {
+  const ua = navigator.userAgent || "";
+  const isInApp = /Twitter|FBAN|FBAV|Instagram|Line\/|Snapchat|WhatsApp/i.test(ua);
+  if (!isInApp) return;
+
+  const bar = document.createElement('div');
+  Object.assign(bar.style, {
+    position: 'fixed',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 1000,
+    padding: '12px 16px',
+    background: 'linear-gradient(135deg,#1e40af,#2563eb)',
+    color: '#fff',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: '12px'
+  });
+  bar.innerHTML = `
+    <span>For best experience, open this page in your browser.</span>
+    <a href="${location.href}"
+       style="background:#fff;color:#1e3a8a;padding:10px 14px;border-radius:10px;text-decoration:none;">
+       Open in Browser
+    </a>`;
+  document.body.appendChild(bar);
+  document.body.style.paddingBottom = '64px';
+})();
