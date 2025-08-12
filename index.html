@@ -7,10 +7,9 @@
   <title>Tanvir Analytics — Interactive Dashboards & Data Projects</title>
   <meta name="description" content="Tanvir Analytics — Data analyst skilled in Python, R, SQL, Excel, Power BI. Interactive dashboards, reports, and insights." />
   <link rel="icon" href="logo.png" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=10" />
 </head>
 <body>
-  
 
   <header>
     <div class="container nav">
@@ -38,144 +37,148 @@
     </div>
   </header>
 
-  <main class="container">
+  <main>
     <!-- Hero -->
     <section class="hero" id="home" aria-label="Intro">
-      <h1>Turning Data into Decisions</h1>
-      <p>Interactive dashboards and analysis with <strong>Power BI</strong>, <strong>Excel</strong>, and <strong>SQL</strong>.</p>
-      <p style="font-size:15px; color:var(--muted)">Skilled in <strong>Python</strong>, <strong>R</strong>, <strong>SQL</strong>, <strong>Excel</strong>, and <strong>Power BI</strong>.</p>
-      <div class="actions">
-        <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
-        <a class="btn" href="#dashboards">View Projects</a>
-      </div>
-    </section>
-
-    <!-- Stats -->
-    <section class="stats" aria-label="Highlights">
-      <div class="stat"><h3 id="projectsCount">15+</h3><p>Projects Completed</p></div>
-      <div class="stat"><h3>5+</h3><p>Industries Analyzed</p></div>
-      <div class="stat"><h3>3</h3><p>Certificates Earned</p></div>
-    </section>
-
-    <!-- Dashboards -->
-    <section id="dashboards" aria-label="Featured Interactive Dashboards">
-      <h2>Featured Interactive Dashboards</h2>
-      <div class="grid" id="deck">
-        <article class="card" data-tags="powerbi dashboard">
-          <div class="thumb">
-            <iframe title="Sales Performance (Power BI)"
-              src="https://app.powerbi.com/view?r=REPLACE_WITH_YOUR_REPORT_URL"
-              loading="lazy" allowfullscreen></iframe>
-            <div class="placeholder" hidden>Sales Performance — Power BI<br/>Embed coming soon</div>
-          </div>
-          <div class="card__body">
-            <h3>Sales Performance — Power BI</h3>
-            <p><strong>Report excerpt:</strong> 12 months of retail sales highlighting revenue trends, top products, and underperforming regions to guide promos and inventory.</p>
-            <div class="tagrow"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Modeling</span></div>
-            <a class="btn" href="REPLACE_WITH_SALES_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
-          </div>
-        </article>
-
-        <article class="card" data-tags="excel dashboard">
-          <div class="thumb">
-            <iframe title="Financial Tracker (Excel Online)"
-              src="https://onedrive.live.com/embed?RESID=REPLACE_WITH_YOUR_ONEDRIVE_ID&wdAllowInteractivity=True"
-              loading="lazy"></iframe>
-            <div class="placeholder" hidden>Financial Tracker — Excel<br/>Embed coming soon</div>
-          </div>
-          <div class="card__body">
-            <h3>Financial Tracker — Excel</h3>
-            <p><strong>Report excerpt:</strong> Budget vs actuals by month and category with slicers; flags overspending early and spots savings opportunities.</p>
-            <div class="tagrow"><span class="tag">Excel</span><span class="tag">Pivot & Slicers</span><span class="tag">Power Query</span></div>
-            <a class="btn" href="REPLACE_WITH_FINANCIAL_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
-          </div>
-        </article>
-      </div>
-
-      <div class="filters" role="group" aria-label="Filter projects">
-        <button class="chip" aria-pressed="true" data-filter="all">All</button>
-        <button class="chip" aria-pressed="false" data-filter="powerbi">Power BI</button>
-        <button class="chip" aria-pressed="false" data-filter="excel">Excel</button>
-        <button class="chip" aria-pressed="false" data-filter="sql">SQL</button>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="skills" aria-label="Skills">
-      <h2>Technical Skills</h2>
-      <div class="tagrow">
-        <span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL</span>
-        <span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">Data Visualization</span>
-        <span class="tag">Data Cleaning</span><span class="tag">Statistical Analysis</span>
-      </div>
-    </section>
-
-    <!-- Upwork CTA -->
-    <section class="upwork-cta" aria-label="Hire on Upwork" style="margin:24px 0; padding:20px; border-radius:12px; color:#fff; background: linear-gradient(135deg, var(--brand-3), var(--accent)); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-      <strong>Prefer contracts via Upwork? We can do that.</strong>
-      <a class="btn primary" href="https://www.upwork.com/freelancers/~REPLACE_UPWORK_ID" target="_blank" rel="noopener">Hire me on Upwork</a>
-    </section>
-
-    <!-- Certifications (preview) -->
-    <section id="certs" aria-label="Certifications">
-      <h2>Certifications</h2>
-      <div class="cert-grid">
-        <figure class="cert">
-          <div class="cert__imgwrap">
-            <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" loading="lazy" width="640" height="452">
-          </div>
-          <figcaption class="cert__body">
-            <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
-            <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
-          </figcaption>
-        </figure>
-
-        <figure class="cert">
-          <div class="cert__imgwrap">
-            <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" loading="lazy" width="640" height="452">
-          </div>
-          <figcaption class="cert__body">
-            <p><strong>IBM Data Analyst Professional Certificate</strong></p>
-            <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="actions" style="margin-top:12px">
-        <a class="btn" href="certifications.html">View All Certifications</a>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" aria-label="Contact">
-      <h2>Let’s Work Together</h2>
-      <div class="contact">
-        <form action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" placeholder="Your name" required />
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" type="email" name="email" placeholder="you@example.com" required />
-          </div>
-          <div class="field">
-            <label for="msg">Message</label>
-            <textarea id="msg" name="message" placeholder="Tell me about your project…" required></textarea>
-          </div>
-          <button class="btn primary" type="submit">Send Message</button>
-          <p style="margin-top:8px; color:var(--muted); font-size:14px">I’ll only use your email to reply to this inquiry.</p>
-        </form>
-        <div class="panel">
-          <h3>Direct Contact</h3>
-          <p>Email: <a href="mailto:Tanvir.ahasan.jesun@gmail.com">Tanvir.ahasan.jesun@gmail.com</a></p>
-          <p>GitHub: <a href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank" rel="noopener">github.com/Tanvir-Ahasan-Jesun</a></p>
-          <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Add your profile</a></p>
+      <div class="container">
+        <h1>Turning Data into Decisions</h1>
+        <p>Interactive dashboards and analysis with <strong>Power BI</strong>, <strong>Excel</strong>, and <strong>SQL</strong>.</p>
+        <p style="font-size:15px; color:var(--muted)">Skilled in <strong>Python</strong>, <strong>R</strong>, <strong>SQL</strong>, <strong>Excel</strong>, and <strong>Power BI</strong>.</p>
+        <div class="actions">
+          <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+          <a class="btn" href="#dashboards">View Projects</a>
         </div>
       </div>
     </section>
+
+    <div class="container">
+      <!-- Stats -->
+      <section class="stats" aria-label="Highlights">
+        <div class="stat"><h3 id="projectsCount">15+</h3><p>Projects Completed</p></div>
+        <div class="stat"><h3>5+</h3><p>Industries Analyzed</p></div>
+        <div class="stat"><h3>3</h3><p>Certificates Earned</p></div>
+      </section>
+
+      <!-- Dashboards -->
+      <section id="dashboards" aria-label="Featured Interactive Dashboards">
+        <h2>Featured Interactive Dashboards</h2>
+        <div class="grid" id="deck">
+          <article class="card" data-tags="powerbi dashboard">
+            <div class="thumb">
+              <iframe title="Sales Performance (Power BI)"
+                src="https://app.powerbi.com/view?r=REPLACE_WITH_YOUR_REPORT_URL"
+                loading="lazy" allowfullscreen></iframe>
+              <div class="placeholder" hidden>Sales Performance — Power BI<br/>Embed coming soon</div>
+            </div>
+            <div class="card__body">
+              <h3>Sales Performance — Power BI</h3>
+              <p><strong>Report excerpt:</strong> 12 months of retail sales highlighting revenue trends, top products, and underperforming regions to guide promos and inventory.</p>
+              <div class="tagrow"><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Data Modeling</span></div>
+              <a class="btn" href="REPLACE_WITH_SALES_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
+            </div>
+          </article>
+
+          <article class="card" data-tags="excel dashboard">
+            <div class="thumb">
+              <iframe title="Financial Tracker (Excel Online)"
+                src="https://onedrive.live.com/embed?RESID=REPLACE_WITH_YOUR_ONEDRIVE_ID&wdAllowInteractivity=True"
+                loading="lazy"></iframe>
+              <div class="placeholder" hidden>Financial Tracker — Excel<br/>Embed coming soon</div>
+            </div>
+            <div class="card__body">
+              <h3>Financial Tracker — Excel</h3>
+              <p><strong>Report excerpt:</strong> Budget vs actuals by month and category with slicers; flags overspending early and spots savings opportunities.</p>
+              <div class="tagrow"><span class="tag">Excel</span><span class="tag">Pivot & Slicers</span><span class="tag">Power Query</span></div>
+              <a class="btn" href="REPLACE_WITH_FINANCIAL_REPORT_PDF" target="_blank" rel="noopener">View Full Report (PDF)</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button class="chip" aria-pressed="true" data-filter="all">All</button>
+          <button class="chip" aria-pressed="false" data-filter="powerbi">Power BI</button>
+          <button class="chip" aria-pressed="false" data-filter="excel">Excel</button>
+          <button class="chip" aria-pressed="false" data-filter="sql">SQL</button>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" aria-label="Skills">
+        <h2>Technical Skills</h2>
+        <div class="tagrow">
+          <span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL</span>
+          <span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">Data Visualization</span>
+          <span class="tag">Data Cleaning</span><span class="tag">Statistical Analysis</span>
+        </div>
+      </section>
+
+      <!-- Upwork CTA -->
+      <section class="upwork-cta" aria-label="Hire on Upwork" style="margin:24px 0; padding:20px; border-radius:12px; color:#fff; background: linear-gradient(135deg, var(--brand-3), var(--accent)); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <strong>Prefer contracts via Upwork? We can do that.</strong>
+        <a class="btn primary" href="https://www.upwork.com/freelancers/~REPLACE_UPWORK_ID" target="_blank" rel="noopener">Hire me on Upwork</a>
+      </section>
+
+      <!-- Certs -->
+      <section id="certs" aria-label="Certifications">
+        <h2>Certifications</h2>
+        <div class="cert-grid">
+          <figure class="cert">
+            <div class="cert__imgwrap">
+              <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" loading="lazy" width="640" height="452">
+            </div>
+            <figcaption class="cert__body">
+              <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
+              <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
+            </figcaption>
+          </figure>
+
+          <figure class="cert">
+            <div class="cert__imgwrap">
+              <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" loading="lazy" width="640" height="452">
+            </div>
+            <figcaption class="cert__body">
+              <p><strong>IBM Data Analyst Professional Certificate</strong></p>
+              <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="actions" style="margin-top:12px">
+          <a class="btn" href="certifications.html">View All Certifications</a>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" aria-label="Contact">
+        <h2>Let’s Work Together</h2>
+        <div class="contact">
+          <form action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field">
+              <label for="msg">Message</label>
+              <textarea id="msg" name="message" placeholder="Tell me about your project…" required></textarea>
+            </div>
+            <button class="btn primary" type="submit">Send Message</button>
+            <p style="margin-top:8px; color:var(--muted); font-size:14px">I’ll only use your email to reply to this inquiry.</p>
+          </form>
+          <div class="panel">
+            <h3>Direct Contact</h3>
+            <p>Email: <a href="mailto:Tanvir.ahasan.jesun@gmail.com">Tanvir.ahasan.jesun@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank" rel="noopener">github.com/Tanvir-Ahasan-Jesun</a></p>
+            <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Add your profile</a></p>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</footer>
-  <script src="main.js"></script>
+  <script src="main.js?v=3"></script>
 </body>
 </html>
