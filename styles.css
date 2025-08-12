@@ -73,26 +73,30 @@ body{padding-top:var(--headerH)}
 .mobilemenu a{display:block; padding:12px 14px; border-bottom:1px solid rgba(148,163,184,.18); color:#1e3a8a; text-decoration:none}
 .mobilemenu.show{display:block}
 
+/* Hero — edge to edge */
 .hero {
   position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 56px 0 32px;
   background: url('hero-bg.png') no-repeat center center;
   background-size: cover;
-  color: #fff; /* ensure text is readable */
-  padding: 56px 0 32px; /* keep your original spacing */
-  border-radius: 12px;
+  color: #fff;
+  border-radius: 0; /* flush with header & stats */
 }
 
 .hero::before {
   content: "";
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.3); /* dark overlay for contrast */
+  inset: 0;
+  background: rgba(0,0,0,0.3); /* overlay for contrast */
+  pointer-events: none;
   z-index: 0;
 }
 
 .hero * {
   position: relative;
-  z-index: 1; /* keep text above overlay */
+  z-index: 1;
 }
 
 /* Action buttons (hero only) */
@@ -115,7 +119,8 @@ body{padding-top:var(--headerH)}
 /* Stats — matches Upwork CTA */
 .stats{
   display:grid; grid-template-columns:repeat(12,1fr);
-  gap:16px; margin:24px 0 8px; padding:20px;
+  gap:16px; margin:0; /* flush against hero */
+  padding:20px;
   border-radius:12px; color:#fff;
   background:linear-gradient(135deg,var(--brand-3),var(--accent));
 }
