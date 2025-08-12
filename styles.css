@@ -2,10 +2,15 @@
    Tanvir Analytics — Global Styles
    =========================== */
 
-:root { --bannerH: 0px; }
-.progress-banner { display: none; }
-header { top: 0; }
-body { padding-top: 0; }
+:root {
+  --bg:#f2f4f7; --ink:#111827; --muted:#6b7280; --card:#ffffff;
+  --brand-1:#2563eb; --brand-2:#3b82f6; --brand-3:#1e40af;
+  --brand-ink:#ffffff; --accent:#0ea5e9;
+  --shadow:0 12px 35px rgba(0,0,0,.08);
+  --ring:rgba(37,99,235,.28);
+  --radius:16px; --max:1100px;
+  --bannerH:0px;
+}
 
 
 @media (prefers-color-scheme: dark){
