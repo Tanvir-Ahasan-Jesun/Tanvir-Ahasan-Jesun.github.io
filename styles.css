@@ -95,7 +95,7 @@ body{padding-top:var(--headerH)}
   color:#1e3a8a; text-decoration:none
 }
 .mobilemenu.show{display:block}
-
+/*
 .hero{
   position:relative;
   background: linear-gradient(180deg,#1e3a8a 0%, #0f172a 100%);
@@ -106,8 +106,20 @@ body{padding-top:var(--headerH)}
   position:absolute; inset:0;
   background-image:
     radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
-  background-size: 24px 24px;   /* tiny grid/“data” feel */
+  background-size: 24px 24px;   // tiny grid “data” feel
   opacity:.15; pointer-events:none;
+}
+*/
+
+
+
+.hero {
+  position: relative;
+  background: none;
+  color: #fff; /* Or whatever text color you want */
+}
+.hero::before {
+  content: none;
 }
 
 /* Actions */
