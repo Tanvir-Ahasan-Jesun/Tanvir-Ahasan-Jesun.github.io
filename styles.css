@@ -95,7 +95,8 @@ body{padding-top:var(--headerH)}
   color:#1e3a8a; text-decoration:none
 }
 .mobilemenu.show{display:block}
-/*
+
+/* Old hero (kept for reference, fully commented out)
 .hero{
   position:relative;
   background: linear-gradient(180deg,#1e3a8a 0%, #0f172a 100%);
@@ -106,40 +107,43 @@ body{padding-top:var(--headerH)}
   position:absolute; inset:0;
   background-image:
     radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
-  background-size: 24px 24px;   // tiny grid “data” feel
+  background-size: 24px 24px;   tiny grid “data” feel
   opacity:.15; pointer-events:none;
 }
 */
 
-
-
+/* New hero — light background, dark readable text */
 .hero {
   position: relative;
-  background: none;
-  color: #fff; /* Or whatever text color you want */
+  background: none; /* no gradient or image */
+  color: var(--ink); /* dark text for light background */
+  padding: 60px 0; /* breathing room */
 }
-.hero::before {
-  content: none;
-}
+.hero::before { content: none; }
 
-/* Actions */
-.actions{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
-.actions .btn{
+/* Global Buttons (used in cards, forms, etc.) */
+.btn{
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
   padding:14px 22px; border-radius:16px;
   border:1px solid rgba(148,163,184,.35);
-  background:var(--card); color:#0f172a;
+  background:var(--card); color:var(--ink);
   box-shadow:0 10px 30px rgba(2,6,23,.10);
   text-decoration:none; transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
 }
-.actions .btn:hover{ transform:translateY(-2px); filter:brightness(.98); box-shadow:0 12px 28px rgba(2,6,23,.14) }
-.actions .btn.primary{
+.btn:hover{ transform:translateY(-2px); filter:brightness(.98); box-shadow:0 12px 28px rgba(2,6,23,.14) }
+
+/* Primary action (PDF buttons, Send Message, etc.) */
+.btn.primary{
   background:linear-gradient(180deg,var(--brand-2),var(--brand-1));
-  color:#fff; border-color:transparent; box-shadow:0 16px 36px rgba(37,99,235,.35);
+  color:var(--brand-ink);
+  border-color:transparent; box-shadow:0 16px 36px rgba(37,99,235,.35);
 }
-.actions .btn.primary:hover{
+.btn.primary:hover{
   transform:translateY(-2px); box-shadow:0 18px 38px rgba(37,99,235,.42)
 }
+
+/* Actions row (kept so spacing on hero buttons stays nice) */
+.actions{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
 
 /* Stats */
 .stats{
@@ -232,3 +236,4 @@ footer{
 /* Overflow guard */
 html,body{max-width:100%; overflow-x:hidden}
 .container{width:min(100%,var(--max)); padding-inline:16px}
+
