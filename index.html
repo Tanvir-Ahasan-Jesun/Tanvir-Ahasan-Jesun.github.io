@@ -7,7 +7,7 @@
   <title>Tanvir Analytics — Interactive Dashboards & Data Projects</title>
   <meta name="description" content="Tanvir Analytics — Data analyst skilled in Python, R, SQL, Excel, Power BI. Interactive dashboards, reports, and insights." />
   <link rel="icon" href="logo.png" />
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="styles.css?v=12" />
 </head>
 <body>
 
@@ -26,16 +26,25 @@
         <a class="nav-btn cta" href="#contact">Contact</a>
       </nav>
 
-      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilemenu">
+      <button class="burger" aria-label="Menu" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
+    
+    <!-- Mobile Menu -->
+    <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile Navigation">
+      <a href="#dashboards">Projects</a>
+      <a href="about.html">About</a>
+      <a href="#skills">Skills</a>
+      <a href="certifications.html">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
   <main>
-    <!-- Enhanced Hero -->
+    <!-- Hero -->
     <section class="hero" id="home" aria-label="Intro">
       <div class="container">
         <div class="hero-content">
@@ -102,20 +111,12 @@
           <article class="card" data-tags="powerbi dashboard">
             <div class="card-header">
               <div class="tech-badge">Power BI</div>
-              <div class="card-actions">
-                <button class="icon-btn" aria-label="Preview">
-                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-                  </svg>
-                </button>
-              </div>
             </div>
             <div class="thumb">
               <iframe title="Sales Performance (Power BI)"
                 src="https://app.powerbi.com/view?r=REPLACE_WITH_YOUR_REPORT_URL"
                 loading="lazy" allowfullscreen></iframe>
-              <div class="placeholder" hidden>
+              <div class="placeholder">
                 <div class="placeholder-content">
                   <svg width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
@@ -145,7 +146,43 @@
             </div>
           </article>
 
-          <!-- Repeat similar structure for other cards -->
+          <article class="card" data-tags="excel dashboard">
+            <div class="card-header">
+              <div class="tech-badge">Excel</div>
+            </div>
+            <div class="thumb">
+              <iframe title="Financial Tracker (Excel Online)"
+                src="https://onedrive.live.com/embed?RESID=REPLACE_WITH_YOUR_ONEDRIVE_ID&wdAllowInteractivity=True"
+                loading="lazy"></iframe>
+              <div class="placeholder">
+                <div class="placeholder-content">
+                  <svg width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+                    <path d="M3.5 6a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5V6z"/>
+                  </svg>
+                  <p>Financial Tracker — Excel</p>
+                  <small>Embed coming soon</small>
+                </div>
+              </div>
+            </div>
+            <div class="card__body">
+              <h3>Financial Tracker Dashboard</h3>
+              <p>Budget vs actuals by month and category with slicers; flags overspending early and spots savings opportunities.</p>
+              <div class="card-footer">
+                <div class="tagrow">
+                  <span class="tag">Excel</span>
+                  <span class="tag">Pivot & Slicers</span>
+                  <span class="tag">Power Query</span>
+                </div>
+                <a class="btn link" href="REPLACE_WITH_FINANCIAL_REPORT_PDF" target="_blank" rel="noopener">
+                  View Report
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
         </div>
 
         <div class="filters" role="group" aria-label="Filter projects">
@@ -156,7 +193,79 @@
         </div>
       </section>
 
-      <!-- Rest of your sections with similar enhancements -->
+      <!-- Skills -->
+      <section id="skills" aria-label="Skills">
+        <h2>Technical Skills</h2>
+        <div class="tagrow">
+          <span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL</span>
+          <span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">Data Visualization</span>
+          <span class="tag">Data Cleaning</span><span class="tag">Statistical Analysis</span>
+        </div>
+      </section>
+
+      <!-- Upwork CTA -->
+      <section class="upwork-cta" aria-label="Hire on Upwork">
+        <strong>Prefer contracts via Upwork? We can do that.</strong>
+        <a class="btn primary" href="https://www.upwork.com/freelancers/~REPLACE_UPWORK_ID" target="_blank" rel="noopener">Hire me on Upwork</a>
+      </section>
+
+      <!-- Certs -->
+      <section id="certs" aria-label="Certifications">
+        <h2>Certifications</h2>
+        <div class="cert-grid">
+          <figure class="cert">
+            <div class="cert__imgwrap">
+              <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" loading="lazy" width="640" height="452">
+            </div>
+            <figcaption class="cert__body">
+              <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
+              <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
+            </figcaption>
+          </figure>
+
+          <figure class="cert">
+            <div class="cert__imgwrap">
+              <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" loading="lazy" width="640" height="452">
+            </div>
+            <figcaption class="cert__body">
+              <p><strong>IBM Data Analyst Professional Certificate</strong></p>
+              <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="actions" style="margin-top:12px">
+          <a class="btn" href="certifications.html">View All Certifications</a>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" aria-label="Contact">
+        <h2>Let's Work Together</h2>
+        <div class="contact">
+          <form action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field">
+              <label for="msg">Message</label>
+              <textarea id="msg" name="message" placeholder="Tell me about your project..." required></textarea>
+            </div>
+            <button class="btn primary" type="submit">Send Message</button>
+            <p style="margin-top:8px; color:var(--muted); font-size:14px">I'll only use your email to reply to this inquiry.</p>
+          </form>
+          <div class="panel">
+            <h3>Direct Contact</h3>
+            <p>Email: <a href="mailto:Tanvir.ahasan.jesun@gmail.com">Tanvir.ahasan.jesun@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank" rel="noopener">github.com/Tanvir-Ahasan-Jesun</a></p>
+            <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Add your profile</a></p>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -165,6 +274,6 @@
       <p>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</p>
     </div>
   </footer>
-  <script src="main.js?v=4"></script>
+  <script src="main.js?v=5"></script>
 </body>
 </html>
