@@ -1,5 +1,5 @@
 /* ===========================
-  Tanvir Analytics — Deep Blue & Neon Green Palette (V3)
+  Tanvir Analytics — Deep Blue & Neon Green Palette (V5: Logo Fix)
   =========================== */
 
 :root {
@@ -9,7 +9,7 @@
   --muted: #64748b;
   --card: #ffffff;
   
-  /* BRAND & ACCENT COLORS - ADJUSTED FOR POP */
+  /* BRAND & ACCENT COLORS */
   --brand-1: #1e3a8a; /* Deep Blue (Foundation) */
   --brand-2: #3b82f6; /* Medium Blue (Gradient mix) */
   --brand-3: #1e3a8a; /* Deep Blue */
@@ -123,8 +123,10 @@ body {
   text-decoration: none;
 }
 
+/* --- DESKTOP LOGO SIZE (Increased size) --- */
 .brand img {
-  height: 48px;
+  height: 56px; 
+  max-width: 180px; 
   transition: transform 0.3s ease;
 }
 
@@ -899,6 +901,13 @@ footer .container {
     padding-inline: 16px;
   }
   
+  /* --- MOBILE LOGO FIX (CRUCIAL) --- */
+  .brand img {
+    height: 40px !important; 
+    max-width: 150px; 
+  }
+  /* ---------------------------------- */
+
   section {
     padding: 40px 0;
   }
