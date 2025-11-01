@@ -1,19 +1,18 @@
-// Tanvir Analytics - Fixed Main JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
-    initWebsite();
-});
+// Tanvir Analytics - Optimized Main JavaScript (V4 - Final)
+
+document.addEventListener('DOMContentLoaded', initWebsite);
 
 function initWebsite() {
     setCurrentYear();
     setupMobileMenu();
     setupSmoothScrolling();
     setupProjectFilters();
-    setupPlaceholderEmbeds();
     setupAnimations();
+    setupFormSubmission();
 }
 
-// Set current year in footer
+/** * Set current year in footer. 
+ */
 function setCurrentYear() {
     const yearEl = document.getElementById('year');
     if (yearEl) {
@@ -21,80 +20,69 @@ function setCurrentYear() {
     }
 }
 
-// Mobile Menu Functionality
+/** * Mobile Menu Functionality (Accessibility & Logic improved)
+ */
 function setupMobileMenu() {
     const burger = document.querySelector('.burger');
     const mobileMenu = document.getElementById('mobilemenu');
     
     if (!burger || !mobileMenu) return;
+
+    const closeMenu = () => {
+        mobileMenu.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    };
+
+    const openMenu = () => {
+        mobileMenu.classList.add('show');
+        burger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    };
     
-    // Toggle mobile menu
-    burger.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const isExpanded = this.getAttribute('aria-expanded') === 'true';
-        
-        if (isExpanded) {
-            // Close menu
-            closeMobileMenu();
-        } else {
-            // Open menu
-            openMobileMenu();
+    // Toggle menu visibility
+    burger.addEventListener('click', () => {
+        const isExpanded = burger.getAttribute('aria-expanded') === 'true';
+        isExpanded ? closeMenu() : openMenu();
+    });
+    
+    // Close menu when clicking on any link inside
+    mobileMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            closeMenu();
         }
     });
     
-    // Close menu when clicking on links
-    mobileMenu.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A') {
-            closeMobileMenu();
-            
-            // Handle smooth scrolling for anchor links
-            const href = e.target.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                scrollToSection(href);
-            }
+    // Close menu on escape key (A11y)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('show')) {
+            closeMenu();
         }
     });
     
     // Close menu when clicking outside
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', (e) => {
         if (mobileMenu.classList.contains('show') && 
             !mobileMenu.contains(e.target) && 
             !burger.contains(e.target)) {
-            closeMobileMenu();
+            closeMenu();
         }
     });
-    
-    // Close menu on escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('show')) {
-            closeMobileMenu();
-        }
-    });
-    
-    function openMobileMenu() {
-        mobileMenu.classList.add('show');
-        burger.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeMobileMenu() {
-        mobileMenu.classList.remove('show');
-        burger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = 'auto';
-    }
 }
 
-// Smooth Scrolling for Anchor Links
+/** * Smooth Scrolling for Anchor Links (Updated for new page structure)
+ */
 function setupSmoothScrolling() {
+    // Select all internal links starting with '#'
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
             
-            // Skip if it's just "#" or empty
             if (href === '#' || href === '') return;
             
             const target = document.querySelector(href);
+            
+            // Only proceed with smooth scroll if the target exists on the current page
             if (target) {
                 e.preventDefault();
                 scrollToSection(href);
@@ -107,7 +95,8 @@ function scrollToSection(selector) {
     const target = document.querySelector(selector);
     if (!target) return;
     
-    const headerHeight = document.querySelector('header').offsetHeight;
+    const header = document.querySelector('header');
+    const headerHeight = header ? header.offsetHeight : 0;
     const targetPosition = target.offsetTop - headerHeight - 20;
     
     window.scrollTo({
@@ -116,7 +105,8 @@ function scrollToSection(selector) {
     });
 }
 
-// Project Filtering
+/** * Project Filtering 
+ */
 function setupProjectFilters() {
     const filtersContainer = document.querySelector('.filters');
     if (!filtersContainer) return;
@@ -124,82 +114,88 @@ function setupProjectFilters() {
     const filterChips = document.querySelectorAll('.chip');
     const projectCards = document.querySelectorAll('.card[data-tags]');
     
-    filterChips.forEach(chip => {
-        chip.addEventListener('click', function() {
-            // Skip if already active
-            if (this.classList.contains('active')) return;
-            
-            // Update active states
-            filterChips.forEach(c => {
-                c.classList.remove('active');
-                c.setAttribute('aria-pressed', 'false');
-            });
-            
-            this.classList.add('active');
-            this.setAttribute('aria-pressed', 'true');
-            
-            // Filter projects
-            const filterValue = this.getAttribute('data-filter');
-            
-            projectCards.forEach(card => {
-                const cardTags = card.getAttribute('data-tags').split(' ');
-                
-                if (filterValue === 'all' || cardTags.includes(filterValue)) {
-                    card.style.display = 'block';
-                    // Add subtle animation
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 50);
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-}
+    const applyFilter = (filterValue) => {
+        projectCards.forEach(card => {
+            const cardTags = card.getAttribute('data-tags').split(' ');
+            const isMatch = filterValue === 'all' || cardTags.includes(filterValue);
 
-// Handle placeholder embeds
-function setupPlaceholderEmbeds() {
-    document.querySelectorAll('.thumb').forEach(thumb => {
-        const iframe = thumb.querySelector('iframe');
-        const placeholder = thumb.querySelector('.placeholder');
-        
-        if (iframe && placeholder) {
-            // Check if iframe src contains REPLACE_ (meaning it's not configured)
-            if (iframe.src.includes('REPLACE_')) {
-                iframe.style.display = 'none';
-                placeholder.style.display = 'flex';
+            if (isMatch) {
+                card.classList.remove('hidden'); 
+                card.classList.add('animate-in'); 
             } else {
-                iframe.style.display = 'block';
-                placeholder.style.display = 'none';
+                card.classList.add('hidden');
+                card.classList.remove('animate-in');
             }
-        }
+        });
+    };
+    
+    filtersContainer.addEventListener('click', function(e) {
+        const chip = e.target.closest('.chip');
+        if (!chip) return;
+
+        if (chip.classList.contains('active')) return;
+        
+        filterChips.forEach(c => {
+            c.classList.remove('active');
+            c.setAttribute('aria-pressed', 'false');
+        });
+        
+        chip.classList.add('active');
+        chip.setAttribute('aria-pressed', 'true');
+        
+        const filterValue = chip.getAttribute('data-filter');
+        applyFilter(filterValue);
     });
+    
+    applyFilter('all');
 }
 
-// Setup animations
+/** * Setup animations (Performance: Uses IntersectionObserver once)
+ */
 function setupAnimations() {
-    // Intersection Observer for scroll animations
-    const observer = new IntersectionObserver((entries) => {
+    const elementsToAnimate = document.querySelectorAll('.card, .stat, .section-header');
+
+    if (elementsToAnimate.length === 0) return;
+
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
+                observer.unobserve(entry.target); 
             }
         });
     }, {
-        threshold: 0.1,
+        threshold: 0.1, 
         rootMargin: '0px 0px -50px 0px'
     });
 
-    // Observe elements for animation
-    document.querySelectorAll('.card, .stat, .section-header').forEach(el => {
+    elementsToAnimate.forEach(el => {
         observer.observe(el);
     });
 }
 
-// Utility functions
-const $ = (selector, root = document) => root.querySelector(selector);
-const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+/**
+ * Form Submission Placeholder for local environment
+ */
+function setupFormSubmission() {
+    const form = document.querySelector('form[data-form-placeholder]');
+    const statusMessage = document.querySelector('.form-status');
+
+    if (!form || !statusMessage) return;
+
+    form.addEventListener('submit', function(e) {
+        if (form.getAttribute('action') === '#') {
+            e.preventDefault();
+            
+            statusMessage.textContent = 'Message sent! (Note: This is a local placeholder.)';
+            statusMessage.style.display = 'block';
+            statusMessage.style.color = 'var(--accent)'; 
+            
+            form.reset(); 
+            
+            setTimeout(() => {
+                statusMessage.style.display = 'none';
+            }, 5000);
+        }
+    });
+}
