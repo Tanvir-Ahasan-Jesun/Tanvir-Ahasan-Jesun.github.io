@@ -1,76 +1,72 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#2563eb" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2563eb">
   <title>Tanvir Analytics — Interactive Dashboards & Data Projects</title>
-  <meta name="description" content="Tanvir Analytics — Data analyst skilled in Python, R, SQL, Excel, Power BI. Interactive dashboards, reports, and insights." />
-  <link rel="icon" href="logo.png" />
-  <link rel="stylesheet" href="styles.css?v=12" />
+  <meta name="description" content="Tanvir Analytics — Data analyst skilled in Python, R, SQL, Excel, Power BI. Interactive dashboards, reports, and insights.">
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 
   <header>
     <div class="container nav">
       <a href="index.html" class="brand" aria-label="Tanvir Analytics — Home">
-        <img src="logo.png" alt="Tanvir Analytics Logo" />
-        <span>Tanvir Analytics</span>
+        <img src="logo.png" alt="Tanvir Analytics Logo" style="height: 48px; width: auto;"/>
       </a>
 
-      <nav class="navlinks" aria-label="Primary">
+      <nav class="navlinks" aria-label="Primary Navigation">
         <a class="nav-btn" href="#dashboards">Projects</a>
         <a class="nav-btn" href="about.html">About</a>
-        <a class="nav-btn" href="#skills">Skills</a>
+        <a class="nav-btn" href="skills.html">Skills</a>
         <a class="nav-btn" href="certifications.html">Certifications</a>
         <a class="nav-btn cta" href="#contact">Contact</a>
       </nav>
 
-      <button class="burger" aria-label="Menu" aria-expanded="false">
+      <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobilemenu">
+        <span class="sr-only">Menu</span>
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
     
-    <!-- Mobile Menu -->
     <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile Navigation">
       <a href="#dashboards">Projects</a>
       <a href="about.html">About</a>
-      <a href="#skills">Skills</a>
+      <a href="skills.html">Skills</a>
       <a href="certifications.html">Certifications</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
-    <!-- Hero -->
-    <section class="hero" id="home" aria-label="Intro">
+    <section class="hero" id="home" aria-label="Introduction: Data Analyst Tanvir Analytics">
       <div class="container">
         <div class="hero-content">
           <div class="hero-text">
             <h1>Turning <span class="gradient-text">Data</span> into Decisions</h1>
             <p class="hero-subtitle">Interactive dashboards and analysis with <strong>Power BI</strong>, <strong>Excel</strong>, and <strong>SQL</strong>.</p>
-            <p class="skills-list">Skilled in <strong>Python</strong>, <strong>R</strong>, <strong>SQL</strong>, <strong>Excel</strong>, and <strong>Power BI</strong>.</p>
+            <p class="skills-list">Skilled in <strong>Python</strong>, <strong>R</strong>, <strong>SQL</strong>, <strong>Excel</strong>, and <strong>Power BI</strong>. <a href="skills.html" style="color: var(--brand-1); font-weight: 600; text-decoration: none;">View all skills &rarr;</a></p>
             <div class="actions">
-              <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                  <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                </svg>
+              <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener noreferrer">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
                 Download CV (PDF)
               </a>
               <a class="btn secondary" href="#dashboards">
                 View Projects
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-                </svg>
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
               </a>
             </div>
           </div>
           <div class="hero-visual">
             <div class="floating-card">
-              <div class="chart-preview">
+              <div class="chart-preview" aria-hidden="true">
                 <div class="chart-bar" style="height: 60%"></div>
                 <div class="chart-bar" style="height: 80%"></div>
                 <div class="chart-bar" style="height: 45%"></div>
@@ -84,8 +80,7 @@
     </section>
 
     <div class="container">
-      <!-- Stats -->
-      <section class="stats" aria-label="Highlights">
+      <section class="stats" aria-label="Key Achievements">
         <div class="stat">
           <h3 id="projectsCount">15+</h3>
           <p>Projects Completed</p>
@@ -96,14 +91,13 @@
         </div>
         <div class="stat">
           <h3>3</h3>
-          <p>Certificates Earned</p>
+          <p>Credentials Earned</p>
         </div>
       </section>
 
-      <!-- Dashboards -->
-      <section id="dashboards" aria-label="Featured Interactive Dashboards">
+      <section id="dashboards" aria-labelledby="dashboards-heading">
         <div class="section-header">
-          <h2>Featured Interactive Dashboards</h2>
+          <h2 id="dashboards-heading">Featured Interactive Dashboards</h2>
           <p>Explore my data visualization projects</p>
         </div>
         
@@ -113,19 +107,9 @@
               <div class="tech-badge">Power BI</div>
             </div>
             <div class="thumb">
-              <iframe title="Sales Performance (Power BI)"
+              <iframe title="Sales Performance Dashboard (Power BI Embed)"
                 src="https://app.powerbi.com/view?r=REPLACE_WITH_YOUR_REPORT_URL"
                 loading="lazy" allowfullscreen></iframe>
-              <div class="placeholder">
-                <div class="placeholder-content">
-                  <svg width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
-                    <path d="M3.5 6a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5V6z"/>
-                  </svg>
-                  <p>Sales Performance — Power BI</p>
-                  <small>Embed coming soon</small>
-                </div>
-              </div>
             </div>
             <div class="card__body">
               <h3>Sales Performance Dashboard</h3>
@@ -136,11 +120,9 @@
                   <span class="tag">DAX</span>
                   <span class="tag">Data Modeling</span>
                 </div>
-                <a class="btn link" href="REPLACE_WITH_SALES_REPORT_PDF" target="_blank" rel="noopener">
+                <a class="btn link" href="REPLACE_WITH_SALES_REPORT_PDF" target="_blank" rel="noopener noreferrer">
                   View Report
-                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
-                  </svg>
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/></svg>
                 </a>
               </div>
             </div>
@@ -151,19 +133,9 @@
               <div class="tech-badge">Excel</div>
             </div>
             <div class="thumb">
-              <iframe title="Financial Tracker (Excel Online)"
+              <iframe title="Financial Tracker Dashboard (Excel Embed)"
                 src="https://onedrive.live.com/embed?RESID=REPLACE_WITH_YOUR_ONEDRIVE_ID&wdAllowInteractivity=True"
                 loading="lazy"></iframe>
-              <div class="placeholder">
-                <div class="placeholder-content">
-                  <svg width="48" height="48" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
-                    <path d="M3.5 6a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5V6z"/>
-                  </svg>
-                  <p>Financial Tracker — Excel</p>
-                  <small>Embed coming soon</small>
-                </div>
-              </div>
             </div>
             <div class="card__body">
               <h3>Financial Tracker Dashboard</h3>
@@ -174,18 +146,16 @@
                   <span class="tag">Pivot & Slicers</span>
                   <span class="tag">Power Query</span>
                 </div>
-                <a class="btn link" href="REPLACE_WITH_FINANCIAL_REPORT_PDF" target="_blank" rel="noopener">
+                <a class="btn link" href="REPLACE_WITH_FINANCIAL_REPORT_PDF" target="_blank" rel="noopener noreferrer">
                   View Report
-                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
-                  </svg>
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/></svg>
                 </a>
               </div>
             </div>
           </article>
         </div>
 
-        <div class="filters" role="group" aria-label="Filter projects">
+        <div class="filters" role="group" aria-label="Filter projects by technology">
           <button class="chip active" aria-pressed="true" data-filter="all">All</button>
           <button class="chip" aria-pressed="false" data-filter="powerbi">Power BI</button>
           <button class="chip" aria-pressed="false" data-filter="excel">Excel</button>
@@ -193,67 +163,27 @@
         </div>
       </section>
 
-      <!-- Skills -->
-      <section id="skills" aria-label="Skills">
-        <h2>Technical Skills</h2>
-        <div class="tagrow">
-          <span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL</span>
-          <span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">Data Visualization</span>
-          <span class="tag">Data Cleaning</span><span class="tag">Statistical Analysis</span>
-        </div>
-      </section>
-
-      <!-- Upwork CTA -->
       <section class="upwork-cta" aria-label="Hire on Upwork">
         <strong>Prefer contracts via Upwork? We can do that.</strong>
-        <a class="btn primary" href="https://www.upwork.com/freelancers/~REPLACE_UPWORK_ID" target="_blank" rel="noopener">Hire me on Upwork</a>
+        <a class="btn primary" href="https://www.upwork.com/freelancers/~REPLACE_UPWORK_ID" target="_blank" rel="noopener noreferrer">Hire me on Upwork</a>
       </section>
 
-      <!-- Certs -->
-      <section id="certs" aria-label="Certifications">
-        <h2>Certifications</h2>
-        <div class="cert-grid">
-          <figure class="cert">
-            <div class="cert__imgwrap">
-              <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" loading="lazy" width="640" height="452">
-            </div>
-            <figcaption class="cert__body">
-              <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
-              <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
-            </figcaption>
-          </figure>
-
-          <figure class="cert">
-            <div class="cert__imgwrap">
-              <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" loading="lazy" width="640" height="452">
-            </div>
-            <figcaption class="cert__body">
-              <p><strong>IBM Data Analyst Professional Certificate</strong></p>
-              <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
-            </figcaption>
-          </figure>
-        </div>
-        <div class="actions" style="margin-top:12px">
-          <a class="btn" href="certifications.html">View All Certifications</a>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" aria-label="Contact">
-        <h2>Let's Work Together</h2>
+      <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Let's Work Together</h2>
         <div class="contact">
-          <form action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID" method="POST">
+          <form action="#" method="POST" data-form-placeholder>
+            <p role="status" class="form-status" style="display:none;">Message sent successfully!</p>
             <div class="field">
               <label for="name">Name</label>
-              <input id="name" name="name" placeholder="Your name" required />
+              <input id="name" name="name" placeholder="Your name" required aria-required="true" />
             </div>
             <div class="field">
               <label for="email">Email</label>
-              <input id="email" type="email" name="email" placeholder="you@example.com" required />
+              <input id="email" type="email" name="email" placeholder="you@example.com" required aria-required="true" />
             </div>
             <div class="field">
               <label for="msg">Message</label>
-              <textarea id="msg" name="message" placeholder="Tell me about your project..." required></textarea>
+              <textarea id="msg" name="message" placeholder="Tell me about your project..." required aria-required="true"></textarea>
             </div>
             <button class="btn primary" type="submit">Send Message</button>
             <p style="margin-top:8px; color:var(--muted); font-size:14px">I'll only use your email to reply to this inquiry.</p>
@@ -261,8 +191,8 @@
           <div class="panel">
             <h3>Direct Contact</h3>
             <p>Email: <a href="mailto:Tanvir.ahasan.jesun@gmail.com">Tanvir.ahasan.jesun@gmail.com</a></p>
-            <p>GitHub: <a href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank" rel="noopener">github.com/Tanvir-Ahasan-Jesun</a></p>
-            <p>LinkedIn: <a href="#" target="_blank" rel="noopener">Add your profile</a></p>
+            <p>GitHub: <a href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank" rel="noopener noreferrer">github.com/Tanvir-Ahasan-Jesun</a></p>
+            <p>LinkedIn: <a href="#" target="_blank" rel="noopener noreferrer">Add your profile</a></p>
           </div>
         </div>
       </section>
@@ -274,6 +204,7 @@
       <p>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</p>
     </div>
   </footer>
-  <script src="main.js?v=5"></script>
+  
+  <script src="main.js?v=3"></script>
 </body>
 </html>
