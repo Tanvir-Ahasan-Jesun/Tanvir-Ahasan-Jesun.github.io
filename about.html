@@ -1,105 +1,121 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#2563eb" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2563eb">
   <title>About — Tanvir Analytics</title>
-  <meta name="description" content="About Tanvir Analytics — background, approach, toolstack, and experience." />
-  <link rel="icon" href="logo.png" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="About Tanvir Analytics — background, approach, toolstack, and experience.">
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   
-
   <header>
     <div class="container nav">
       <a href="index.html" class="brand" aria-label="Tanvir Analytics — Home">
-        <img src="logo.png" alt="Tanvir Analytics Logo" />
-        <span>Tanvir Analytics</span>
+        <img src="logo.png" alt="Tanvir Analytics Logo" style="height: 48px; width: auto;"/>
       </a>
-      <nav class="navlinks" aria-label="Primary">
-        <a class="btn" href="index.html#dashboards">Projects</a>
-        <a class="btn" href="about.html" aria-current="page">About</a>
-        <a class="btn" href="index.html#skills">Skills</a>
-        <a class="btn" href="certifications.html">Certifications</a>
-        <a class="btn cta" href="index.html#contact">Contact</a>
+      <nav class="navlinks" aria-label="Primary Navigation">
+        <a class="nav-btn" href="index.html#dashboards">Projects</a>
+        <a class="nav-btn" href="about.html" aria-current="page">About</a>
+        <a class="nav-btn" href="skills.html">Skills</a>
+        <a class="nav-btn" href="certifications.html">Certifications</a>
+        <a class="nav-btn cta" href="index.html#contact">Contact</a>
       </nav>
-      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="mobilemenu">≡</button>
-      <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile">
+      <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobilemenu">
+        <span class="sr-only">Menu</span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile Navigation">
         <a href="index.html#dashboards">Projects</a>
         <a href="about.html" aria-current="page">About</a>
-        <a href="index.html#skills">Skills</a>
+        <a href="skills.html">Skills</a>
         <a href="certifications.html">Certifications</a>
         <a href="index.html#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero decor" aria-label="About">
-      <h1>About Me</h1>
-      <p style="max-width:72ch">
-        I’m Tan — a data analyst who turns messy datasets into clear, decision-ready dashboards and reports.
-        I help small businesses and teams automate reporting, uncover opportunities, and communicate insights with confidence.
-      </p>
-      <div class="tagrow" aria-label="Core tools">
-        <span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">SQL</span>
-        <span class="tag">Python</span><span class="tag">R</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">Data Modeling</span>
-      </div>
-      <div class="actions">
-        <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
-        <a class="btn" href="index.html#dashboards">See Projects</a>
-      </div>
+  <main>
+    <section class="hero decor" aria-labelledby="about-heading">
+        <div class="container"> 
+            <h1 id="about-heading">About Me</h1>
+            <p style="max-width:72ch">
+                I’m Tan — a data analyst who turns messy datasets into clear, decision-ready dashboards and reports.
+                I help small businesses and teams automate reporting, uncover opportunities, and communicate insights with confidence.
+            </p>
+            
+            <div class="actions">
+                <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener noreferrer">Download CV (PDF)</a>
+                <a class="btn secondary" href="index.html#dashboards">See Projects</a>
+            </div>
+
+            <div class="tagrow" aria-label="Core tools" style="margin-top: 24px;">
+                <span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">SQL</span>
+                <span class="tag">Python</span><span class="tag">R</span><span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">Data Modeling</span>
+            </div>
+        </div>
     </section>
 
-    <section class="decor flip" aria-label="How I Work">
-      <h2>How I Work</h2>
-      <div class="grid">
-        <article class="card mini"><div class="card__body"><h3>1) Understand the Goal</h3><p>Clarify the business decision and success metrics. Align on the audience, cadence, and the top KPIs.</p></div></article>
-        <article class="card mini"><div class="card__body"><h3>2) Clean & Model</h3><p>Power Query/SQL pipelines, star schema, and DAX measures that make analysis fast and reliable.</p></div></article>
-        <article class="card mini"><div class="card__body"><h3>3) Build & Iterate</h3><p>Prototype, review, iterate—prioritizing clarity, speed, and trust in the numbers.</p></div></article>
-        <article class="card mini"><div class="card__body"><h3>4) Ship & Support</h3><p>Docs, refresh schedules, and quick fixes as you scale usage.</p></div></article>
-      </div>
-    </section>
+    <div class="container">
+        <section class="decor flip" aria-labelledby="how-i-work-heading">
+            <h2 id="how-i-work-heading">How I Work</h2>
+            <div class="grid">
+                <article class="card mini"><div class="card__body"><h3>1) Understand the Goal</h3><p>Clarify the business decision and success metrics. Align on the audience, cadence, and the top KPIs.</p></div></article>
+                <article class="card mini"><div class="card__body"><h3>2) Clean & Model</h3><p>Power Query/SQL pipelines, star schema, and DAX measures that make analysis fast and reliable.</p></div></article>
+                <article class="card mini"><div class="card__body"><h3>3) Build & Iterate</h3><p>Prototype, review, iterate—prioritizing clarity, speed, and trust in the numbers.</p></div></article>
+                <article class="card mini"><div class="card__body"><h3>4) Ship & Support</h3><p>Docs, refresh schedules, and quick fixes as you scale usage.</p></div></article>
+            </div>
+        </section>
 
-    <section aria-label="Toolstack">
-      <h2>Toolstack</h2>
-      <div class="grid">
-        <article class="card mini"><div class="card__body"><h3>Business Intelligence</h3><p>Power BI (DAX, measures, visuals), Excel (Pivot, Power Query), custom visuals and theming.</p><div class="tagrow"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">DAX</span></div></div></article>
-        <article class="card mini"><div class="card__body"><h3>Data Engineering</h3><p>Clean ingestion with Power Query/SQL, standardized models for self-serve analytics.</p><div class="tagrow"><span class="tag">Power Query</span><span class="tag">SQL</span><span class="tag">Modeling</span></div></div></article>
-        <article class="card mini"><div class="card__body"><h3>Analysis & Scripting</h3><p>Python/R for EDA, feature engineering, and small automations that speed up workflows.</p><div class="tagrow"><span class="tag">Python</span><span class="tag">R</span><span class="tag">EDA</span></div></div></article>
-        <article class="card mini"><div class="card__body"><h3>Delivery & Ops</h3><p>Versioned files, refresh scheduling, and documentation to keep dashboards reliable.</p><div class="tagrow"><span class="tag">Docs</span><span class="tag">Versioning</span><span class="tag">Refresh</span></div></div></article>
-      </div>
-    </section>
+        <section aria-labelledby="toolstack-heading">
+            <h2 id="toolstack-heading">Toolstack</h2>
+            <div class="grid">
+                <article class="card mini"><div class="card__body"><h3>Business Intelligence</h3><p>Power BI (DAX, measures, visuals), Excel (Pivot, Power Query), custom visuals and theming.</p><div class="tagrow"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">DAX</span></div></div></article>
+                <article class="card mini"><div class="card__body"><h3>Data Engineering</h3><p>Clean ingestion with Power Query/SQL, standardized models for self-serve analytics.</p><div class="tagrow"><span class="tag">Power Query</span><span class="tag">SQL</span><span class="tag">Modeling</span></div></div></article>
+                <article class="card mini"><div class="card__body"><h3>Analysis & Scripting</h3><p>Python/R for EDA, feature engineering, and small automations that speed up workflows.</p><div class="tagrow"><span class="tag">Python</span><span class="tag">R</span><span class="tag">EDA</span></div></div></article>
+                <article class="card mini"><div class="card__body"><h3>Delivery & Ops</h3><p>Versioned files, refresh scheduling, and documentation to keep dashboards reliable.</p><div class="tagrow"><span class="tag">Docs</span><span class="tag">Versioning</span><span class="tag">Refresh</span></div></div></article>
+            </div>
+        </section>
 
-    <section class="decor" aria-label="Experience">
-      <h2>Experience</h2>
-      <div class="grid">
-        <article class="card"><div class="card__body"><h3>Freelance Data Analyst</h3><p><strong>2022 — Present</strong> • Built Power BI and Excel dashboards for retail and ops; automated reporting; designed KPI views that improved visibility and planning.</p><div class="tagrow"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">SQL</span></div></div></article>
-        <article class="card"><div class="card__body"><h3>Academic & Personal Projects</h3><p>Projects in churn analysis, inventory health, and financial tracking. Emphasis on clean modeling, readable visuals, and clear storytelling.</p><div class="tagrow"><span class="tag">Python</span><span class="tag">R</span><span class="tag">Data Viz</span></div></div></article>
-      </div>
-    </section>
+        <section class="decor" aria-labelledby="experience-heading">
+            <h2 id="experience-heading">Experience</h2>
+            <div class="grid">
+                <article class="card"><div class="card__body"><h3>Freelance Data Analyst</h3><p><strong>2022 — Present</strong> • Built Power BI and Excel dashboards for retail and ops; automated reporting; designed KPI views that improved visibility and planning.</p><div class="tagrow"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">SQL</span></div></article>
+                <article class="card"><div class="card__body"><h3>Academic & Personal Projects</h3><p>Projects in churn analysis, inventory health, and financial tracking. Emphasis on clean modeling, readable visuals, and clear storytelling.</p><div class="tagrow"><span class="tag">Python</span><span class="tag">R</span><span class="tag">Data Viz</span></div></div></article>
+            </div>
+        </section>
 
-    <section aria-label="Working Principles">
-      <h2>Working Principles</h2>
-      <div class="grid">
-        <article class="card mini"><div class="card__body"><h3>Clarity over Flash</h3><p>Simple, useful visuals > noisy dashboards. If a number matters, it should be obvious.</p></div></article>
-        <article class="card mini"><div class="card__body"><h3>Trust the Data</h3><p>Document assumptions, sources, and refresh logic. Make it easy to verify how numbers are built.</p></div></article>
-        <article class="card mini"><div class="card__body"><h3>Small Iterations</h3><p>Ship quickly, gather feedback, refine. Stakeholders see value faster and dashboards stay relevant.</p></div></article>
-      </div>
-    </section>
+        <section aria-labelledby="principles-heading">
+            <h2 id="principles-heading">Working Principles</h2>
+            <div class="grid">
+                <article class="card mini"><div class="card__body"><h3>Clarity over Flash</h3><p>Simple, useful visuals > noisy dashboards. If a number matters, it should be obvious.</p></div></article>
+                <article class="card mini"><div class="card__body"><h3>Trust the Data</h3><p>Document assumptions, sources, and refresh logic. Make it easy to verify how numbers are built.</p></div></article>
+                <article class="card mini"><div class="card__body"><h3>Small Iterations</h3><p>Ship quickly, gather feedback, refine. Stakeholders see value faster and dashboards stay relevant.</p></div></article>
+            </div>
+        </section>
 
-    <section class="upwork-cta" aria-label="Get in touch" style="margin:24px 0; padding:20px; border-radius:12px; color:#fff; background: linear-gradient(135deg, var(--brand-3), var(--accent)); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-      <strong>Have a dataset you’d like to make useful?</strong>
-      <div class="actions" style="margin:0">
-        <a class="btn" href="index.html#dashboards">See Project Examples</a>
-        <a class="btn primary" href="index.html#contact">Start a Conversation</a>
-      </div>
-    </section>
+        <section class="upwork-cta" aria-label="Get in touch">
+            <strong>Have a dataset you’d like to make useful?</strong>
+            <div class="actions" style="margin:0">
+                <a class="btn" href="index.html#dashboards">See Project Examples</a>
+                <a class="btn primary" href="index.html#contact">Start a Conversation</a>
+            </div>
+        </section>
+    </div>
   </main>
 
-  <footer>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</footer>
-  <script src="main.js"></script>
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</p>
+    </div>
+  </footer>
+  <script src="main.js?v=3"></script>
 </body>
 </html>
