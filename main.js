@@ -1,4 +1,4 @@
-// Tanvir Analytics - Optimized Main JavaScript (V6 - Cache Buster & Minor Fix)
+// Tanvir Analytics - Optimized Main JavaScript (V7 - Cache Buster & Minor Fix)
 
 document.addEventListener('DOMContentLoaded', initWebsite);
 
