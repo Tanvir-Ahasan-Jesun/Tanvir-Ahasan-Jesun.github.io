@@ -85,7 +85,10 @@ section {
   scroll-margin-top: calc(var(--headerH) + 20px);
   padding: 60px 0;
 }
-
+/* Fix for Project Filtering */
+.card.hidden {
+  display: none !important;
+}
 /* Header */
 header {
   position: fixed;
