@@ -1,204 +1,212 @@
-// Tanvir Analytics - Optimized Main JavaScript (V7 - Cache Buster & Minor Fix)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Tanvir Analytics</title>
+    <meta name="description" content="About Tanvir Analytics — background, approach, toolstack, and experience.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="nav">
+                <a href="index.html" class="brand">
+                    <img src="logo.png" alt="Tanvir Analytics Logo">
+                    <span>Tanvir Analytics</span>
+                </a>
+                
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#projects">Projects</a>
+                    <a href="about.html" class="nav-btn">About</a>
+                    <a href="skills.html">Skills</a>
+                    <a href="certifications.html">Certifications</a>
+                    <a href="index.html#contact" class="cta-button">Contact</a>
+                </nav>
+                
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-document.addEventListener('DOMContentLoaded', initWebsite);
+    <main>
+        <section class="hero decor">
+            <div class="container">
+                <h1>About Me</h1>
+                <p>I'm Tan — a data analyst who turns messy datasets into clear, decision-ready dashboards and reports. I help small businesses and teams automate reporting, uncover opportunities, and communicate insights with confidence.</p>
+                
+                <div class="actions">
+                    <a href="cv.pdf" class="btn primary" download>Download CV (PDF)</a>
+                    <a href="index.html#projects" class="btn secondary">See Projects</a>
+                </div>
 
-function initWebsite() {
-    setCurrentYear();
-    setupMobileMenu();
-    setupSmoothScrolling();
-    setupProjectFilters();
-    setupAnimations();
-    setupFormSubmission();
-}
+                <div class="tagrow">
+                    <span class="tag">Power BI</span>
+                    <span class="tag">Excel</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">R</span>
+                    <span class="tag">DAX</span>
+                    <span class="tag">Power Query</span>
+                    <span class="tag">Data Modeling</span>
+                </div>
+            </div>
+        </section>
 
-/** * Set current year in footer. 
- */
-function setCurrentYear() {
-    const yearEl = document.getElementById('year');
-    if (yearEl) {
-        yearEl.textContent = new Date().getFullYear();
-    }
-}
+        <div class="container">
+            <section class="decor flip">
+                <div class="section-header">
+                    <h2>How I Work</h2>
+                    <p>My approach to data analysis projects</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>1) Understand the Goal</h3>
+                        <p>Clarify the business decision and success metrics. Align on the audience, cadence, and the top KPIs.</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>2) Clean & Model</h3>
+                        <p>Power Query/SQL pipelines, star schema, and DAX measures that make analysis fast and reliable.</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>3) Build & Iterate</h3>
+                        <p>Prototype, review, iterate—prioritizing clarity, speed, and trust in the numbers.</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>4) Ship & Support</h3>
+                        <p>Docs, refresh schedules, and quick fixes as you scale usage.</p>
+                    </div>
+                </div>
+            </section>
 
-/** * Mobile Menu Functionality (Accessibility & Logic improved)
- */
-function setupMobileMenu() {
-    const burger = document.querySelector('.burger');
-    const mobileMenu = document.getElementById('mobilemenu');
-    
-    if (!burger || !mobileMenu) return;
+            <section class="skills-section">
+                <div class="section-header">
+                    <h2>Toolstack</h2>
+                    <p>Technologies I use to deliver results</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Business Intelligence</h3>
+                        <p>Power BI (DAX, measures, visuals), Excel (Pivot, Power Query), custom visuals and theming.</p>
+                        <div class="skill-list">
+                            <span class="skill-item">Power BI</span>
+                            <span class="skill-item">Excel</span>
+                            <span class="skill-item">DAX</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Data Engineering</h3>
+                        <p>Clean ingestion with Power Query/SQL, standardized models for self-serve analytics.</p>
+                        <div class="skill-list">
+                            <span class="skill-item">Power Query</span>
+                            <span class="skill-item">SQL</span>
+                            <span class="skill-item">Modeling</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Analysis & Scripting</h3>
+                        <p>Python/R for EDA, feature engineering, and small automations that speed up workflows.</p>
+                        <div class="skill-list">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">R</span>
+                            <span class="skill-item">EDA</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Delivery & Ops</h3>
+                        <p>Versioned files, refresh scheduling, and documentation to keep dashboards reliable.</p>
+                        <div class="skill-list">
+                            <span class="skill-item">Docs</span>
+                            <span class="skill-item">Versioning</span>
+                            <span class="skill-item">Refresh</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    const closeMenu = () => {
-        mobileMenu.classList.remove('show');
-        burger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-    };
+            <section class="decor flip">
+                <div class="section-header">
+                    <h2>Experience</h2>
+                    <p>My journey in data analytics</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Freelance Data Analyst</h3>
+                        <p><strong>2022 — Present</strong> • Built Power BI and Excel dashboards for retail and ops; automated reporting; designed KPI views that improved visibility and planning.</p>
+                        <div class="skill-list">
+                            <span class="skill-item">Power BI</span>
+                            <span class="skill-item">Excel</span>
+                            <span class="skill-item">SQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Academic & Personal Projects</h3>
+                        <p>Projects in churn analysis, inventory health, and financial tracking. Emphasis on clean modeling, readable visuals, and clear storytelling.</p>
+                        <div class="skill-list">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">R</span>
+                            <span class="skill-item">Data Viz</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    const openMenu = () => {
-        mobileMenu.classList.add('show');
-        burger.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-    };
-    
-    // Toggle menu visibility
-    burger.addEventListener('click', () => {
-        const isExpanded = burger.getAttribute('aria-expanded') === 'true';
-        isExpanded ? closeMenu() : openMenu();
-    });
-    
-    // Close menu when clicking on any link inside
-    mobileMenu.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A') {
-            closeMenu();
-        }
-    });
-    
-    // Close menu on escape key (A11y)
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('show')) {
-            closeMenu();
-        }
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (mobileMenu.classList.contains('show') && 
-            !mobileMenu.contains(e.target) && 
-            !burger.contains(e.target)) {
-            closeMenu();
-        }
-    });
-}
+            <section class="skills-section">
+                <div class="section-header">
+                    <h2>Working Principles</h2>
+                    <p>The values that guide my work</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Clarity over Flash</h3>
+                        <p>Simple, useful visuals > noisy dashboards. If a number matters, it should be obvious.</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Trust the Data</h3>
+                        <p>Document assumptions, sources, and refresh logic. Make it easy to verify how numbers are built.</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Small Iterations</h3>
+                        <p>Ship quickly, gather feedback, refine. Stakeholders see value faster and dashboards stay relevant.</p>
+                    </div>
+                </div>
+            </section>
 
-/** * Smooth Scrolling for Anchor Links (Fixed to exclude mobile menu links)
- */
-function setupSmoothScrolling() {
-    // Select all internal links starting with '#', but exclude those inside the mobile menu
-    document.querySelectorAll('a[href^="#"]:not(#mobilemenu a)').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            
-            if (href === '#' || href === '') return;
-            
-            const target = document.querySelector(href);
-            
-            // Only proceed with smooth scroll if the target exists on the current page
-            if (target) {
-                e.preventDefault();
-                scrollToSection(href);
-            }
-        });
-    });
-}
+            <section class="upwork-cta">
+                <strong>Have a dataset you'd like to make useful?</strong>
+                <div class="actions">
+                    <a href="index.html#projects" class="btn">See Project Examples</a>
+                    <a href="index.html#contact" class="btn primary">Start a Conversation</a>
+                </div>
+            </section>
+        </div>
+    </main>
 
-function scrollToSection(selector) {
-    const target = document.querySelector(selector);
-    if (!target) return;
-    
-    const header = document.querySelector('header');
-    const headerHeight = header ? header.offsetHeight : 0;
-    const targetPosition = target.offsetTop - headerHeight - 20;
-    
-    window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-    });
-}
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tanvir Analytics. Built with passion for data.</p>
+        </div>
+    </footer>
 
-/** * Project Filtering 
- */
-function setupProjectFilters() {
-    const filtersContainer = document.querySelector('.filters');
-    if (!filtersContainer) return;
-    
-    const filterChips = document.querySelectorAll('.chip');
-    const projectCards = document.querySelectorAll('.card[data-tags]');
-    
-    // Stop if no project cards are found
-    if (projectCards.length === 0) return;
-
-    const applyFilter = (filterValue) => {
-        projectCards.forEach(card => {
-            const cardTags = card.getAttribute('data-tags').split(' ');
-            const isMatch = filterValue === 'all' || cardTags.includes(filterValue);
-
-            if (isMatch) {
-                card.classList.remove('hidden'); 
-                card.classList.add('animate-in'); 
-            } else {
-                card.classList.add('hidden');
-                card.classList.remove('animate-in');
-            }
-        });
-    };
-    
-    filtersContainer.addEventListener('click', function(e) {
-        const chip = e.target.closest('.chip');
-        if (!chip) return;
-
-        if (chip.classList.contains('active')) return;
-        
-        filterChips.forEach(c => {
-            c.classList.remove('active');
-            c.setAttribute('aria-pressed', 'false');
-        });
-        
-        chip.classList.add('active');
-        chip.setAttribute('aria-pressed', 'true');
-        
-        const filterValue = chip.getAttribute('data-filter');
-        applyFilter(filterValue);
-    });
-    
-    applyFilter('all');
-}
-
-/** * Setup animations (Performance: Uses IntersectionObserver once)
- */
-function setupAnimations() {
-    const elementsToAnimate = document.querySelectorAll('.card, .stat, .section-header');
-
-    if (elementsToAnimate.length === 0) return;
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-                observer.unobserve(entry.target); 
-            }
-        });
-    }, {
-        threshold: 0.1, 
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    elementsToAnimate.forEach(el => {
-        observer.observe(el);
-    });
-}
-
-/**
- * Form Submission Placeholder for local environment
- */
-function setupFormSubmission() {
-    const form = document.querySelector('form[data-form-placeholder]');
-    const statusMessage = document.querySelector('.form-status');
-
-    if (!form || !statusMessage) return;
-
-    form.addEventListener('submit', function(e) {
-        if (form.getAttribute('action') === '#') {
-            e.preventDefault();
-            
-            statusMessage.textContent = 'Message sent! (Note: This is a local placeholder.)';
-            statusMessage.style.display = 'block';
-            statusMessage.style.color = 'var(--accent)'; 
-            
-            form.reset(); 
-            
-            setTimeout(() => {
-                statusMessage.style.display = 'none';
-            }, 5000);
-        }
-    });
-}
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
