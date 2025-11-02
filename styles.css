@@ -1,5 +1,5 @@
 /* ===========================
-  Tanvir Analytics — Deep Blue & Neon Green Palette (V5: Logo Fix)
+  Tanvir Analytics — Deep Blue & Neon Green Palette (V5 - Layout Fix)
   =========================== */
 
 :root {
@@ -85,10 +85,12 @@ section {
   scroll-margin-top: calc(var(--headerH) + 20px);
   padding: 60px 0;
 }
-/* Fix for Project Filtering */
+
+/* --- FIX 1: Project Filter Class --- */
 .card.hidden {
   display: none !important;
 }
+
 /* Header */
 header {
   position: fixed;
@@ -273,8 +275,8 @@ body {
 /* Hero Section */
 .hero {
   /* PREVIOUS: padding: 120px 0 80px; */
-  /* --- FIX: Reduced top padding to prevent overlap since body handles header spacing --- */
-  padding: 60px 0 80px; 
+  /* --- FIX: Reduced top padding to prevent overlap since body handles header spacing --- */
+  padding: 60px 0 80px; 
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   position: relative;
   overflow: hidden;
@@ -299,6 +301,8 @@ body {
   grid-template-columns: 1fr;
   gap: 60px;
   align-items: center;
+  /* --- FIX 2: Added to ensure grid works correctly on large screens --- */
+  min-height: 400px; 
 }
 
 @media (min-width: 1024px) {
@@ -339,6 +343,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* Added overflow hidden to prevent floating card from breaking flow */
+  overflow: hidden; 
 }
 
 .floating-card {
