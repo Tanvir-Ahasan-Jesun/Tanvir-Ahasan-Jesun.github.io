@@ -1,212 +1,240 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About — Tanvir Analytics</title>
-    <meta name="description" content="About Tanvir Analytics — background, approach, toolstack, and experience.">
+// main.js - Complete fixed functionality for all pages
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Tanvir Analytics - Website loaded');
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    // Mobile menu functionality
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="nav">
-                <a href="index.html" class="brand">
-                    <img src="logo.png" alt="Tanvir Analytics Logo">
-                    <span>Tanvir Analytics</span>
-                </a>
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            console.log('Mobile menu button clicked');
+            
+            // Toggle active class for animation
+            this.classList.toggle('active');
+            
+            // Toggle menu visibility
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.classList.add('active');
+                navLinks.style.display = 'flex';
+            }
+        });
+        
+        // Close menu when clicking on links
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                navLinks.style.display = 'none';
+                mobileMenuBtn.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideNav = event.target.closest('.nav') || 
+                                   event.target.closest('.nav-links') || 
+                                   event.target.closest('.mobile-menu-btn');
+            
+            if (!isClickInsideNav && navLinks && window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+                navLinks.style.display = 'none';
+                mobileMenuBtn.classList.remove('active');
+            }
+        });
+    }
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            
+            if (href !== '#' && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
                 
-                <nav class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="index.html#projects">Projects</a>
-                    <a href="about.html" class="nav-btn">About</a>
-                    <a href="skills.html">Skills</a>
-                    <a href="certifications.html">Certifications</a>
-                    <a href="index.html#contact" class="cta-button">Contact</a>
-                </nav>
-                
-                <button class="mobile-menu-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </header>
+                if (target) {
+                    const headerHeight = 70;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks && window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        navLinks.style.display = 'none';
+                        if (mobileMenuBtn) {
+                            mobileMenuBtn.classList.remove('active');
+                        }
+                    }
+                }
+            }
+        });
+    });
+    
+    // Update copyright year automatically
+    const yearElement = document.getElementById('year');
+    const footerText = document.querySelector('footer p');
+    const currentYear = new Date().getFullYear();
+    
+    if (yearElement) {
+        yearElement.textContent = currentYear;
+    }
+    if (footerText && !footerText.innerHTML.includes(currentYear)) {
+        footerText.innerHTML = `&copy; ${currentYear} Tanvir Analytics. Built with passion for data.`;
+    }
+    
+    // Project cards animation - Only on desktop
+    function initializeAnimations() {
+        if (window.innerWidth > 768) {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    }
+                });
+            }, observerOptions);
+            
+            // Animate project cards on desktop
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                observer.observe(card);
+            });
+        } else {
+            // Mobile: ensure all project cards are visible immediately
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            });
+        }
+    }
+    
+    // Initialize animations
+    initializeAnimations();
+    
+    // Handle window resize
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            if (window.innerWidth > 768) {
+                // Desktop: show nav links, hide mobile menu
+                if (navLinks) {
+                    navLinks.style.display = 'flex';
+                    navLinks.classList.remove('active');
+                }
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.classList.remove('active');
+                }
+            } else {
+                // Mobile: hide nav links by default
+                if (navLinks && !navLinks.classList.contains('active')) {
+                    navLinks.style.display = 'none';
+                }
+            }
+            
+            // Re-initialize animations on resize
+            initializeAnimations();
+        }, 250);
+    });
+    
+    // Form submission handling
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                alert('Thank you for your message! This is a demo form - in a real website, this would send an email.');
+                contactForm.reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+    }
+    
+    // Add hover effects to stats cards (desktop only)
+    if (window.innerWidth > 768) {
+        const statCards = document.querySelectorAll('.stat-card');
+        statCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    }
+    
+    // Add loading animation to chart bars
+    const chartBars = document.querySelectorAll('.chart-bar');
+    chartBars.forEach((bar, index) => {
+        bar.style.animationDelay = `${index * 0.2}s`;
+    });
+    
+    // Initialize mobile menu state
+    if (window.innerWidth <= 768 && navLinks) {
+        navLinks.style.display = 'none';
+    }
+});
 
-    <main>
-        <section class="hero decor">
-            <div class="container">
-                <h1>About Me</h1>
-                <p>I'm Tan — a data analyst who turns messy datasets into clear, decision-ready dashboards and reports. I help small businesses and teams automate reporting, uncover opportunities, and communicate insights with confidence.</p>
-                
-                <div class="actions">
-                    <a href="cv.pdf" class="btn primary" download>Download CV (PDF)</a>
-                    <a href="index.html#projects" class="btn secondary">See Projects</a>
-                </div>
+// Add debug styles to ensure mobile functionality
+const debugStyles = document.createElement('style');
+debugStyles.textContent = `
+    /* Debug: Ensure mobile functionality */
+    @media (max-width: 768px) {
+        .projects-grid {
+            display: grid !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .project-card {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+        
+        .mobile-menu-btn {
+            cursor: pointer !important;
+        }
+        
+        .nav-links.active {
+            display: flex !important;
+            visibility: visible !important;
+        }
+    }
+    
+    /* Ensure smooth transitions */
+    .nav-links {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .mobile-menu-btn span {
+        transition: all 0.3s ease;
+    }
+`;
+document.head.appendChild(debugStyles);
 
-                <div class="tagrow">
-                    <span class="tag">Power BI</span>
-                    <span class="tag">Excel</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">R</span>
-                    <span class="tag">DAX</span>
-                    <span class="tag">Power Query</span>
-                    <span class="tag">Data Modeling</span>
-                </div>
-            </div>
-        </section>
-
-        <div class="container">
-            <section class="decor flip">
-                <div class="section-header">
-                    <h2>How I Work</h2>
-                    <p>My approach to data analysis projects</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>1) Understand the Goal</h3>
-                        <p>Clarify the business decision and success metrics. Align on the audience, cadence, and the top KPIs.</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>2) Clean & Model</h3>
-                        <p>Power Query/SQL pipelines, star schema, and DAX measures that make analysis fast and reliable.</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>3) Build & Iterate</h3>
-                        <p>Prototype, review, iterate—prioritizing clarity, speed, and trust in the numbers.</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>4) Ship & Support</h3>
-                        <p>Docs, refresh schedules, and quick fixes as you scale usage.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="skills-section">
-                <div class="section-header">
-                    <h2>Toolstack</h2>
-                    <p>Technologies I use to deliver results</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Business Intelligence</h3>
-                        <p>Power BI (DAX, measures, visuals), Excel (Pivot, Power Query), custom visuals and theming.</p>
-                        <div class="skill-list">
-                            <span class="skill-item">Power BI</span>
-                            <span class="skill-item">Excel</span>
-                            <span class="skill-item">DAX</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Data Engineering</h3>
-                        <p>Clean ingestion with Power Query/SQL, standardized models for self-serve analytics.</p>
-                        <div class="skill-list">
-                            <span class="skill-item">Power Query</span>
-                            <span class="skill-item">SQL</span>
-                            <span class="skill-item">Modeling</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Analysis & Scripting</h3>
-                        <p>Python/R for EDA, feature engineering, and small automations that speed up workflows.</p>
-                        <div class="skill-list">
-                            <span class="skill-item">Python</span>
-                            <span class="skill-item">R</span>
-                            <span class="skill-item">EDA</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Delivery & Ops</h3>
-                        <p>Versioned files, refresh scheduling, and documentation to keep dashboards reliable.</p>
-                        <div class="skill-list">
-                            <span class="skill-item">Docs</span>
-                            <span class="skill-item">Versioning</span>
-                            <span class="skill-item">Refresh</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="decor flip">
-                <div class="section-header">
-                    <h2>Experience</h2>
-                    <p>My journey in data analytics</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Freelance Data Analyst</h3>
-                        <p><strong>2022 — Present</strong> • Built Power BI and Excel dashboards for retail and ops; automated reporting; designed KPI views that improved visibility and planning.</p>
-                        <div class="skill-list">
-                            <span class="skill-item">Power BI</span>
-                            <span class="skill-item">Excel</span>
-                            <span class="skill-item">SQL</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Academic & Personal Projects</h3>
-                        <p>Projects in churn analysis, inventory health, and financial tracking. Emphasis on clean modeling, readable visuals, and clear storytelling.</p>
-                        <div class="skill-list">
-                            <span class="skill-item">Python</span>
-                            <span class="skill-item">R</span>
-                            <span class="skill-item">Data Viz</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="skills-section">
-                <div class="section-header">
-                    <h2>Working Principles</h2>
-                    <p>The values that guide my work</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Clarity over Flash</h3>
-                        <p>Simple, useful visuals > noisy dashboards. If a number matters, it should be obvious.</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Trust the Data</h3>
-                        <p>Document assumptions, sources, and refresh logic. Make it easy to verify how numbers are built.</p>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Small Iterations</h3>
-                        <p>Ship quickly, gather feedback, refine. Stakeholders see value faster and dashboards stay relevant.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="upwork-cta">
-                <strong>Have a dataset you'd like to make useful?</strong>
-                <div class="actions">
-                    <a href="index.html#projects" class="btn">See Project Examples</a>
-                    <a href="index.html#contact" class="btn primary">Start a Conversation</a>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Tanvir Analytics. Built with passion for data.</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="main.js"></script>
-</body>
-</html>
+console.log('Tanvir Analytics - JavaScript loaded successfully');
