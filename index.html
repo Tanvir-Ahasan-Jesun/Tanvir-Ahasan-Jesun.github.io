@@ -1,288 +1,340 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#2563eb">
-  <title>Tanvir Analytics — Interactive Dashboards & Data Projects</title>
-  <meta name="description" content="Tanvir Analytics — Data analyst skilled in Python, R, SQL, Excel, Power BI. Interactive dashboards, reports, and insights.">
-  
-    <meta property="og:title" content="Tanvir Analytics | Interactive Data Analyst Portfolio" />
-  <meta property="og:description" content="Data analyst specializing in Power BI, SQL, Python, and advanced Excel. View projects and case studies." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://your-domain.com/index.html" />
-  <meta property="og:image" content="https://your-domain.com/logo.png" />
-  <meta property="og:image:alt" content="Tanvir Analytics Data Dashboard Preview" />
-  
-  <link rel="icon" href="logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-    <link rel="stylesheet" href="styles.css?v=7">
-
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanvir Analytics — Data Analyst Portfolio</title>
+    <meta name="description" content="Data analyst specializing in Power BI, SQL, Python, and advanced Excel. Interactive dashboards and data insights.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="nav">
+                <a href="#" class="brand">
+                    <img src="logo.png" alt="Tanvir Analytics Logo">
+                    <span>Tanvir Analytics</span>
+                </a>
+                
+                <nav class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#projects">Projects</a>
+                    <a href="about.html">About</a>
+                    <a href="skills.html">Skills</a>
+                    <a href="certifications.html">Certifications</a>
+                    <a href="#contact" class="cta-button">Contact</a>
+                </nav>
+                
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-  <header>
-    <div class="container nav">
-      <a href="index.html" class="brand" aria-label="Tanvir Analytics — Home">
-        <img src="logo.png" alt="Tanvir Analytics Logo" style="height: 48px; width: auto;"/>
-        <strong>Tanvir Analytics</strong>
-      </a>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Turning <span class="highlight">Data</span> into Decisions</h1>
+                    <p class="subtitle">Interactive dashboards and analysis with <strong>Power BI</strong>, <strong>Excel</strong>, and <strong>SQL</strong>.</p>
+                    <p class="skills">Skilled in Python, R, SQL, Excel, and Power BI.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="cv.pdf" class="btn primary" download>
+                            Download CV (PDF)
+                        </a>
+                        <a href="#projects" class="btn secondary">
+                            View Projects
+                        </a>
+                        <a href="about.html" class="btn secondary">
+                            Learn More About Me
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Updated Chart Visualization -->
+                <div class="hero-visual">
+                    <div class="chart-preview">
+                        <!-- Y-axis labels -->
+                        <div class="y-axis">
+                            <span>100%</span>
+                            <span>75%</span>
+                            <span>50%</span>
+                            <span>25%</span>
+                            <span>0%</span>
+                        </div>
+                        
+                        <!-- X-axis labels -->
+                        <div class="x-axis">
+                            <span>Jan</span>
+                            <span>Feb</span>
+                            <span>Mar</span>
+                            <span>Apr</span>
+                            <span>May</span>
+                        </div>
+                        
+                        <!-- Chart bars -->
+                        <div class="chart-bar"></div>
+                        <div class="chart-bar"></div>
+                        <div class="chart-bar"></div>
+                        <div class="chart-bar"></div>
+                        <div class="chart-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <nav class="navlinks" aria-label="Primary Navigation">
-        <a class="nav-btn" href="index.html" aria-current="page">Home</a>
-        <a class="nav-btn" href="#dashboards">Projects</a>
-        <a class="nav-btn" href="about.html">About</a>
-        <a class="nav-btn" href="skills.html">Skills</a>
-        <a class="nav-btn" href="certifications.html">Certifications</a>
-        <a class="nav-btn cta" href="#contact">Contact</a>
-      </nav>
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>15+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-card">
+                    <h3>5+</h3>
+                    <p>Industries Analyzed</p>
+                </div>
+                <div class="stat-card">
+                    <h3>3</h3>
+                    <p>Credentials Earned</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobilemenu">
-        <span class="sr-only">Menu</span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-    
-    <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile Navigation">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="#dashboards">Projects</a>
-      <a href="about.html">About</a>
-      <a href="skills.html">Skills</a>
-      <a href="certifications.html">Certifications</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Interactive dashboards and data analysis</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="tech-badge">Power BI</span>
+                    </div>
+                    <div class="project-image">
+                        <div class="placeholder">Sales Dashboard Preview</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Sales Performance Dashboard</h3>
+                        <p>12 months of retail sales analysis with revenue trends and regional performance insights.</p>
+                        <div class="project-tags">
+                            <span>Power BI</span>
+                            <span>DAX</span>
+                            <span>M Language</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study →</a>
+                    </div>
+                </div>
 
-  <main>
-    <section class="hero" id="home" aria-label="Introduction: Data Analyst Tanvir Analytics">
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1>Turning <span class="gradient-text">Data</span> into Decisions</h1>
-            <p class="hero-subtitle">Interactive dashboards and analysis with <strong>Power BI</strong>, <strong>Excel</strong>, and <strong>SQL</strong>.</p>
-            <p class="skills-list">Skilled in <strong>Python</strong>, <strong>R</strong>, <strong>SQL</strong>, <strong>Excel</strong>, and <strong>Power BI</strong>. <a href="skills.html" style="color: var(--brand-1); font-weight: 600; text-decoration: none;">View all skills &rarr;</a></p>
-            <div class="actions">
-              <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener noreferrer">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
-                Download CV (PDF)
-              </a>
-              <a class="btn secondary" href="#dashboards">
-                View Projects
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
-              </a>
-            </div>
-          </div>
-          <div class="hero-visual">
-            <div class="floating-card">
-              <div class="chart-preview" aria-hidden="true">
-                <div class="chart-bar" style="height: 60%"></div>
-                <div class="chart-bar" style="height: 80%"></div>
-                <div class="chart-bar" style="height: 45%"></div>
-                <div class="chart-bar" style="height: 90%"></div>
-                <div class="chart-bar" style="height: 70%"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="tech-badge">Excel</span>
+                    </div>
+                    <div class="project-image">
+                        <div class="placeholder">Financial Dashboard</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Financial Tracker</h3>
+                        <p>Budget vs actuals analysis with interactive slicers and spending insights.</p>
+                        <div class="project-tags">
+                            <span>Excel</span>
+                            <span>Pivot Tables</span>
+                            <span>Power Query</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study →</a>
+                    </div>
+                </div>
 
-    <div class="container">
-      <section class="stats" aria-label="Key Achievements">
-        <div class="stat">
-          <h3 id="projectsCount">15+</h3>
-          <p>Projects Completed</p>
-        </div>
-        <div class="stat">
-          <h3>5+</h3>
-          <p>Industries Analyzed</p>
-        </div>
-        <div class="stat">
-          <h3>3</h3>
-          <p>Credentials Earned</p>
-          </div>
-      </section>
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="tech-badge">SQL / Python</span>
+                    </div>
+                    <div class="project-image">
+                        <div class="placeholder">Inventory Analysis</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Inventory Health</h3>
+                        <p>SKU performance analysis with predictive metrics for inventory optimization.</p>
+                        <div class="project-tags">
+                            <span>SQL</span>
+                            <span>Python</span>
+                            <span>EDA</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study →</a>
+                    </div>
+                </div>
 
-      <section id="dashboards" aria-labelledby="dashboards-heading">
-        <div class="section-header">
-          <h2 id="dashboards-heading">Featured Interactive Dashboards</h2>
-          <p>Explore my data visualization projects</p>
-        </div>
-        
-        <div class="grid" id="deck">
-                    <article class="card" data-tags="powerbi dashboard">
-            <div class="card-header">
-              <div class="tech-badge">Power BI</div>
-            </div>
-            <div class="thumb">
-              <iframe title="Sales Performance Dashboard (Power BI Embed)"
-                src="REPLACE_WITH_YOUR_REPORT_URL"
-                loading="lazy" allowfullscreen></iframe>
-            </div>
-            <div class="card__body">
-              <h3>Sales Performance Dashboard</h3>
-              <p>12 months of retail sales highlighting revenue trends, top products, and underperforming regions to guide promos and inventory.</p>
-              <div class="card-footer">
-                <div>
-                  <small style="display:block; margin-bottom: 4px;">Skills Used:</small>
-                  <div class="tagrow">
-                    <span class="tag">Power BI</span>
-                    <span class="tag">DAX</span>
-                    <span class="tag">M Language</span>
-                  </div>
-                </div>
-                <a class="btn link" href="case-study-sales.pdf" target="_blank" rel="noopener noreferrer">
-                  View Full Case Study (PDF)
-                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="tech-badge">R / Power BI</span>
+                    </div>
+                    <div class="project-image">
+                        <div class="placeholder">Customer Analysis</div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Customer Segmentation</h3>
+                        <p>RFM analysis and customer clustering using R with Power BI visualization.</p>
+                        <div class="project-tags">
+                            <span>R</span>
+                            <span>Power BI</span>
+                            <span>Clustering</span>
+                        </div>
+                        <a href="#" class="project-link">View Case Study →</a>
+                    </div>
+                </div>
+            </div>
 
-                    <article class="card" data-tags="excel dashboard">
-            <div class="card-header">
-              <div class="tech-badge">Excel</div>
-            </div>
-            <div class="thumb">
-              <iframe title="Financial Tracker Dashboard (Excel Embed)"
-                src="REPLACE_WITH_YOUR_ONEDRIVE_ID"
-                loading="lazy"></iframe>
-            </div>
-            <div class="card__body">
-              <h3>Financial Tracker Dashboard</h3>
-              <p>Budget vs actuals by month and category with slicers; flags overspending early and spots savings opportunities.</p>
-              <div class="card-footer">
-                <div>
-                  <small style="display:block; margin-bottom: 4px;">Skills Used:</small>
-                  <div class="tagrow">
-                    <span class="tag">Excel</span>
-                    <span class="tag">Pivot Tables</span>
-                    <span class="tag">Power Query</span>
-                  </div>
-                </div>
-                <a class="btn link" href="case-study-financial.pdf" target="_blank" rel="noopener noreferrer">
-                  View Full Case Study (PDF)
-                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
+            <div class="section-header" style="margin-top: 60px;">
+                <a href="about.html#experience" class="btn secondary">View All Projects</a>
+            </div>
+        </div>
+    </section>
 
-                    <article class="card" data-tags="sql python">
-            <div class="card-header">
-              <div class="tech-badge">SQL / Python</div>
-            </div>
-            <div class="thumb">
-              <iframe title="Inventory Health Analysis"
-                src="REPLACE_WITH_INVENTORY_DASHBOARD_URL"
-                loading="lazy"></iframe>
-            </div>
-            <div class="card__body">
-              <h3>Inventory Health Analysis</h3>
-              <p>Identifies slow-moving vs. high-turnover SKUs, automating markdown recommendations based on predictive metrics calculated in Python.</p>
-              <div class="card-footer">
-                <div>
-                  <small style="display:block; margin-bottom: 4px;">Skills Used:</small>
-                  <div class="tagrow">
-                    <span class="tag">SQL</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">EDA</span>
-                  </div>
-                </div>
-                <a class="btn link" href="case-study-inventory.pdf" target="_blank" rel="noopener noreferrer">
-                  View Full Case Study (PDF)
-                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Skills</h2>
+                <p>Tools and technologies I work with</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Data Visualization</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Power BI</span>
+                        <span class="skill-item">Excel</span>
+                        <span class="skill-item">Tableau</span>
+                        <span class="skill-item">Google Data Studio</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Programming</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">R</span>
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">DAX</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Data Analysis</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Statistical Analysis</span>
+                        <span class="skill-item">Data Cleaning</span>
+                        <span class="skill-item">EDA</span>
+                        <span class="skill-item">Predictive Modeling</span>
+                    </div>
+                </div>
+            </div>
 
-                    <article class="card" data-tags="r powerbi">
-            <div class="card-header">
-              <div class="tech-badge">R / Power BI</div>
-            </div>
-            <div class="thumb">
-              <iframe title="Customer Churn Analysis"
-                src="REPLACE_WITH_CHURN_DASHBOARD_URL"
-                loading="lazy"></iframe>
-            </div>
-            <div class="card__body">
-              <h3>Customer Churn Analysis</h3>
-              <p>Identifies high-risk customer segments using R's statistical modeling capabilities, feeding the results into a Power BI dashboard for proactive intervention.</p>
-              <div class="card-footer">
-                <div>
-                  <small style="display:block; margin-bottom: 4px;">Skills Used:</small>
-                  <div class="tagrow">
-                    <span class="tag">R-Tidyverse</span>
-                    <span class="tag">Power BI</span>
-                    <span class="tag">Statistical Modeling</span>
-                  </div>
-                </div>
-                <a class="btn link" href="case-study-churn.pdf" target="_blank" rel="noopener noreferrer">
-                  View Full Case Study (PDF)
-                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/></svg>
-                </a>
-              </div>
-            </div>
-          </article>
-        </div>
+            <div class="section-header" style="margin-top: 60px;">
+                <a href="skills.html" class="btn secondary">View Detailed Skills</a>
+            </div>
+        </div>
+    </section>
 
-        <div class="filters" role="group" aria-label="Filter projects by technology">
-          <button class="chip active" aria-pressed="true" data-filter="all">All</button>
-          <button class="chip" aria-pressed="false" data-filter="powerbi">Power BI</button>
-          <button class="chip" aria-pressed="false" data-filter="excel">Excel</button>
-          <button class="chip" aria-pressed="false" data-filter="sql">SQL</button>
-        </div>
-      </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Work Together</h2>
+                <p>Get in touch for data analysis projects</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p>Email: <a href="mailto:data.tanvir@example.com">data.tanvir@example.com</a></p>
+                    <p>GitHub: <a href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank">github.com/TanvirAnalytics</a></p>
+                    <p>LinkedIn: <a href="#" target="_blank">linkedin.com/in/tanviranalytics</a></p>
+                    <p>Upwork: <a href="#" target="_blank">Upwork Profile</a></p>
+                    
+                    <div class="availability">
+                        <h4>Availability</h4>
+                        <p>✅ Available for freelance projects</p>
+                        <p>✅ Open to full-time opportunities</p>
+                        <p>✅ Remote work preferred</p>
+                    </div>
 
-      <section class="upwork-cta" aria-label="Hire on Upwork">
-        <strong>Prefer contracts via Upwork? We can do that.</strong>
-        <a class="btn primary" href="https://www.upwork.com/freelancers/~0123456789" target="_blank" rel="noopener noreferrer">Hire me on Upwork</a>
-      </section>
+                    <div class="actions" style="margin-top: 30px;">
+                        <a href="certifications.html" class="btn secondary">View Certifications</a>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Project Type</label>
+                        <select id="subject" name="subject">
+                            <option value="">Select a project type</option>
+                            <option value="dashboard">Dashboard Development</option>
+                            <option value="analysis">Data Analysis</option>
+                            <option value="consulting">Consulting</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell me about your project requirements..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-      <section id="contact" aria-labelledby="contact-heading">
-        <h2 id="contact-heading">Let's Work Together</h2>
-        <div class="contact">
-          <form action="#" method="POST" data-form-placeholder>
-            <p role="status" class="form-status" style="display:none;">Message sent successfully!</p>
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" placeholder="Your name" required aria-required="true" />
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" type="email" name="email" placeholder="you@example.com" required aria-required="true" />
-            </div>
-            <div class="field">
-              <label for="msg">Message</label>
-              <textarea id="msg" name="message" placeholder="Tell me about your project..." required aria-required="true"></textarea>
-            </div>
-            <button class="btn primary" type="submit">Send Message</button>
-            <p style="margin-top:8px; color:var(--muted); font-size:14px">I'll only use your email to reply to this inquiry.</p>
-          </form>
-          <div class="panel">
-            <h3>Direct Contact</h3>
-            <p>Email: <a href="mailto:data.tanvir@example.com">data.tanvir@example.com</a></p>
-            <p>GitHub: <a href="https://github.com/Tanvir-Ahasan-Jesun" target="_blank" rel="noopener noreferrer">github.com/Tanvir-Ahasan-Jesun</a></p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">Add your profile</a></p>
-          </div>
-        </div>
-      </section>
-    </div>
-  </main>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="certifications.html">Certifications</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p>&copy; 2024 Tanvir Analytics. Built with passion for data.</p>
+        </div>
+    </footer>
 
-  <footer>
-    <div class="container">
-      <p>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</p>
-    </div>
-  </footer>
-  
-    <script src="main.js?v=7"></script> 
+    <!-- JavaScript -->
+    <script src="main.js"></script>
 </body>
 </html>
