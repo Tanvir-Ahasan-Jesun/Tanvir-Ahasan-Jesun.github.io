@@ -1,91 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#2563eb">
-  <title>Certifications — Tanvir Analytics</title>
-  <meta name="description" content="All certifications and verification links for Tanvir Analytics.">
-  <link rel="icon" href="logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications — Tanvir Analytics</title>
+    <meta name="description" content="All certifications and verification links for Tanvir Analytics.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  
-  <header>
-    <div class="container nav">
-      <a href="index.html" class="brand" aria-label="Tanvir Analytics — Home">
-        <img src="logo.png" alt="Tanvir Analytics Logo" style="height: 48px; width: auto;"/>
-        <strong>Tanvir Analytics</strong>
-      </a>
-      <nav class="navlinks" aria-label="Primary Navigation">
-        <a class="nav-btn" href="index.html">Home</a>
-        <a class="nav-btn" href="index.html#dashboards">Projects</a>
-        <a class="nav-btn" href="about.html">About</a>
-        <a class="nav-btn" href="skills.html">Skills</a>
-        <a class="nav-btn" href="certifications.html" aria-current="page">Certifications</a>
-        <a class="nav-btn cta" href="index.html#contact">Contact</a>
-      </nav>
-      <button class="burger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobilemenu">
-        <span class="sr-only">Menu</span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="mobilemenu" class="mobilemenu" aria-label="Mobile Navigation">
-        <a href="index.html">Home</a>
-        <a href="index.html#dashboards">Projects</a>
-        <a href="about.html">About</a>
-        <a href="skills.html">Skills</a>
-        <a href="certifications.html" aria-current="page">Certifications</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="nav">
+                <a href="index.html" class="brand">
+                    <img src="logo.png" alt="Tanvir Analytics Logo">
+                    <span>Tanvir Analytics</span>
+                </a>
+                
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#projects">Projects</a>
+                    <a href="about.html">About</a>
+                    <a href="skills.html">Skills</a>
+                    <a href="certifications.html" class="nav-btn">Certifications</a>
+                    <a href="index.html#contact" class="cta-button">Contact</a>
+                </nav>
+                
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-  <main>
-    <section class="hero" aria-labelledby="certs-page-heading">
-        <div class="container">
-            <h1 id="certs-page-heading">Certifications</h1>
-            <p>Professional credentials and verification links.</p>
-        </div>
-    </section>
+    <main>
+        <section class="hero decor">
+            <div class="container">
+                <h1>Certifications</h1>
+                <p>Professional credentials and verification links.</p>
+            </div>
+        </section>
 
-    <div class="container">
-        <section aria-label="Certification Grid">
-            <div class="cert-grid">
-                <figure class="cert">
-                    <div class="cert__imgwrap">
-                        <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" loading="lazy" width="640" height="452" />
-                    </div>
-                    <figcaption class="cert__body">
-                        <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
-                        <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
-                    </figcaption>
-                </figure>
+        <div class="container">
+            <section class="certifications">
+                <div class="section-header">
+                    <h2>Professional Certifications</h2>
+                    <p>Verified credentials in data analytics</p>
+                </div>
+                
+                <div class="cert-grid">
+                    <div class="cert">
+                        <div class="cert__imgwrap">
+                            <img src="powerbi300.png" alt="Microsoft Power BI Data Analyst (PL-300) certificate" loading="lazy">
+                        </div>
+                        <div class="cert__body">
+                            <p><strong>Microsoft Power BI Data Analyst (PL-300)</strong></p>
+                            <small>Issued by Microsoft • <a href="REPLACE_PL300_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
+                        </div>
+                    </div>
 
-                <figure class="cert">
-                    <div class="cert__imgwrap">
-                        <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" loading="lazy" width="640" height="452" />
-                    </div>
-                    <figcaption class="cert__body">
-                        <p><strong>IBM Data Analyst Professional Certificate</strong></p>
-                        <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener noreferrer">Verify</a></small>
-                    </figcaption>
-                </figure>
+                    <div class="cert">
+                        <div class="cert__imgwrap">
+                            <img src="ibm-data-analysis.png" alt="IBM Data Analyst Professional Certificate" loading="lazy">
+                        </div>
+                        <div class="cert__body">
+                            <p><strong>IBM Data Analyst Professional Certificate</strong></p>
+                            <small>Issued by IBM • <a href="REPLACE_IBM_VERIFY_LINK" target="_blank" rel="noopener">Verify</a></small>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                </div>
-        </section>
-    </div>
-  </main>
+            <section class="upwork-cta">
+                <strong>Ready to work with a certified data analyst?</strong>
+                <div class="actions">
+                    <a href="index.html#projects" class="btn">View Projects</a>
+                    <a href="index.html#contact" class="btn primary">Get In Touch</a>
+                </div>
+            </section>
+        </div>
+    </main>
 
-  <footer>
-    <div class="container">
-      <p>© <span id="year"></span> Tanvir Analytics. Built on GitHub Pages.</p>
-    </div>
-  </footer>
-  <script src="main.js?v=3"></script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tanvir Analytics. Built with passion for data.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
 </body>
 </html>
