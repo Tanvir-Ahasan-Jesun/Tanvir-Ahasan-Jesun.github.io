@@ -2,6 +2,37 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Tanvir Analytics - Website loaded');
     
+    // Function to show temporary message (replaces alert())
+    function showFeedback(message, isError = false) {
+        const feedbackDiv = document.createElement('div');
+        feedbackDiv.textContent = message;
+        feedbackDiv.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background-color: ${isError ? '#ef4444' : '#10b981'};
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            font-family: 'Inter', sans-serif;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        `;
+        document.body.appendChild(feedbackDiv);
+
+        setTimeout(() => {
+            feedbackDiv.style.opacity = '1';
+        }, 10); // Start transition
+
+        setTimeout(() => {
+            feedbackDiv.style.opacity = '0';
+            // Wait for transition to finish before removing
+            feedbackDiv.addEventListener('transitionend', () => feedbackDiv.remove());
+        }, 4000); 
+    }
+
     // Mobile menu functionality
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
@@ -24,22 +55,25 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Close menu when clicking on links
+        // FIX: Only close menu/set display:none if in mobile view (<= 768px)
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-                navLinks.style.display = 'none';
-                mobileMenuBtn.classList.remove('active');
+                // If it's a mobile viewport, close the menu completely
+                if (window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    navLinks.style.display = 'none';
+                    mobileMenuBtn.classList.remove('active');
+                }
             });
         });
         
-        // Close menu when clicking outside
+        // Close menu when clicking outside (only applies to mobile view)
         document.addEventListener('click', function(event) {
             const isClickInsideNav = event.target.closest('.nav') || 
-                                   event.target.closest('.nav-links') || 
-                                   event.target.closest('.mobile-menu-btn');
+                                     event.target.closest('.nav-links') || 
+                                     event.target.closest('.mobile-menu-btn');
             
-            if (!isClickInsideNav && navLinks && window.innerWidth <= 768) {
+            if (!isClickInsideNav && navLinks && window.innerWidth <= 768 && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
                 navLinks.style.display = 'none';
                 mobileMenuBtn.classList.remove('active');
@@ -64,28 +98,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         top: targetPosition,
                         behavior: 'smooth'
                     });
-                    
-                    // Close mobile menu if open
-                    if (navLinks && window.innerWidth <= 768) {
-                        navLinks.classList.remove('active');
-                        navLinks.style.display = 'none';
-                        if (mobileMenuBtn) {
-                            mobileMenuBtn.classList.remove('active');
-                        }
-                    }
                 }
             }
         });
     });
     
     // Update copyright year automatically
-    const yearElement = document.getElementById('year');
     const footerText = document.querySelector('footer p');
     const currentYear = new Date().getFullYear();
     
-    if (yearElement) {
-        yearElement.textContent = currentYear;
-    }
     if (footerText && !footerText.innerHTML.includes(currentYear)) {
         footerText.innerHTML = `&copy; ${currentYear} Tanvir Analytics. Built with passion for data.`;
     }
@@ -110,8 +131,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Animate project cards on desktop
             document.querySelectorAll('.project-card').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
+                // Ensure initial state is set only if not already observed
+                if (card.style.opacity !== '1') {
+                     card.style.opacity = '0';
+                     card.style.transform = 'translateY(20px)';
+                }
                 observer.observe(card);
             });
         } else {
@@ -141,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     mobileMenuBtn.classList.remove('active');
                 }
             } else {
-                // Mobile: hide nav links by default
+                // Mobile: hide nav links by default unless active class is present
                 if (navLinks && !navLinks.classList.contains('active')) {
                     navLinks.style.display = 'none';
                 }
@@ -152,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 250);
     });
     
-    // Form submission handling
+    // Form submission handling (using showFeedback function)
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -164,10 +188,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const message = document.getElementById('message').value;
             
             if (name && email && message) {
-                alert('Thank you for your message! This is a demo form - in a real website, this would send an email.');
+                showFeedback('Thank you for your message! (Demo successful)', false);
                 contactForm.reset();
+                console.log('Form Submitted (Demo):', { name, email, message });
             } else {
-                alert('Please fill in all required fields.');
+                showFeedback('Please fill in all required fields.', true);
+                console.error('Form validation failed: Missing fields.');
             }
         });
     }
@@ -186,19 +212,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Add loading animation to chart bars
+    // Add loading animation to chart bars (initial load animation)
     const chartBars = document.querySelectorAll('.chart-bar');
     chartBars.forEach((bar, index) => {
         bar.style.animationDelay = `${index * 0.2}s`;
     });
     
-    // Initialize mobile menu state
+    // Initialize mobile menu state (ensure it starts hidden on mobile)
     if (window.innerWidth <= 768 && navLinks) {
         navLinks.style.display = 'none';
     }
 });
 
-// Add debug styles to ensure mobile functionality
+// Add debug styles to ensure mobile functionality (kept from original for robustness)
 const debugStyles = document.createElement('style');
 debugStyles.textContent = `
     /* Debug: Ensure mobile functionality */
