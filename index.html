@@ -921,20 +921,176 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── RESPONSIVE ── */
+    /* ── HAMBURGER MENU ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+      z-index: 200;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 13, 20, 0.98);
+      backdrop-filter: blur(16px);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:hover { color: var(--accent); }
+
+    .mobile-menu .mobile-cta {
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.9rem 2.5rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    /* ── TABLET (max 1024px) ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; max-width: 100%; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .process-steps::before { display: none; }
+      .step { padding: 0 1rem; }
+    }
+
+    /* ── MOBILE (max 768px) ── */
     @media (max-width: 768px) {
+
+      /* Nav */
       nav { padding: 1rem 5%; }
       .nav-links { display: none; }
-      #hero { padding: 7rem 5% 4rem; }
-      .hero-stats { gap: 2rem; flex-wrap: wrap; }
+      .hamburger { display: flex; }
+
+      /* Hero */
+      #hero { padding: 6rem 5% 3.5rem; }
+      h1 { font-size: 2.2rem; }
+      .hero-sub { font-size: 1rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions a { text-align: center; }
+      .hero-stats {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin-top: 2.5rem;
+        padding-top: 2rem;
+      }
+      .stat-item { min-width: calc(50% - 1rem); }
+      .stat-num { font-size: 1.6rem; }
+
+      /* Sections */
+      #pain, #services, #portfolio, #process, #sectors, #contact {
+        padding: 4rem 5%;
+      }
+
+      .section-title { font-size: 1.7rem; }
+
+      /* Pain grid */
+      .pain-grid { grid-template-columns: 1fr; }
+
+      /* Services */
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { padding: 1.8rem; }
+
+      /* Portfolio */
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .project-visual { height: 160px; }
+
+      /* Process */
+      .process-steps {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .process-steps::before { display: none; }
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.2rem;
+        text-align: left;
+        padding: 0;
+      }
+      .step-num {
+        width: 3rem;
+        height: 3rem;
+        flex-shrink: 0;
+        font-size: 0.95rem;
+        margin: 0;
+      }
+
+      /* Sectors */
+      .sectors-grid { grid-template-columns: 1fr; }
+
+      /* Contact */
       .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
       .form-row { grid-template-columns: 1fr; }
-      .process-steps::before { display: none; }
-      footer { flex-direction: column; text-align: center; }
+      .contact-form { padding: 1.5rem; }
+
+      /* Footer */
+      footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 5%;
+        gap: 0.8rem;
+      }
+      .footer-links { justify-content: center; }
+    }
+
+    /* ── SMALL MOBILE (max 400px) ── */
+    @media (max-width: 400px) {
+      h1 { font-size: 1.9rem; }
+      .hero-badge { font-size: 0.75rem; }
+      .stat-item { min-width: 100%; }
+      .price-amount { font-size: 1.5rem; }
+      .mock-kpi-val { font-size: 0.75rem; }
     }
   </style>
 </head>
 <body>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#portfolio" onclick="closeMobile()">Portfolio</a>
+    <a href="#process" onclick="closeMobile()">Process</a>
+    <a href="#sectors" onclick="closeMobile()">Sectors</a>
+    <a href="#contact" class="mobile-cta" onclick="closeMobile()">Get in Touch</a>
+  </div>
 
   <!-- NAV -->
   <nav>
@@ -946,7 +1102,25 @@
       <li><a href="#sectors">Sectors</a></li>
       <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn  = document.getElementById('hamburger');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+    }
+    function closeMobile() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
 
   <!-- HERO -->
   <section id="hero">
